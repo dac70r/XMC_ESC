@@ -1,0 +1,136 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "ecatcoe.c"
+  16              	 .section .text.COE_Init,"ax",%progbits
+  17              	 .align 1
+  18              	 .global COE_Init
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	COE_Init:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 024A     	 ldr r2,.L2
+  27 0002 0023     	 movs r3,#0
+  28 0004 1360     	 str r3,[r2]
+  29 0006 024A     	 ldr r2,.L2+4
+  30 0008 1380     	 strh r3,[r2]
+  31 000a 7047     	 bx lr
+  32              	.L3:
+  33              	 .align 2
+  34              	.L2:
+  35 000c 00000000 	 .word pCoeSendStored
+  36 0010 00000000 	 .word nSdoInfoFragmentsLeft
+  38              	 .section .text.COE_ServiceInd,"ax",%progbits
+  39              	 .align 1
+  40              	 .global COE_ServiceInd
+  41              	 .thumb
+  42              	 .thumb_func
+  44              	COE_ServiceInd:
+  45              	 
+  46              	 
+  47              	 
+  48 0000 C388     	 ldrh r3,[r0,#6]
+  49 0002 1B0B     	 lsrs r3,r3,#12
+  50 0004 013B     	 subs r3,r3,#1
+  51 0006 072B     	 cmp r3,#7
+  52 0008 05D8     	 bhi .L5
+  53 000a DFE803F0 	 tbb [pc,r3]
+  54              	.L7:
+  55 000e 0A       	 .byte (.L10-.L7)/2
+  56 000f 06       	 .byte (.L8-.L7)/2
+  57 0010 0A       	 .byte (.L10-.L7)/2
+  58 0011 0A       	 .byte (.L10-.L7)/2
+  59 0012 0A       	 .byte (.L10-.L7)/2
+  60 0013 0A       	 .byte (.L10-.L7)/2
+  61 0014 0A       	 .byte (.L10-.L7)/2
+  62 0015 08       	 .byte (.L9-.L7)/2
+  63              	 .p2align 1
+  64              	.L5:
+  65 0016 0520     	 movs r0,#5
+  66 0018 7047     	 bx lr
+  67              	.L8:
+  68 001a FFF7FEBF 	 b SDOS_SdoInd
+  69              	.L9:
+  70 001e FFF7FEBF 	 b SDOS_SdoInfoInd
+  71              	.L10:
+  72 0022 0420     	 movs r0,#4
+  73 0024 7047     	 bx lr
+  75              	 .section .text.COE_ContinueInd,"ax",%progbits
+  76              	 .align 1
+  77              	 .global COE_ContinueInd
+  78              	 .thumb
+  79              	 .thumb_func
+  81              	COE_ContinueInd:
+  82              	 
+  83              	 
+  84 0000 70B5     	 push {r4,r5,r6,lr}
+  85 0002 0E4D     	 ldr r5,.L17
+  86 0004 2C68     	 ldr r4,[r5]
+  87 0006 34B1     	 cbz r4,.L13
+  88 0008 2046     	 mov r0,r4
+  89 000a 0221     	 movs r1,#2
+  90 000c FFF7FEFF 	 bl MBX_MailboxSendReq
+  91 0010 80B9     	 cbnz r0,.L15
+  92 0012 2860     	 str r0,[r5]
+  93 0014 70BD     	 pop {r4,r5,r6,pc}
+  94              	.L13:
+  95 0016 8020     	 movs r0,#128
+  96 0018 FFF7FEFF 	 bl malloc
+  97 001c 0646     	 mov r6,r0
+  98 001e 58B1     	 cbz r0,.L16
+  99 0020 074B     	 ldr r3,.L17+4
+ 100 0022 0546     	 mov r5,r0
+ 101 0024 0FCB     	 ldmia r3,{r0,r1,r2,r3}
+ 102 0026 07C5     	 stmia r5!,{r0,r1,r2}
+ 103 0028 3046     	 mov r0,r6
+ 104 002a 2B80     	 strh r3,[r5]
+ 105 002c FFF7FEFF 	 bl SDOS_SdoInfoInd
+ 106 0030 2046     	 mov r0,r4
+ 107 0032 70BD     	 pop {r4,r5,r6,pc}
+ 108              	.L15:
+ 109 0034 0020     	 movs r0,#0
+ 110 0036 70BD     	 pop {r4,r5,r6,pc}
+ 111              	.L16:
+ 112 0038 0720     	 movs r0,#7
+ 113 003a 70BD     	 pop {r4,r5,r6,pc}
+ 114              	.L18:
+ 115              	 .align 2
+ 116              	.L17:
+ 117 003c 00000000 	 .word pCoeSendStored
+ 118 0040 00000000 	 .word aSdoInfoHeader
+ 120              	 .comm pCoeSendStored,4,4
+ 121              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ecatcoe.c
+    {standard input}:17     .text.COE_Init:00000000 $t
+    {standard input}:22     .text.COE_Init:00000000 COE_Init
+    {standard input}:35     .text.COE_Init:0000000c $d
+                            *COM*:00000004 pCoeSendStored
+    {standard input}:39     .text.COE_ServiceInd:00000000 $t
+    {standard input}:44     .text.COE_ServiceInd:00000000 COE_ServiceInd
+    {standard input}:55     .text.COE_ServiceInd:0000000e $d
+    {standard input}:63     .text.COE_ServiceInd:00000016 $t
+    {standard input}:76     .text.COE_ContinueInd:00000000 $t
+    {standard input}:81     .text.COE_ContinueInd:00000000 COE_ContinueInd
+    {standard input}:117    .text.COE_ContinueInd:0000003c $d
+
+UNDEFINED SYMBOLS
+nSdoInfoFragmentsLeft
+SDOS_SdoInd
+SDOS_SdoInfoInd
+MBX_MailboxSendReq
+malloc
+aSdoInfoHeader

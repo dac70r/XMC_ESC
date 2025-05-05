@@ -1,0 +1,292 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .section .text.__NVIC_DisableIRQ,"ax",%progbits
+  17              	 .align 1
+  18              	 .thumb
+  19              	 .thumb_func
+  21              	__NVIC_DisableIRQ:
+  22              	 
+  23              	 
+  24              	 
+  25 0000 0028     	 cmp r0,#0
+  26 0002 0CDB     	 blt .L1
+  27 0004 4309     	 lsrs r3,r0,#5
+  28 0006 2033     	 adds r3,r3,#32
+  29 0008 00F01F00 	 and r0,r0,#31
+  30 000c 0449     	 ldr r1,.L4
+  31 000e 0122     	 movs r2,#1
+  32 0010 8240     	 lsls r2,r2,r0
+  33 0012 41F82320 	 str r2,[r1,r3,lsl#2]
+  34              	
+  35 0016 BFF34F8F 	 dsb 0xF
+  36              	
+  37              	
+  38 001a BFF36F8F 	 isb 0xF
+  39              	
+  40              	 .thumb
+  41              	.L1:
+  42 001e 7047     	 bx lr
+  43              	.L5:
+  44              	 .align 2
+  45              	.L4:
+  46 0020 00E100E0 	 .word -536813312
+  48              	 .section .text.Init_Relax_Button,"ax",%progbits
+  49              	 .align 1
+  50              	 .global Init_Relax_Button
+  51              	 .thumb
+  52              	 .thumb_func
+  54              	Init_Relax_Button:
+  55              	 
+  56              	 
+  57 0000 10B5     	 push {r4,lr}
+  58 0002 0A4C     	 ldr r4,.L7
+  59 0004 0D21     	 movs r1,#13
+  60 0006 2046     	 mov r0,r4
+  61 0008 0022     	 movs r2,#0
+  62 000a FFF7FEFF 	 bl XMC_GPIO_SetMode
+  63 000e 236E     	 ldr r3,[r4,#96]
+  64 0010 23F40053 	 bic r3,r3,#8192
+  65 0014 2366     	 str r3,[r4,#96]
+  66 0016 2046     	 mov r0,r4
+  67 0018 0C21     	 movs r1,#12
+  68 001a 0022     	 movs r2,#0
+  69 001c FFF7FEFF 	 bl XMC_GPIO_SetMode
+  70 0020 236E     	 ldr r3,[r4,#96]
+  71 0022 23F48053 	 bic r3,r3,#4096
+  72 0026 2366     	 str r3,[r4,#96]
+  73 0028 10BD     	 pop {r4,pc}
+  74              	.L8:
+  75 002a 00BF     	 .align 2
+  76              	.L7:
+  77 002c 008F0248 	 .word 1208127232
+  79              	 .section .text.Init_ECAT_Adapt_LED,"ax",%progbits
+  80              	 .align 1
+  81              	 .global Init_ECAT_Adapt_LED
+  82              	 .thumb
+  83              	 .thumb_func
+  85              	Init_ECAT_Adapt_LED:
+  86              	 
+  87              	 
+  88 0000 70B5     	 push {r4,r5,r6,lr}
+  89 0002 1D4D     	 ldr r5,.L10
+  90 0004 1D4C     	 ldr r4,.L10+4
+  91 0006 2846     	 mov r0,r5
+  92 0008 0E21     	 movs r1,#14
+  93 000a 8022     	 movs r2,#128
+  94 000c 4FF48046 	 mov r6,#16384
+  95 0010 FFF7FEFF 	 bl XMC_GPIO_SetMode
+  96 0014 6E60     	 str r6,[r5,#4]
+  97 0016 2046     	 mov r0,r4
+  98 0018 0E21     	 movs r1,#14
+  99 001a 8022     	 movs r2,#128
+ 100 001c FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 101 0020 2846     	 mov r0,r5
+ 102 0022 0F21     	 movs r1,#15
+ 103 0024 8022     	 movs r2,#128
+ 104 0026 6660     	 str r6,[r4,#4]
+ 105 0028 FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 106 002c 4FF40043 	 mov r3,#32768
+ 107 0030 6B60     	 str r3,[r5,#4]
+ 108 0032 05F58075 	 add r5,r5,#256
+ 109 0036 2846     	 mov r0,r5
+ 110 0038 0221     	 movs r1,#2
+ 111 003a 8022     	 movs r2,#128
+ 112 003c FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 113 0040 0423     	 movs r3,#4
+ 114 0042 6B60     	 str r3,[r5,#4]
+ 115 0044 2046     	 mov r0,r4
+ 116 0046 0D21     	 movs r1,#13
+ 117 0048 8022     	 movs r2,#128
+ 118 004a FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 119 004e 05F58065 	 add r5,r5,#1024
+ 120 0052 4FF40053 	 mov r3,#8192
+ 121 0056 6360     	 str r3,[r4,#4]
+ 122 0058 2846     	 mov r0,r5
+ 123 005a 0321     	 movs r1,#3
+ 124 005c 8022     	 movs r2,#128
+ 125 005e FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 126 0062 0823     	 movs r3,#8
+ 127 0064 6B60     	 str r3,[r5,#4]
+ 128 0066 2046     	 mov r0,r4
+ 129 0068 0B21     	 movs r1,#11
+ 130 006a 8022     	 movs r2,#128
+ 131 006c FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 132 0070 4FF40063 	 mov r3,#2048
+ 133 0074 6360     	 str r3,[r4,#4]
+ 134 0076 70BD     	 pop {r4,r5,r6,pc}
+ 135              	.L11:
+ 136              	 .align 2
+ 137              	.L10:
+ 138 0078 00800248 	 .word 1208123392
+ 139 007c 00830248 	 .word 1208124160
+ 141              	 .section .text.process_app,"ax",%progbits
+ 142              	 .align 1
+ 143              	 .global process_app
+ 144              	 .thumb
+ 145              	 .thumb_func
+ 147              	process_app:
+ 148              	 
+ 149              	 
+ 150              	 
+ 151 0000 7047     	 bx lr
+ 153              	 .section .text.startup.main,"ax",%progbits
+ 154              	 .align 1
+ 155              	 .global main
+ 156              	 .thumb
+ 157              	 .thumb_func
+ 159              	main:
+ 160              	 
+ 161              	 
+ 162 0000 10B5     	 push {r4,lr}
+ 163 0002 FFF7FEFF 	 bl DAVE_Init
+ 164 0006 0446     	 mov r4,r0
+ 165 0008 FFF7FEFF 	 bl Init_ECAT_Adapt_LED
+ 166 000c FFF7FEFF 	 bl Init_Relax_Button
+ 167 0010 012C     	 cmp r4,#1
+ 168 0012 00D1     	 bne .L16
+ 169              	.L15:
+ 170 0014 FEE7     	 b .L15
+ 171              	.L16:
+ 172 0016 FFF7FEFF 	 bl MainLoop
+ 173 001a FCE7     	 b .L16
+ 175              	 .section .text.ERU1_0_IRQHandler,"ax",%progbits
+ 176              	 .align 1
+ 177              	 .global ERU1_0_IRQHandler
+ 178              	 .thumb
+ 179              	 .thumb_func
+ 181              	ERU1_0_IRQHandler:
+ 182              	 
+ 183              	 
+ 184              	 
+ 185 0000 FFF7FEBF 	 b Sync0_Isr
+ 187              	 .section .text.ERU1_3_IRQHandler,"ax",%progbits
+ 188              	 .align 1
+ 189              	 .global ERU1_3_IRQHandler
+ 190              	 .thumb
+ 191              	 .thumb_func
+ 193              	ERU1_3_IRQHandler:
+ 194              	 
+ 195              	 
+ 196              	 
+ 197 0000 FFF7FEBF 	 b Sync1_Isr
+ 199              	 .section .text.ENABLE_ESC_INT_USER,"ax",%progbits
+ 200              	 .align 1
+ 201              	 .global ENABLE_ESC_INT_USER
+ 202              	 .thumb
+ 203              	 .thumb_func
+ 205              	ENABLE_ESC_INT_USER:
+ 206              	 
+ 207              	 
+ 208              	 
+ 209 0000 0F4B     	 ldr r3,.L22
+ 210 0002 1A78     	 ldrb r2,[r3]
+ 211 0004 53B2     	 sxtb r3,r2
+ 212 0006 002B     	 cmp r3,#0
+ 213 0008 A1BF     	 itttt ge
+ 214 000a 0121     	 movge r1,#1
+ 215 000c 02F01F02 	 andge r2,r2,#31
+ 216 0010 01FA02F2 	 lslge r2,r1,r2
+ 217 0014 5B09     	 lsrge r3,r3,#5
+ 218 0016 A4BF     	 itt ge
+ 219 0018 0A49     	 ldrge r1,.L22+4
+ 220 001a 41F82320 	 strge r2,[r1,r3,lsl#2]
+ 221 001e 0A4B     	 ldr r3,.L22+8
+ 222 0020 1A78     	 ldrb r2,[r3]
+ 223 0022 53B2     	 sxtb r3,r2
+ 224 0024 002B     	 cmp r3,#0
+ 225 0026 A1BF     	 itttt ge
+ 226 0028 0121     	 movge r1,#1
+ 227 002a 02F01F02 	 andge r2,r2,#31
+ 228 002e 01FA02F2 	 lslge r2,r1,r2
+ 229 0032 5B09     	 lsrge r3,r3,#5
+ 230 0034 A4BF     	 itt ge
+ 231 0036 0349     	 ldrge r1,.L22+4
+ 232 0038 41F82320 	 strge r2,[r1,r3,lsl#2]
+ 233 003c 7047     	 bx lr
+ 234              	.L23:
+ 235 003e 00BF     	 .align 2
+ 236              	.L22:
+ 237 0040 00000000 	 .word INT_SYNC0
+ 238 0044 00E100E0 	 .word -536813312
+ 239 0048 00000000 	 .word INT_SYNC1
+ 241              	 .section .text.DISABLE_ESC_INT_USER,"ax",%progbits
+ 242              	 .align 1
+ 243              	 .global DISABLE_ESC_INT_USER
+ 244              	 .thumb
+ 245              	 .thumb_func
+ 247              	DISABLE_ESC_INT_USER:
+ 248              	 
+ 249              	 
+ 250 0000 08B5     	 push {r3,lr}
+ 251 0002 064B     	 ldr r3,.L25
+ 252 0004 93F90000 	 ldrsb r0,[r3]
+ 253 0008 FFF7FEFF 	 bl __NVIC_DisableIRQ
+ 254 000c 044B     	 ldr r3,.L25+4
+ 255 000e 93F90000 	 ldrsb r0,[r3]
+ 256 0012 BDE80840 	 pop {r3,lr}
+ 257 0016 FFF7FEBF 	 b __NVIC_DisableIRQ
+ 258              	.L26:
+ 259 001a 00BF     	 .align 2
+ 260              	.L25:
+ 261 001c 00000000 	 .word INT_SYNC0
+ 262 0020 00000000 	 .word INT_SYNC1
+ 264              	 .section .text.IO_Blink,"ax",%progbits
+ 265              	 .align 1
+ 266              	 .global IO_Blink
+ 267              	 .thumb
+ 268              	 .thumb_func
+ 270              	IO_Blink:
+ 271              	 
+ 272              	 
+ 273              	 
+ 274 0000 7047     	 bx lr
+ 276              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:17     .text.__NVIC_DisableIRQ:00000000 $t
+    {standard input}:21     .text.__NVIC_DisableIRQ:00000000 __NVIC_DisableIRQ
+    {standard input}:46     .text.__NVIC_DisableIRQ:00000020 $d
+    {standard input}:49     .text.Init_Relax_Button:00000000 $t
+    {standard input}:54     .text.Init_Relax_Button:00000000 Init_Relax_Button
+    {standard input}:77     .text.Init_Relax_Button:0000002c $d
+    {standard input}:80     .text.Init_ECAT_Adapt_LED:00000000 $t
+    {standard input}:85     .text.Init_ECAT_Adapt_LED:00000000 Init_ECAT_Adapt_LED
+    {standard input}:138    .text.Init_ECAT_Adapt_LED:00000078 $d
+    {standard input}:142    .text.process_app:00000000 $t
+    {standard input}:147    .text.process_app:00000000 process_app
+    {standard input}:154    .text.startup.main:00000000 $t
+    {standard input}:159    .text.startup.main:00000000 main
+    {standard input}:176    .text.ERU1_0_IRQHandler:00000000 $t
+    {standard input}:181    .text.ERU1_0_IRQHandler:00000000 ERU1_0_IRQHandler
+    {standard input}:188    .text.ERU1_3_IRQHandler:00000000 $t
+    {standard input}:193    .text.ERU1_3_IRQHandler:00000000 ERU1_3_IRQHandler
+    {standard input}:200    .text.ENABLE_ESC_INT_USER:00000000 $t
+    {standard input}:205    .text.ENABLE_ESC_INT_USER:00000000 ENABLE_ESC_INT_USER
+    {standard input}:237    .text.ENABLE_ESC_INT_USER:00000040 $d
+    {standard input}:242    .text.DISABLE_ESC_INT_USER:00000000 $t
+    {standard input}:247    .text.DISABLE_ESC_INT_USER:00000000 DISABLE_ESC_INT_USER
+    {standard input}:261    .text.DISABLE_ESC_INT_USER:0000001c $d
+    {standard input}:265    .text.IO_Blink:00000000 $t
+    {standard input}:270    .text.IO_Blink:00000000 IO_Blink
+
+UNDEFINED SYMBOLS
+XMC_GPIO_SetMode
+DAVE_Init
+MainLoop
+Sync0_Isr
+Sync1_Isr
+INT_SYNC0
+INT_SYNC1

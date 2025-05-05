@@ -1,0 +1,374 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "XMC_ESC.c"
+  16              	 .section .text.APPL_AckErrorInd,"ax",%progbits
+  17              	 .align 1
+  18              	 .global APPL_AckErrorInd
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	APPL_AckErrorInd:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 7047     	 bx lr
+  28              	 .section .text.APPL_StartMailboxHandler,"ax",%progbits
+  29              	 .align 1
+  30              	 .global APPL_StartMailboxHandler
+  31              	 .thumb
+  32              	 .thumb_func
+  34              	APPL_StartMailboxHandler:
+  35              	 
+  36              	 
+  37              	 
+  38 0000 0020     	 movs r0,#0
+  39 0002 7047     	 bx lr
+  41              	 .section .text.APPL_StopMailboxHandler,"ax",%progbits
+  42              	 .align 1
+  43              	 .global APPL_StopMailboxHandler
+  44              	 .thumb
+  45              	 .thumb_func
+  47              	APPL_StopMailboxHandler:
+  48              	 
+  49              	 
+  50              	 
+  51 0000 0020     	 movs r0,#0
+  52 0002 7047     	 bx lr
+  54              	 .section .text.APPL_StartInputHandler,"ax",%progbits
+  55              	 .align 1
+  56              	 .global APPL_StartInputHandler
+  57              	 .thumb
+  58              	 .thumb_func
+  60              	APPL_StartInputHandler:
+  61              	 
+  62              	 
+  63              	 
+  64 0000 0020     	 movs r0,#0
+  65 0002 7047     	 bx lr
+  67              	 .section .text.APPL_StopInputHandler,"ax",%progbits
+  68              	 .align 1
+  69              	 .global APPL_StopInputHandler
+  70              	 .thumb
+  71              	 .thumb_func
+  73              	APPL_StopInputHandler:
+  74              	 
+  75              	 
+  76              	 
+  77 0000 0020     	 movs r0,#0
+  78 0002 7047     	 bx lr
+  80              	 .section .text.APPL_StartOutputHandler,"ax",%progbits
+  81              	 .align 1
+  82              	 .global APPL_StartOutputHandler
+  83              	 .thumb
+  84              	 .thumb_func
+  86              	APPL_StartOutputHandler:
+  87              	 
+  88              	 
+  89              	 
+  90 0000 0020     	 movs r0,#0
+  91 0002 7047     	 bx lr
+  93              	 .section .text.APPL_StopOutputHandler,"ax",%progbits
+  94              	 .align 1
+  95              	 .global APPL_StopOutputHandler
+  96              	 .thumb
+  97              	 .thumb_func
+  99              	APPL_StopOutputHandler:
+ 100              	 
+ 101              	 
+ 102              	 
+ 103 0000 0020     	 movs r0,#0
+ 104 0002 7047     	 bx lr
+ 106              	 .section .text.APPL_GenerateMapping,"ax",%progbits
+ 107              	 .align 1
+ 108              	 .global APPL_GenerateMapping
+ 109              	 .thumb
+ 110              	 .thumb_func
+ 112              	APPL_GenerateMapping:
+ 113              	 
+ 114              	 
+ 115 0000 2DE9F74F 	 push {r0,r1,r2,r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 116 0004 4FF00009 	 mov r9,#0
+ 117 0008 8046     	 mov r8,r0
+ 118 000a 0F46     	 mov r7,r1
+ 119 000c 4D46     	 mov r5,r9
+ 120              	.L9:
+ 121 000e 354B     	 ldr r3,.L26
+ 122 0010 1988     	 ldrh r1,[r3]
+ 123 0012 1FFA89F2 	 uxth r2,r9
+ 124 0016 9142     	 cmp r1,r2
+ 125 0018 1FD9     	 bls .L23
+ 126 001a 03EB4203 	 add r3,r3,r2,lsl#1
+ 127 001e 5888     	 ldrh r0,[r3,#2]
+ 128 0020 FFF7FEFF 	 bl OBJ_GetObjectHandle
+ 129 0024 0646     	 mov r6,r0
+ 130 0026 D0B1     	 cbz r0,.L19
+ 131 0028 8369     	 ldr r3,[r0,#24]
+ 132 002a B3F800A0 	 ldrh r10,[r3]
+ 133 002e 0023     	 movs r3,#0
+ 134              	.L11:
+ 135 0030 9AB2     	 uxth r2,r3
+ 136 0032 5245     	 cmp r2,r10
+ 137 0034 0ED2     	 bcs .L24
+ 138 0036 5C1C     	 adds r4,r3,#1
+ 139 0038 E0B2     	 uxtb r0,r4
+ 140 003a 3146     	 mov r1,r6
+ 141 003c D6F818B0 	 ldr fp,[r6,#24]
+ 142 0040 FFF7FEFF 	 bl OBJ_GetEntryOffset
+ 143 0044 C0F30F10 	 ubfx r0,r0,#4,#16
+ 144 0048 1BF81030 	 ldrb r3,[fp,r0,lsl#1]
+ 145 004c 1D44     	 add r5,r5,r3
+ 146 004e ADB2     	 uxth r5,r5
+ 147 0050 2346     	 mov r3,r4
+ 148 0052 EDE7     	 b .L11
+ 149              	.L24:
+ 150 0054 09F10109 	 add r9,r9,#1
+ 151 0058 D9E7     	 b .L9
+ 152              	.L23:
+ 153 005a 0026     	 movs r6,#0
+ 154 005c 01E0     	 b .L10
+ 155              	.L19:
+ 156 005e 0546     	 mov r5,r0
+ 157 0060 2526     	 movs r6,#37
+ 158              	.L10:
+ 159 0062 0735     	 adds r5,r5,#7
+ 160 0064 C5F3CF05 	 ubfx r5,r5,#3,#16
+ 161 0068 0EB1     	 cbz r6,.L20
+ 162 006a 0024     	 movs r4,#0
+ 163 006c 31E0     	 b .L15
+ 164              	.L20:
+ 165 006e B346     	 mov fp,r6
+ 166 0070 3446     	 mov r4,r6
+ 167              	.L14:
+ 168 0072 1D4B     	 ldr r3,.L26+4
+ 169 0074 1988     	 ldrh r1,[r3]
+ 170 0076 1FFA8BF2 	 uxth r2,fp
+ 171 007a 9142     	 cmp r1,r2
+ 172 007c 29D9     	 bls .L15
+ 173 007e 03EB4203 	 add r3,r3,r2,lsl#1
+ 174 0082 5888     	 ldrh r0,[r3,#2]
+ 175 0084 FFF7FEFF 	 bl OBJ_GetObjectHandle
+ 176 0088 8246     	 mov r10,r0
+ 177 008a 00B3     	 cbz r0,.L21
+ 178 008c 8369     	 ldr r3,[r0,#24]
+ 179 008e B3F800C0 	 ldrh ip,[r3]
+ 180 0092 0023     	 movs r3,#0
+ 181              	.L16:
+ 182 0094 9AB2     	 uxth r2,r3
+ 183 0096 6245     	 cmp r2,ip
+ 184 0098 16D2     	 bcs .L25
+ 185 009a 03F10109 	 add r9,r3,#1
+ 186 009e DAF81820 	 ldr r2,[r10,#24]
+ 187 00a2 CDF804C0 	 str ip,[sp,#4]
+ 188 00a6 5FFA89F0 	 uxtb r0,r9
+ 189 00aa 5146     	 mov r1,r10
+ 190 00ac 0092     	 str r2,[sp]
+ 191 00ae FFF7FEFF 	 bl OBJ_GetEntryOffset
+ 192 00b2 009A     	 ldr r2,[sp]
+ 193 00b4 DDF804C0 	 ldr ip,[sp,#4]
+ 194 00b8 C0F30F10 	 ubfx r0,r0,#4,#16
+ 195 00bc 12F81030 	 ldrb r3,[r2,r0,lsl#1]
+ 196 00c0 1C44     	 add r4,r4,r3
+ 197 00c2 A4B2     	 uxth r4,r4
+ 198 00c4 4B46     	 mov r3,r9
+ 199 00c6 E5E7     	 b .L16
+ 200              	.L25:
+ 201 00c8 0BF1010B 	 add fp,fp,#1
+ 202 00cc D1E7     	 b .L14
+ 203              	.L21:
+ 204 00ce 0446     	 mov r4,r0
+ 205 00d0 2426     	 movs r6,#36
+ 206              	.L15:
+ 207 00d2 0734     	 adds r4,r4,#7
+ 208 00d4 E410     	 asrs r4,r4,#3
+ 209 00d6 3046     	 mov r0,r6
+ 210 00d8 A8F80040 	 strh r4,[r8]
+ 211 00dc 3D80     	 strh r5,[r7]
+ 212 00de 03B0     	 add sp,sp,#12
+ 213              	 
+ 214 00e0 BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 215              	.L27:
+ 216              	 .align 2
+ 217              	.L26:
+ 218 00e4 00000000 	 .word .LANCHOR0
+ 219 00e8 00000000 	 .word .LANCHOR1
+ 221              	 .section .text.APPL_InputMapping,"ax",%progbits
+ 222              	 .align 1
+ 223              	 .global APPL_InputMapping
+ 224              	 .thumb
+ 225              	 .thumb_func
+ 227              	APPL_InputMapping:
+ 228              	 
+ 229              	 
+ 230 0000 10B5     	 push {r4,lr}
+ 231 0002 0022     	 movs r2,#0
+ 232              	.L29:
+ 233 0004 084B     	 ldr r3,.L34
+ 234 0006 1C88     	 ldrh r4,[r3]
+ 235 0008 D1B2     	 uxtb r1,r2
+ 236 000a A142     	 cmp r1,r4
+ 237 000c 0BD2     	 bcs .L33
+ 238 000e 03EB4103 	 add r3,r3,r1,lsl#1
+ 239 0012 0132     	 adds r2,r2,#1
+ 240 0014 5B88     	 ldrh r3,[r3,#2]
+ 241 0016 B3F5D05F 	 cmp r3,#6656
+ 242 001a 02BF     	 ittt eq
+ 243 001c 034B     	 ldreq r3,.L34+4
+ 244 001e 1B88     	 ldrheq r3,[r3]
+ 245 0020 20F8023B 	 strheq r3,[r0],#2
+ 246 0024 EEE7     	 b .L29
+ 247              	.L33:
+ 248 0026 10BD     	 pop {r4,pc}
+ 249              	.L35:
+ 250              	 .align 2
+ 251              	.L34:
+ 252 0028 00000000 	 .word .LANCHOR1
+ 253 002c 02000000 	 .word .LANCHOR2+2
+ 255              	 .section .text.APPL_OutputMapping,"ax",%progbits
+ 256              	 .align 1
+ 257              	 .global APPL_OutputMapping
+ 258              	 .thumb
+ 259              	 .thumb_func
+ 261              	APPL_OutputMapping:
+ 262              	 
+ 263              	 
+ 264 0000 10B5     	 push {r4,lr}
+ 265 0002 0022     	 movs r2,#0
+ 266              	.L37:
+ 267 0004 084B     	 ldr r3,.L42
+ 268 0006 1C88     	 ldrh r4,[r3]
+ 269 0008 D1B2     	 uxtb r1,r2
+ 270 000a A142     	 cmp r1,r4
+ 271 000c 0BD2     	 bcs .L41
+ 272 000e 03EB4103 	 add r3,r3,r1,lsl#1
+ 273 0012 0132     	 adds r2,r2,#1
+ 274 0014 5B88     	 ldrh r3,[r3,#2]
+ 275 0016 B3F5B05F 	 cmp r3,#5632
+ 276 001a 02BF     	 ittt eq
+ 277 001c 034B     	 ldreq r3,.L42+4
+ 278 001e 30F8021B 	 ldrheq r1,[r0],#2
+ 279 0022 1980     	 strheq r1,[r3]
+ 280 0024 EEE7     	 b .L37
+ 281              	.L41:
+ 282 0026 10BD     	 pop {r4,pc}
+ 283              	.L43:
+ 284              	 .align 2
+ 285              	.L42:
+ 286 0028 00000000 	 .word .LANCHOR0
+ 287 002c 02000000 	 .word .LANCHOR3+2
+ 289              	 .section .text.APPL_Application,"ax",%progbits
+ 290              	 .align 1
+ 291              	 .global APPL_Application
+ 292              	 .thumb
+ 293              	 .thumb_func
+ 295              	APPL_Application:
+ 296              	 
+ 297              	 
+ 298              	 
+ 299 0000 024B     	 ldr r3,.L45
+ 300 0002 5A88     	 ldrh r2,[r3,#2]
+ 301 0004 024B     	 ldr r3,.L45+4
+ 302 0006 5A80     	 strh r2,[r3,#2]
+ 303 0008 7047     	 bx lr
+ 304              	.L46:
+ 305 000a 00BF     	 .align 2
+ 306              	.L45:
+ 307 000c 00000000 	 .word .LANCHOR3
+ 308 0010 00000000 	 .word .LANCHOR2
+ 310              	 .global OUT_GENERIC0x7000
+ 311              	 .global IN_GENERIC0x6000
+ 312              	 .global sTxPDOassign
+ 313              	 .global sRxPDOassign
+ 314              	 .global IN_GENERICProcessDataMapping0x1A00
+ 315              	 .global OUT_GENERICProcessDataMapping0x1600
+ 316              	 .section .data.IN_GENERIC0x6000,"aw",%progbits
+ 317              	 .align 1
+ 318              	 .set .LANCHOR2,.+0
+ 321              	IN_GENERIC0x6000:
+ 322 0000 0100     	 .short 1
+ 323 0002 0000     	 .short 0
+ 324              	 .section .data.sRxPDOassign,"aw",%progbits
+ 325              	 .align 1
+ 326              	 .set .LANCHOR0,.+0
+ 329              	sRxPDOassign:
+ 330 0000 0100     	 .short 1
+ 331 0002 0016     	 .short 5632
+ 332              	 .section .data.sTxPDOassign,"aw",%progbits
+ 333              	 .align 1
+ 334              	 .set .LANCHOR1,.+0
+ 337              	sTxPDOassign:
+ 338 0000 0100     	 .short 1
+ 339 0002 001A     	 .short 6656
+ 340              	 .section .data.IN_GENERICProcessDataMapping0x1A00,"aw",%progbits
+ 341              	 .align 2
+ 344              	IN_GENERICProcessDataMapping0x1A00:
+ 345 0000 0100     	 .short 1
+ 346 0002 0000     	 .space 2
+ 347 0004 10010060 	 .word 1610613008
+ 348              	 .section .data.OUT_GENERICProcessDataMapping0x1600,"aw",%progbits
+ 349              	 .align 2
+ 352              	OUT_GENERICProcessDataMapping0x1600:
+ 353 0000 0100     	 .short 1
+ 354 0002 0000     	 .space 2
+ 355 0004 10010070 	 .word 1879048464
+ 356              	 .section .data.OUT_GENERIC0x7000,"aw",%progbits
+ 357              	 .align 1
+ 358              	 .set .LANCHOR3,.+0
+ 361              	OUT_GENERIC0x7000:
+ 362 0000 0100     	 .short 1
+ 363 0002 0000     	 .short 0
+ 364              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 XMC_ESC.c
+    {standard input}:17     .text.APPL_AckErrorInd:00000000 $t
+    {standard input}:22     .text.APPL_AckErrorInd:00000000 APPL_AckErrorInd
+    {standard input}:29     .text.APPL_StartMailboxHandler:00000000 $t
+    {standard input}:34     .text.APPL_StartMailboxHandler:00000000 APPL_StartMailboxHandler
+    {standard input}:42     .text.APPL_StopMailboxHandler:00000000 $t
+    {standard input}:47     .text.APPL_StopMailboxHandler:00000000 APPL_StopMailboxHandler
+    {standard input}:55     .text.APPL_StartInputHandler:00000000 $t
+    {standard input}:60     .text.APPL_StartInputHandler:00000000 APPL_StartInputHandler
+    {standard input}:68     .text.APPL_StopInputHandler:00000000 $t
+    {standard input}:73     .text.APPL_StopInputHandler:00000000 APPL_StopInputHandler
+    {standard input}:81     .text.APPL_StartOutputHandler:00000000 $t
+    {standard input}:86     .text.APPL_StartOutputHandler:00000000 APPL_StartOutputHandler
+    {standard input}:94     .text.APPL_StopOutputHandler:00000000 $t
+    {standard input}:99     .text.APPL_StopOutputHandler:00000000 APPL_StopOutputHandler
+    {standard input}:107    .text.APPL_GenerateMapping:00000000 $t
+    {standard input}:112    .text.APPL_GenerateMapping:00000000 APPL_GenerateMapping
+    {standard input}:218    .text.APPL_GenerateMapping:000000e4 $d
+    {standard input}:222    .text.APPL_InputMapping:00000000 $t
+    {standard input}:227    .text.APPL_InputMapping:00000000 APPL_InputMapping
+    {standard input}:252    .text.APPL_InputMapping:00000028 $d
+    {standard input}:256    .text.APPL_OutputMapping:00000000 $t
+    {standard input}:261    .text.APPL_OutputMapping:00000000 APPL_OutputMapping
+    {standard input}:286    .text.APPL_OutputMapping:00000028 $d
+    {standard input}:290    .text.APPL_Application:00000000 $t
+    {standard input}:295    .text.APPL_Application:00000000 APPL_Application
+    {standard input}:307    .text.APPL_Application:0000000c $d
+    {standard input}:361    .data.OUT_GENERIC0x7000:00000000 OUT_GENERIC0x7000
+    {standard input}:321    .data.IN_GENERIC0x6000:00000000 IN_GENERIC0x6000
+    {standard input}:337    .data.sTxPDOassign:00000000 sTxPDOassign
+    {standard input}:329    .data.sRxPDOassign:00000000 sRxPDOassign
+    {standard input}:344    .data.IN_GENERICProcessDataMapping0x1A00:00000000 IN_GENERICProcessDataMapping0x1A00
+    {standard input}:352    .data.OUT_GENERICProcessDataMapping0x1600:00000000 OUT_GENERICProcessDataMapping0x1600
+    {standard input}:317    .data.IN_GENERIC0x6000:00000000 $d
+    {standard input}:325    .data.sRxPDOassign:00000000 $d
+    {standard input}:333    .data.sTxPDOassign:00000000 $d
+    {standard input}:341    .data.IN_GENERICProcessDataMapping0x1A00:00000000 $d
+    {standard input}:349    .data.OUT_GENERICProcessDataMapping0x1600:00000000 $d
+    {standard input}:357    .data.OUT_GENERIC0x7000:00000000 $d
+
+UNDEFINED SYMBOLS
+OBJ_GetObjectHandle
+OBJ_GetEntryOffset

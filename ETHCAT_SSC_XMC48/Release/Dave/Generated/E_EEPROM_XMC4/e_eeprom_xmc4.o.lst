@@ -1,0 +1,494 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "e_eeprom_xmc4.c"
+  16              	 .section .text.E_EEPROM_XMC4_lInitEraseStateMachine,"ax",%progbits
+  17              	 .align 1
+  18              	 .thumb
+  19              	 .thumb_func
+  21              	E_EEPROM_XMC4_lInitEraseStateMachine:
+  22              	 
+  23              	 
+  24 0000 38B5     	 push {r3,r4,r5,lr}
+  25 0002 0024     	 movs r4,#0
+  26              	.L4:
+  27 0004 104D     	 ldr r5,.L11
+  28 0006 AB68     	 ldr r3,[r5,#8]
+  29 0008 A342     	 cmp r3,r4
+  30 000a 16D0     	 beq .L2
+  31 000c EB68     	 ldr r3,[r5,#12]
+  32 000e E340     	 lsrs r3,r3,r4
+  33 0010 DB07     	 lsls r3,r3,#31
+  34 0012 12D5     	 bpl .L2
+  35 0014 FFF7FEFF 	 bl XMC_FLASH_ClearStatus
+  36 0018 04F54050 	 add r0,r4,#12288
+  37 001c 0430     	 adds r0,r0,#4
+  38 001e 8003     	 lsls r0,r0,#14
+  39 0020 FFF7FEFF 	 bl XMC_FLASH_EraseSector
+  40 0024 FFF7FEFF 	 bl XMC_FLASH_GetStatus
+  41 0028 2028     	 cmp r0,#32
+  42 002a 0BD1     	 bne .L5
+  43 002c 0123     	 movs r3,#1
+  44 002e 03FA04F2 	 lsl r2,r3,r4
+  45 0032 EB68     	 ldr r3,[r5,#12]
+  46 0034 23EA0203 	 bic r3,r3,r2
+  47 0038 EB60     	 str r3,[r5,#12]
+  48              	.L2:
+  49 003a 0134     	 adds r4,r4,#1
+  50 003c 042C     	 cmp r4,#4
+  51 003e E1D1     	 bne .L4
+  52 0040 0020     	 movs r0,#0
+  53 0042 38BD     	 pop {r3,r4,r5,pc}
+  54              	.L5:
+  55 0044 0420     	 movs r0,#4
+  56 0046 38BD     	 pop {r3,r4,r5,pc}
+  57              	.L12:
+  58              	 .align 2
+  59              	.L11:
+  60 0048 00000000 	 .word .LANCHOR0
+  62              	 .section .text.E_EEPROM_XMC4_GetAppVersion,"ax",%progbits
+  63              	 .align 1
+  64              	 .global E_EEPROM_XMC4_GetAppVersion
+  65              	 .thumb
+  66              	 .thumb_func
+  68              	E_EEPROM_XMC4_GetAppVersion:
+  69              	 
+  70              	 
+  71              	 
+  72 0000 0023     	 movs r3,#0
+  73 0002 1846     	 mov r0,r3
+  74 0004 0422     	 movs r2,#4
+  75 0006 62F30700 	 bfi r0,r2,#0,#8
+  76 000a 63F30F20 	 bfi r0,r3,#8,#8
+  77 000e 1023     	 movs r3,#16
+  78 0010 63F31740 	 bfi r0,r3,#16,#8
+  79 0014 82B0     	 sub sp,sp,#8
+  80 0016 02B0     	 add sp,sp,#8
+  81              	 
+  82 0018 7047     	 bx lr
+  84              	 .section .text.E_EEPROM_XMC4_Init,"ax",%progbits
+  85              	 .align 1
+  86              	 .global E_EEPROM_XMC4_Init
+  87              	 .thumb
+  88              	 .thumb_func
+  90              	E_EEPROM_XMC4_Init:
+  91              	 
+  92              	 
+  93 0000 2DE9F04F 	 push {r4,r5,r6,r7,r8,r9,r10,fp,lr}
+  94 0004 0578     	 ldrb r5,[r0]
+  95 0006 85B0     	 sub sp,sp,#20
+  96 0008 8246     	 mov r10,r0
+  97 000a 002D     	 cmp r5,#0
+  98 000c 40F08780 	 bne .L24
+  99 0010 454F     	 ldr r7,.L31
+ 100 0012 464C     	 ldr r4,.L31+4
+ 101 0014 4649     	 ldr r1,.L31+8
+ 102 0016 7D60     	 str r5,[r7,#4]
+ 103 0018 41F21802 	 movw r2,#4120
+ 104 001c 6560     	 str r5,[r4,#4]
+ 105 001e 8B58     	 ldr r3,[r1,r2]
+ 106 0020 DFF81881 	 ldr r8,.L31+20
+ 107 0024 23F00F03 	 bic r3,r3,#15
+ 108 0028 43F00103 	 orr r3,r3,#1
+ 109 002c 8B50     	 str r3,[r1,r2]
+ 110 002e 8B58     	 ldr r3,[r1,r2]
+ 111 0030 43F40043 	 orr r3,r3,#32768
+ 112 0034 8B50     	 str r3,[r1,r2]
+ 113 0036 FFF7FEFF 	 bl XMC_FCE_Enable
+ 114 003a 3E48     	 ldr r0,.L31+12
+ 115 003c FFF7FEFF 	 bl XMC_FCE_Init
+ 116              	.L20:
+ 117 0040 0123     	 movs r3,#1
+ 118 0042 08F54056 	 add r6,r8,#12288
+ 119 0046 03FA05FB 	 lsl fp,r3,r5
+ 120 004a 4FF00009 	 mov r9,#0
+ 121              	.L19:
+ 122 004e D6F804C0 	 ldr ip,[r6,#4]
+ 123 0052 BCF1000F 	 cmp ip,#0
+ 124 0056 28D0     	 beq .L16
+ 125 0058 E368     	 ldr r3,[r4,#12]
+ 126 005a 4BEA0303 	 orr r3,fp,r3
+ 127 005e E360     	 str r3,[r4,#12]
+ 128 0060 B9F1000F 	 cmp r9,#0
+ 129 0064 01D1     	 bne .L17
+ 130 0066 06F58059 	 add r9,r6,#4096
+ 131              	.L17:
+ 132 006a 3146     	 mov r1,r6
+ 133 006c 0022     	 movs r2,#0
+ 134 006e 51F8043B 	 ldr r3,[r1],#4
+ 135 0072 0093     	 str r3,[sp]
+ 136 0074 304B     	 ldr r3,.L31+16
+ 137 0076 CDF804C0 	 str ip,[sp,#4]
+ 138 007a 2E48     	 ldr r0,.L31+12
+ 139 007c 9A61     	 str r2,[r3,#24]
+ 140 007e 40F6FC72 	 movw r2,#4092
+ 141 0082 03AB     	 add r3,sp,#12
+ 142 0084 FFF7FEFF 	 bl XMC_FCE_CalculateCRC32
+ 143 0088 039B     	 ldr r3,[sp,#12]
+ 144 008a 009A     	 ldr r2,[sp]
+ 145 008c DDF804C0 	 ldr ip,[sp,#4]
+ 146 0090 9342     	 cmp r3,r2
+ 147 0092 0AD1     	 bne .L16
+ 148 0094 7B68     	 ldr r3,[r7,#4]
+ 149 0096 9C45     	 cmp ip,r3
+ 150 0098 07D9     	 bls .L16
+ 151 009a 234B     	 ldr r3,.L31
+ 152 009c A560     	 str r5,[r4,#8]
+ 153 009e C3F804C0 	 str ip,[r3,#4]
+ 154 00a2 6660     	 str r6,[r4,#4]
+ 155 00a4 C4F80090 	 str r9,[r4]
+ 156 00a8 03E0     	 b .L18
+ 157              	.L16:
+ 158 00aa A6F58056 	 sub r6,r6,#4096
+ 159 00ae 4645     	 cmp r6,r8
+ 160 00b0 CDD2     	 bcs .L19
+ 161              	.L18:
+ 162 00b2 0135     	 adds r5,r5,#1
+ 163 00b4 042D     	 cmp r5,#4
+ 164 00b6 08F58048 	 add r8,r8,#16384
+ 165 00ba C1D1     	 bne .L20
+ 166 00bc 1C49     	 ldr r1,.L31+8
+ 167 00be 41F21802 	 movw r2,#4120
+ 168 00c2 8B58     	 ldr r3,[r1,r2]
+ 169 00c4 23F00F03 	 bic r3,r3,#15
+ 170 00c8 8B50     	 str r3,[r1,r2]
+ 171 00ca FFF7FEFF 	 bl E_EEPROM_XMC4_lInitEraseStateMachine
+ 172 00ce D8B9     	 cbnz r0,.L21
+ 173 00d0 6368     	 ldr r3,[r4,#4]
+ 174 00d2 164A     	 ldr r2,.L31+4
+ 175 00d4 1BB9     	 cbnz r3,.L22
+ 176 00d6 194B     	 ldr r3,.L31+20
+ 177 00d8 9060     	 str r0,[r2,#8]
+ 178 00da 1360     	 str r3,[r2]
+ 179 00dc 14E0     	 b .L21
+ 180              	.L22:
+ 181 00de 1A1F     	 subs r2,r3,#4
+ 182 00e0 03F6FC71 	 addw r1,r3,#4092
+ 183              	.L23:
+ 184 00e4 52F8045F 	 ldr r5,[r2,#4]!
+ 185 00e8 F81A     	 subs r0,r7,r3
+ 186 00ea 8A42     	 cmp r2,r1
+ 187 00ec 8550     	 str r5,[r0,r2]
+ 188 00ee F9D1     	 bne .L23
+ 189 00f0 2268     	 ldr r2,[r4]
+ 190 00f2 D31A     	 subs r3,r2,r3
+ 191 00f4 B3F58050 	 subs r0,r3,#4096
+ 192 00f8 114B     	 ldr r3,.L31+24
+ 193 00fa 18BF     	 it ne
+ 194 00fc 0120     	 movne r0,#1
+ 195 00fe 9A42     	 cmp r2,r3
+ 196 0100 82BF     	 ittt hi
+ 197 0102 0A4B     	 ldrhi r3,.L31+4
+ 198 0104 0D4A     	 ldrhi r2,.L31+20
+ 199 0106 1A60     	 strhi r2,[r3]
+ 200              	.L21:
+ 201 0108 0949     	 ldr r1,.L31+8
+ 202 010a 41F21802 	 movw r2,#4120
+ 203 010e 8B58     	 ldr r3,[r1,r2]
+ 204 0110 23F40043 	 bic r3,r3,#32768
+ 205 0114 8B50     	 str r3,[r1,r2]
+ 206 0116 0123     	 movs r3,#1
+ 207 0118 8AF80030 	 strb r3,[r10]
+ 208 011c 00E0     	 b .L15
+ 209              	.L24:
+ 210 011e 0020     	 movs r0,#0
+ 211              	.L15:
+ 212 0120 05B0     	 add sp,sp,#20
+ 213              	 
+ 214 0122 BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 215              	.L32:
+ 216 0126 00BF     	 .align 2
+ 217              	.L31:
+ 218 0128 00000000 	 .word .LANCHOR1
+ 219 012c 00000000 	 .word .LANCHOR0
+ 220 0130 00100058 	 .word 1476399104
+ 221 0134 00000000 	 .word .LANCHOR2
+ 222 0138 20000250 	 .word 1342308384
+ 223 013c 0000010C 	 .word 201392128
+ 224 0140 FFFF010C 	 .word 201457663
+ 226              	 .section .text.E_EEPROM_XMC4_WriteByte,"ax",%progbits
+ 227              	 .align 1
+ 228              	 .global E_EEPROM_XMC4_WriteByte
+ 229              	 .thumb
+ 230              	 .thumb_func
+ 232              	E_EEPROM_XMC4_WriteByte:
+ 233              	 
+ 234              	 
+ 235              	 
+ 236 0000 034B     	 ldr r3,.L34
+ 237 0002 0344     	 add r3,r3,r0
+ 238 0004 187A     	 ldrb r0,[r3,#8]
+ 239 0006 1972     	 strb r1,[r3,#8]
+ 240 0008 401A     	 subs r0,r0,r1
+ 241 000a 18BF     	 it ne
+ 242 000c 0120     	 movne r0,#1
+ 243 000e 7047     	 bx lr
+ 244              	.L35:
+ 245              	 .align 2
+ 246              	.L34:
+ 247 0010 00000000 	 .word .LANCHOR1
+ 249              	 .section .text.E_EEPROM_XMC4_WriteArray,"ax",%progbits
+ 250              	 .align 1
+ 251              	 .global E_EEPROM_XMC4_WriteArray
+ 252              	 .thumb
+ 253              	 .thumb_func
+ 255              	E_EEPROM_XMC4_WriteArray:
+ 256              	 
+ 257              	 
+ 258 0000 70B5     	 push {r4,r5,r6,lr}
+ 259 0002 094C     	 ldr r4,.L40
+ 260 0004 0444     	 add r4,r4,r0
+ 261 0006 2046     	 mov r0,r4
+ 262 0008 0E46     	 mov r6,r1
+ 263 000a 1546     	 mov r5,r2
+ 264 000c FFF7FEFF 	 bl memcmp
+ 265 0010 0030     	 adds r0,r0,#0
+ 266 0012 18BF     	 it ne
+ 267 0014 0120     	 movne r0,#1
+ 268 0016 0023     	 movs r3,#0
+ 269              	.L37:
+ 270 0018 9AB2     	 uxth r2,r3
+ 271 001a AA42     	 cmp r2,r5
+ 272 001c 03D2     	 bcs .L39
+ 273 001e F25C     	 ldrb r2,[r6,r3]
+ 274 0020 E254     	 strb r2,[r4,r3]
+ 275 0022 0133     	 adds r3,r3,#1
+ 276 0024 F8E7     	 b .L37
+ 277              	.L39:
+ 278 0026 70BD     	 pop {r4,r5,r6,pc}
+ 279              	.L41:
+ 280              	 .align 2
+ 281              	.L40:
+ 282 0028 08000000 	 .word .LANCHOR1+8
+ 284              	 .section .text.E_EEPROM_XMC4_ReadByte,"ax",%progbits
+ 285              	 .align 1
+ 286              	 .global E_EEPROM_XMC4_ReadByte
+ 287              	 .thumb
+ 288              	 .thumb_func
+ 290              	E_EEPROM_XMC4_ReadByte:
+ 291              	 
+ 292              	 
+ 293              	 
+ 294 0000 024B     	 ldr r3,.L43
+ 295 0002 1844     	 add r0,r0,r3
+ 296 0004 037A     	 ldrb r3,[r0,#8]
+ 297 0006 0B70     	 strb r3,[r1]
+ 298 0008 7047     	 bx lr
+ 299              	.L44:
+ 300 000a 00BF     	 .align 2
+ 301              	.L43:
+ 302 000c 00000000 	 .word .LANCHOR1
+ 304              	 .section .text.E_EEPROM_XMC4_ReadArray,"ax",%progbits
+ 305              	 .align 1
+ 306              	 .global E_EEPROM_XMC4_ReadArray
+ 307              	 .thumb
+ 308              	 .thumb_func
+ 310              	E_EEPROM_XMC4_ReadArray:
+ 311              	 
+ 312              	 
+ 313 0000 10B5     	 push {r4,lr}
+ 314 0002 054B     	 ldr r3,.L49
+ 315 0004 1844     	 add r0,r0,r3
+ 316 0006 0023     	 movs r3,#0
+ 317              	.L46:
+ 318 0008 9CB2     	 uxth r4,r3
+ 319 000a 9442     	 cmp r4,r2
+ 320 000c 03D2     	 bcs .L48
+ 321 000e C45C     	 ldrb r4,[r0,r3]
+ 322 0010 CC54     	 strb r4,[r1,r3]
+ 323 0012 0133     	 adds r3,r3,#1
+ 324 0014 F8E7     	 b .L46
+ 325              	.L48:
+ 326 0016 10BD     	 pop {r4,pc}
+ 327              	.L50:
+ 328              	 .align 2
+ 329              	.L49:
+ 330 0018 08000000 	 .word .LANCHOR1+8
+ 332              	 .section .text.E_EEPROM_XMC4_UpdateFlashContents,"ax",%progbits
+ 333              	 .align 1
+ 334              	 .global E_EEPROM_XMC4_UpdateFlashContents
+ 335              	 .thumb
+ 336              	 .thumb_func
+ 338              	E_EEPROM_XMC4_UpdateFlashContents:
+ 339              	 
+ 340              	 
+ 341 0000 2DE9F341 	 push {r0,r1,r4,r5,r6,r7,r8,lr}
+ 342 0004 254C     	 ldr r4,.L70
+ 343 0006 264E     	 ldr r6,.L70+4
+ 344 0008 A368     	 ldr r3,[r4,#8]
+ 345 000a 2268     	 ldr r2,[r4]
+ 346 000c 03F54053 	 add r3,r3,#12288
+ 347 0010 0433     	 adds r3,r3,#4
+ 348 0012 B2EB833F 	 cmp r2,r3,lsl#14
+ 349 0016 13D0     	 beq .L52
+ 350              	.L54:
+ 351 0018 7368     	 ldr r3,[r6,#4]
+ 352 001a 2768     	 ldr r7,[r4]
+ 353 001c 2148     	 ldr r0,.L70+8
+ 354 001e 2249     	 ldr r1,.L70+12
+ 355 0020 0133     	 adds r3,r3,#1
+ 356 0022 7360     	 str r3,[r6,#4]
+ 357 0024 214B     	 ldr r3,.L70+16
+ 358 0026 0022     	 movs r2,#0
+ 359 0028 9A61     	 str r2,[r3,#24]
+ 360 002a 01AB     	 add r3,sp,#4
+ 361 002c 40F6FC72 	 movw r2,#4092
+ 362 0030 FFF7FEFF 	 bl XMC_FCE_CalculateCRC32
+ 363 0034 019B     	 ldr r3,[sp,#4]
+ 364 0036 3360     	 str r3,[r6]
+ 365 0038 3D46     	 mov r5,r7
+ 366 003a 07F58058 	 add r8,r7,#4096
+ 367 003e 0CE0     	 b .L53
+ 368              	.L52:
+ 369 0040 7368     	 ldr r3,[r6,#4]
+ 370 0042 002B     	 cmp r3,#0
+ 371 0044 E8D0     	 beq .L54
+ 372 0046 6368     	 ldr r3,[r4,#4]
+ 373 0048 C3F38133 	 ubfx r3,r3,#14,#2
+ 374 004c A360     	 str r3,[r4,#8]
+ 375 004e 0F23     	 movs r3,#15
+ 376 0050 E360     	 str r3,[r4,#12]
+ 377 0052 FFF7FEFF 	 bl E_EEPROM_XMC4_lInitEraseStateMachine
+ 378 0056 F0B9     	 cbnz r0,.L67
+ 379 0058 DEE7     	 b .L54
+ 380              	.L53:
+ 381 005a FFF7FEFF 	 bl XMC_FLASH_ClearStatus
+ 382 005e E91B     	 subs r1,r5,r7
+ 383 0060 2846     	 mov r0,r5
+ 384 0062 3144     	 add r1,r1,r6
+ 385 0064 FFF7FEFF 	 bl XMC_FLASH_ProgramPage
+ 386 0068 FFF7FEFF 	 bl XMC_FLASH_GetStatus
+ 387 006c B0F1004F 	 cmp r0,#-2147483648
+ 388 0070 07D0     	 beq .L59
+ 389 0072 05F58075 	 add r5,r5,#256
+ 390 0076 4545     	 cmp r5,r8
+ 391 0078 EFD1     	 bne .L53
+ 392 007a 2368     	 ldr r3,[r4]
+ 393 007c 6360     	 str r3,[r4,#4]
+ 394 007e 0020     	 movs r0,#0
+ 395 0080 00E0     	 b .L56
+ 396              	.L59:
+ 397 0082 0320     	 movs r0,#3
+ 398              	.L56:
+ 399 0084 2368     	 ldr r3,[r4]
+ 400 0086 0A49     	 ldr r1,.L70+20
+ 401 0088 044A     	 ldr r2,.L70
+ 402 008a 03F58053 	 add r3,r3,#4096
+ 403 008e 8B42     	 cmp r3,r1
+ 404 0090 88BF     	 it hi
+ 405 0092 084B     	 ldrhi r3,.L70+24
+ 406 0094 1360     	 str r3,[r2]
+ 407              	.L67:
+ 408 0096 02B0     	 add sp,sp,#8
+ 409              	 
+ 410 0098 BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 411              	.L71:
+ 412              	 .align 2
+ 413              	.L70:
+ 414 009c 00000000 	 .word .LANCHOR0
+ 415 00a0 00000000 	 .word .LANCHOR1
+ 416 00a4 00000000 	 .word .LANCHOR2
+ 417 00a8 04000000 	 .word .LANCHOR1+4
+ 418 00ac 20000250 	 .word 1342308384
+ 419 00b0 FFFF010C 	 .word 201457663
+ 420 00b4 0000010C 	 .word 201392128
+ 422              	 .section .text.E_EEPROM_XMC4_IsFlashEmpty,"ax",%progbits
+ 423              	 .align 1
+ 424              	 .global E_EEPROM_XMC4_IsFlashEmpty
+ 425              	 .thumb
+ 426              	 .thumb_func
+ 428              	E_EEPROM_XMC4_IsFlashEmpty:
+ 429              	 
+ 430              	 
+ 431              	 
+ 432 0000 024B     	 ldr r3,.L73
+ 433 0002 5868     	 ldr r0,[r3,#4]
+ 434 0004 B0FA80F0 	 clz r0,r0
+ 435 0008 4009     	 lsrs r0,r0,#5
+ 436 000a 7047     	 bx lr
+ 437              	.L74:
+ 438              	 .align 2
+ 439              	.L73:
+ 440 000c 00000000 	 .word .LANCHOR0
+ 442              	 .section .rodata.e_eeprom_xmc4_fce,"a",%progbits
+ 443              	 .align 2
+ 444              	 .set .LANCHOR2,.+0
+ 447              	e_eeprom_xmc4_fce:
+ 448 0000 20000250 	 .word 1342308384
+ 449 0004 00       	 .space 1
+ 450 0005 07       	 .byte 7
+ 451 0006 0000     	 .space 2
+ 452 0008 00000000 	 .word 0
+ 453              	 .section .bss.e_eeprom_xmc4_data_buffer,"aw",%nobits
+ 454              	 .align 2
+ 455              	 .set .LANCHOR1,.+0
+ 458              	e_eeprom_xmc4_data_buffer:
+ 459 0000 00000000 	 .space 4096
+ 459      00000000 
+ 459      00000000 
+ 459      00000000 
+ 459      00000000 
+ 460              	 .section .data.e_eeprom_xmc4_sector_info,"aw",%progbits
+ 461              	 .align 2
+ 462              	 .set .LANCHOR0,.+0
+ 465              	e_eeprom_xmc4_sector_info:
+ 466 0000 00000000 	 .word 0
+ 467 0004 00000000 	 .word 0
+ 468 0008 FFFFFFFF 	 .word -1
+ 469 000c 00000000 	 .word 0
+ 470              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 e_eeprom_xmc4.c
+    {standard input}:17     .text.E_EEPROM_XMC4_lInitEraseStateMachine:00000000 $t
+    {standard input}:21     .text.E_EEPROM_XMC4_lInitEraseStateMachine:00000000 E_EEPROM_XMC4_lInitEraseStateMachine
+    {standard input}:60     .text.E_EEPROM_XMC4_lInitEraseStateMachine:00000048 $d
+    {standard input}:63     .text.E_EEPROM_XMC4_GetAppVersion:00000000 $t
+    {standard input}:68     .text.E_EEPROM_XMC4_GetAppVersion:00000000 E_EEPROM_XMC4_GetAppVersion
+    {standard input}:85     .text.E_EEPROM_XMC4_Init:00000000 $t
+    {standard input}:90     .text.E_EEPROM_XMC4_Init:00000000 E_EEPROM_XMC4_Init
+    {standard input}:218    .text.E_EEPROM_XMC4_Init:00000128 $d
+    {standard input}:227    .text.E_EEPROM_XMC4_WriteByte:00000000 $t
+    {standard input}:232    .text.E_EEPROM_XMC4_WriteByte:00000000 E_EEPROM_XMC4_WriteByte
+    {standard input}:247    .text.E_EEPROM_XMC4_WriteByte:00000010 $d
+    {standard input}:250    .text.E_EEPROM_XMC4_WriteArray:00000000 $t
+    {standard input}:255    .text.E_EEPROM_XMC4_WriteArray:00000000 E_EEPROM_XMC4_WriteArray
+    {standard input}:282    .text.E_EEPROM_XMC4_WriteArray:00000028 $d
+    {standard input}:285    .text.E_EEPROM_XMC4_ReadByte:00000000 $t
+    {standard input}:290    .text.E_EEPROM_XMC4_ReadByte:00000000 E_EEPROM_XMC4_ReadByte
+    {standard input}:302    .text.E_EEPROM_XMC4_ReadByte:0000000c $d
+    {standard input}:305    .text.E_EEPROM_XMC4_ReadArray:00000000 $t
+    {standard input}:310    .text.E_EEPROM_XMC4_ReadArray:00000000 E_EEPROM_XMC4_ReadArray
+    {standard input}:330    .text.E_EEPROM_XMC4_ReadArray:00000018 $d
+    {standard input}:333    .text.E_EEPROM_XMC4_UpdateFlashContents:00000000 $t
+    {standard input}:338    .text.E_EEPROM_XMC4_UpdateFlashContents:00000000 E_EEPROM_XMC4_UpdateFlashContents
+    {standard input}:414    .text.E_EEPROM_XMC4_UpdateFlashContents:0000009c $d
+    {standard input}:423    .text.E_EEPROM_XMC4_IsFlashEmpty:00000000 $t
+    {standard input}:428    .text.E_EEPROM_XMC4_IsFlashEmpty:00000000 E_EEPROM_XMC4_IsFlashEmpty
+    {standard input}:440    .text.E_EEPROM_XMC4_IsFlashEmpty:0000000c $d
+    {standard input}:443    .rodata.e_eeprom_xmc4_fce:00000000 $d
+    {standard input}:447    .rodata.e_eeprom_xmc4_fce:00000000 e_eeprom_xmc4_fce
+    {standard input}:454    .bss.e_eeprom_xmc4_data_buffer:00000000 $d
+    {standard input}:458    .bss.e_eeprom_xmc4_data_buffer:00000000 e_eeprom_xmc4_data_buffer
+    {standard input}:461    .data.e_eeprom_xmc4_sector_info:00000000 $d
+    {standard input}:465    .data.e_eeprom_xmc4_sector_info:00000000 e_eeprom_xmc4_sector_info
+
+UNDEFINED SYMBOLS
+XMC_FLASH_ClearStatus
+XMC_FLASH_EraseSector
+XMC_FLASH_GetStatus
+XMC_FCE_Enable
+XMC_FCE_Init
+XMC_FCE_CalculateCRC32
+memcmp
+XMC_FLASH_ProgramPage

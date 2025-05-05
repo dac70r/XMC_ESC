@@ -1,0 +1,62 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "event_generator_conf.c"
+  16              	 .global EG_SYNC0
+  17              	 .global EG_SYNC0_OGU_Config
+  18              	 .global EG_SYNC1
+  19              	 .global EG_SYNC1_OGU_Config
+  20              	 .section .rodata.EG_SYNC0_OGU_Config,"a",%progbits
+  21              	 .align 2
+  24              	EG_SYNC0_OGU_Config:
+  25 0000 10       	 .byte 16
+  26 0001 00       	 .byte 0
+  27 0002 0000     	 .space 2
+  28              	 .section .data.EG_SYNC0,"aw",%progbits
+  29              	 .align 2
+  32              	EG_SYNC0:
+  33 0000 00400440 	 .word 1074020352
+  34 0004 00000000 	 .word EG_SYNC0_OGU_Config
+  35 0008 00000000 	 .word 0
+  36 000c 00       	 .byte 0
+  37 000d 00       	 .byte 0
+  38 000e 0000     	 .space 2
+  39              	 .section .data.EG_SYNC1,"aw",%progbits
+  40              	 .align 2
+  43              	EG_SYNC1:
+  44 0000 00400440 	 .word 1074020352
+  45 0004 00000000 	 .word EG_SYNC1_OGU_Config
+  46 0008 00000000 	 .word 0
+  47 000c 03       	 .byte 3
+  48 000d 00       	 .byte 0
+  49 000e 0000     	 .space 2
+  50              	 .section .rodata.EG_SYNC1_OGU_Config,"a",%progbits
+  51              	 .align 2
+  54              	EG_SYNC1_OGU_Config:
+  55 0000 10       	 .byte 16
+  56 0001 00       	 .byte 0
+  57 0002 0000     	 .space 2
+  58              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 event_generator_conf.c
+    {standard input}:32     .data.EG_SYNC0:00000000 EG_SYNC0
+    {standard input}:24     .rodata.EG_SYNC0_OGU_Config:00000000 EG_SYNC0_OGU_Config
+    {standard input}:43     .data.EG_SYNC1:00000000 EG_SYNC1
+    {standard input}:54     .rodata.EG_SYNC1_OGU_Config:00000000 EG_SYNC1_OGU_Config
+    {standard input}:21     .rodata.EG_SYNC0_OGU_Config:00000000 $d
+    {standard input}:29     .data.EG_SYNC0:00000000 $d
+    {standard input}:40     .data.EG_SYNC1:00000000 $d
+    {standard input}:51     .rodata.EG_SYNC1_OGU_Config:00000000 $d
+
+NO UNDEFINED SYMBOLS

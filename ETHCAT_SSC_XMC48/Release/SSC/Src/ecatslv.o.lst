@@ -1,0 +1,2698 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "ecatslv.c"
+  16              	 .section .text.ResetALEventMask,"ax",%progbits
+  17              	 .align 1
+  18              	 .global ResetALEventMask
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	ResetALEventMask:
+  23              	 
+  24              	 
+  25 0000 38B5     	 push {r3,r4,r5,lr}
+  26 0002 054D     	 ldr r5,.L2
+  27 0004 2C88     	 ldrh r4,[r5]
+  28 0006 0440     	 ands r4,r4,r0
+  29 0008 FFF7FEFF 	 bl DISABLE_ESC_INT
+  30 000c 2C80     	 strh r4,[r5]
+  31 000e BDE83840 	 pop {r3,r4,r5,lr}
+  32 0012 FFF7FEBF 	 b ENABLE_ESC_INT
+  33              	.L3:
+  34 0016 00BF     	 .align 2
+  35              	.L2:
+  36 0018 04020154 	 .word 1409352196
+  38              	 .section .text.SetALEventMask,"ax",%progbits
+  39              	 .align 1
+  40              	 .global SetALEventMask
+  41              	 .thumb
+  42              	 .thumb_func
+  44              	SetALEventMask:
+  45              	 
+  46              	 
+  47 0000 38B5     	 push {r3,r4,r5,lr}
+  48 0002 054D     	 ldr r5,.L5
+  49 0004 2C88     	 ldrh r4,[r5]
+  50 0006 A4B2     	 uxth r4,r4
+  51 0008 0443     	 orrs r4,r4,r0
+  52 000a FFF7FEFF 	 bl DISABLE_ESC_INT
+  53 000e 2C80     	 strh r4,[r5]
+  54 0010 BDE83840 	 pop {r3,r4,r5,lr}
+  55 0014 FFF7FEBF 	 b ENABLE_ESC_INT
+  56              	.L6:
+  57              	 .align 2
+  58              	.L5:
+  59 0018 04020154 	 .word 1409352196
+  61              	 .section .text.UpdateEEPROMLoadedState,"ax",%progbits
+  62              	 .align 1
+  63              	 .global UpdateEEPROMLoadedState
+  64              	 .thumb
+  65              	 .thumb_func
+  67              	UpdateEEPROMLoadedState:
+  68              	 
+  69              	 
+  70              	 
+  71 0000 064B     	 ldr r3,.L13
+  72 0002 074A     	 ldr r2,.L13+4
+  73 0004 1B88     	 ldrh r3,[r3]
+  74 0006 9BB2     	 uxth r3,r3
+  75 0008 13F4006F 	 tst r3,#2048
+  76 000c 01D1     	 bne .L8
+  77 000e DB04     	 lsls r3,r3,#19
+  78 0010 01D5     	 bpl .L9
+  79              	.L8:
+  80 0012 0023     	 movs r3,#0
+  81 0014 00E0     	 b .L11
+  82              	.L9:
+  83 0016 0123     	 movs r3,#1
+  84              	.L11:
+  85 0018 1370     	 strb r3,[r2]
+  86 001a 7047     	 bx lr
+  87              	.L14:
+  88              	 .align 2
+  89              	.L13:
+  90 001c 02050154 	 .word 1409352962
+  91 0020 00000000 	 .word .LANCHOR0
+  93              	 .section .text.GetSyncMan,"ax",%progbits
+  94              	 .align 1
+  95              	 .global GetSyncMan
+  96              	 .thumb
+  97              	 .thumb_func
+  99              	GetSyncMan:
+ 100              	 
+ 101              	 
+ 102              	 
+ 103 0000 C000     	 lsls r0,r0,#3
+ 104 0002 00F1A843 	 add r3,r0,#1409286144
+ 105 0006 03F58433 	 add r3,r3,#67584
+ 106 000a 03CB     	 ldmia r3!,{r0,r1}
+ 107 000c 024A     	 ldr r2,.L16
+ 108 000e 1060     	 str r0,[r2]
+ 109 0010 5160     	 str r1,[r2,#4]
+ 110 0012 1046     	 mov r0,r2
+ 111 0014 7047     	 bx lr
+ 112              	.L17:
+ 113 0016 00BF     	 .align 2
+ 114              	.L16:
+ 115 0018 00000000 	 .word SyncManInfo
+ 117              	 .section .text.DisableSyncManChannel,"ax",%progbits
+ 118              	 .align 1
+ 119              	 .global DisableSyncManChannel
+ 120              	 .thumb
+ 121              	 .thumb_func
+ 123              	DisableSyncManChannel:
+ 124              	 
+ 125              	 
+ 126              	 
+ 127 0000 82B0     	 sub sp,sp,#8
+ 128 0002 0123     	 movs r3,#1
+ 129 0004 8DF80730 	 strb r3,[sp,#7]
+ 130 0008 084B     	 ldr r3,.L22
+ 131 000a 9DF80720 	 ldrb r2,[sp,#7]
+ 132 000e C000     	 lsls r0,r0,#3
+ 133 0010 0344     	 add r3,r3,r0
+ 134 0012 D2B2     	 uxtb r2,r2
+ 135 0014 1A70     	 strb r2,[r3]
+ 136              	.L19:
+ 137 0016 1A78     	 ldrb r2,[r3]
+ 138 0018 D2B2     	 uxtb r2,r2
+ 139 001a 8DF80720 	 strb r2,[sp,#7]
+ 140 001e 9DF80720 	 ldrb r2,[sp,#7]
+ 141 0022 D207     	 lsls r2,r2,#31
+ 142 0024 F7D5     	 bpl .L19
+ 143 0026 02B0     	 add sp,sp,#8
+ 144              	 
+ 145 0028 7047     	 bx lr
+ 146              	.L23:
+ 147 002a 00BF     	 .align 2
+ 148              	.L22:
+ 149 002c 07080154 	 .word 1409353735
+ 151              	 .section .text.EnableSyncManChannel,"ax",%progbits
+ 152              	 .align 1
+ 153              	 .global EnableSyncManChannel
+ 154              	 .thumb
+ 155              	 .thumb_func
+ 157              	EnableSyncManChannel:
+ 158              	 
+ 159              	 
+ 160              	 
+ 161 0000 82B0     	 sub sp,sp,#8
+ 162 0002 0023     	 movs r3,#0
+ 163 0004 8DF80730 	 strb r3,[sp,#7]
+ 164 0008 084B     	 ldr r3,.L27
+ 165 000a 9DF80720 	 ldrb r2,[sp,#7]
+ 166 000e C000     	 lsls r0,r0,#3
+ 167 0010 0344     	 add r3,r3,r0
+ 168 0012 D2B2     	 uxtb r2,r2
+ 169 0014 1A70     	 strb r2,[r3]
+ 170              	.L25:
+ 171 0016 1A78     	 ldrb r2,[r3]
+ 172 0018 D2B2     	 uxtb r2,r2
+ 173 001a 8DF80720 	 strb r2,[sp,#7]
+ 174 001e 9DF80720 	 ldrb r2,[sp,#7]
+ 175 0022 D207     	 lsls r2,r2,#31
+ 176 0024 F7D4     	 bmi .L25
+ 177 0026 02B0     	 add sp,sp,#8
+ 178              	 
+ 179 0028 7047     	 bx lr
+ 180              	.L28:
+ 181 002a 00BF     	 .align 2
+ 182              	.L27:
+ 183 002c 07080154 	 .word 1409353735
+ 185              	 .section .text.CheckSmSettings,"ax",%progbits
+ 186              	 .align 1
+ 187              	 .global CheckSmSettings
+ 188              	 .thumb
+ 189              	 .thumb_func
+ 191              	CheckSmSettings:
+ 192              	 
+ 193              	 
+ 194 0000 5E4B     	 ldr r3,.L91
+ 195 0002 1A88     	 ldrh r2,[r3]
+ 196 0004 42F6FE73 	 movw r3,#12286
+ 197 0008 9A42     	 cmp r2,r3
+ 198 000a 70B5     	 push {r4,r5,r6,lr}
+ 199 000c 0546     	 mov r5,r0
+ 200 000e 1CD9     	 bls .L54
+ 201 0010 0020     	 movs r0,#0
+ 202 0012 FFF7FEFF 	 bl GetSyncMan
+ 203 0016 8179     	 ldrb r1,[r0,#6]
+ 204 0018 4288     	 ldrh r2,[r0,#2]
+ 205 001a 0388     	 ldrh r3,[r0]
+ 206 001c CE07     	 lsls r6,r1,#31
+ 207 001e 40F1A580 	 bpl .L31
+ 208 0022 0179     	 ldrb r1,[r0,#4]
+ 209 0024 01F00C00 	 and r0,r1,#12
+ 210 0028 0428     	 cmp r0,#4
+ 211 002a 40F09F80 	 bne .L31
+ 212 002e 8C07     	 lsls r4,r1,#30
+ 213 0030 40F19C80 	 bpl .L31
+ 214 0034 243A     	 subs r2,r2,#36
+ 215 0036 5C2A     	 cmp r2,#92
+ 216 0038 00F29880 	 bhi .L31
+ 217 003c A3F58053 	 sub r3,r3,#4096
+ 218 0040 B3F5005F 	 cmp r3,#8192
+ 219 0044 80F09280 	 bcs .L31
+ 220 0048 01E0     	 b .L90
+ 221              	.L54:
+ 222 004a 1424     	 movs r4,#20
+ 223 004c 94E0     	 b .L87
+ 224              	.L90:
+ 225 004e 0120     	 movs r0,#1
+ 226 0050 FFF7FEFF 	 bl GetSyncMan
+ 227 0054 8179     	 ldrb r1,[r0,#6]
+ 228 0056 4388     	 ldrh r3,[r0,#2]
+ 229 0058 0288     	 ldrh r2,[r0]
+ 230 005a C907     	 lsls r1,r1,#31
+ 231 005c 40F18680 	 bpl .L31
+ 232 0060 0179     	 ldrb r1,[r0,#4]
+ 233 0062 11F00C04 	 ands r4,r1,#12
+ 234 0066 40F08180 	 bne .L31
+ 235 006a 8807     	 lsls r0,r1,#30
+ 236 006c 7ED5     	 bpl .L31
+ 237 006e 243B     	 subs r3,r3,#36
+ 238 0070 5C2B     	 cmp r3,#92
+ 239 0072 7BD8     	 bhi .L31
+ 240 0074 A2F58052 	 sub r2,r2,#4096
+ 241 0078 B2F5005F 	 cmp r2,#8192
+ 242 007c 76D2     	 bcs .L31
+ 243 007e 032D     	 cmp r5,#3
+ 244 0080 65D9     	 bls .L89
+ 245 0082 3F4E     	 ldr r6,.L91+4
+ 246 0084 0123     	 movs r3,#1
+ 247 0086 0320     	 movs r0,#3
+ 248 0088 3370     	 strb r3,[r6]
+ 249 008a FFF7FEFF 	 bl GetSyncMan
+ 250 008e 8179     	 ldrb r1,[r0,#6]
+ 251 0090 4288     	 ldrh r2,[r0,#2]
+ 252 0092 0388     	 ldrh r3,[r0]
+ 253 0094 C907     	 lsls r1,r1,#31
+ 254 0096 1DD5     	 bpl .L34
+ 255 0098 511E     	 subs r1,r2,#1
+ 256 009a 4329     	 cmp r1,#67
+ 257 009c 68D8     	 bhi .L60
+ 258 009e 3949     	 ldr r1,.L91+8
+ 259 00a0 0988     	 ldrh r1,[r1]
+ 260 00a2 9142     	 cmp r1,r2
+ 261 00a4 64D1     	 bne .L60
+ 262 00a6 0279     	 ldrb r2,[r0,#4]
+ 263 00a8 12F00C0F 	 tst r2,#12
+ 264 00ac 60D1     	 bne .L60
+ 265 00ae 3649     	 ldr r1,.L91+12
+ 266 00b0 0978     	 ldrb r1,[r1]
+ 267 00b2 0229     	 cmp r1,#2
+ 268 00b4 05D1     	 bne .L36
+ 269 00b6 A3F58053 	 sub r3,r3,#4096
+ 270 00ba B3F5005F 	 cmp r3,#8192
+ 271 00be 04D3     	 bcc .L37
+ 272 00c0 56E0     	 b .L60
+ 273              	.L36:
+ 274 00c2 3249     	 ldr r1,.L91+16
+ 275 00c4 0988     	 ldrh r1,[r1]
+ 276 00c6 9942     	 cmp r1,r3
+ 277 00c8 52D1     	 bne .L60
+ 278              	.L37:
+ 279 00ca 9307     	 lsls r3,r2,#30
+ 280 00cc 08D5     	 bpl .L51
+ 281 00ce 0023     	 movs r3,#0
+ 282 00d0 3370     	 strb r3,[r6]
+ 283 00d2 05E0     	 b .L51
+ 284              	.L34:
+ 285 00d4 002A     	 cmp r2,#0
+ 286 00d6 4BD1     	 bne .L60
+ 287 00d8 2A4B     	 ldr r3,.L91+8
+ 288 00da 1B88     	 ldrh r3,[r3]
+ 289 00dc 002B     	 cmp r3,#0
+ 290 00de 47D1     	 bne .L60
+ 291              	.L51:
+ 292 00e0 0220     	 movs r0,#2
+ 293 00e2 FFF7FEFF 	 bl GetSyncMan
+ 294 00e6 8179     	 ldrb r1,[r0,#6]
+ 295 00e8 4288     	 ldrh r2,[r0,#2]
+ 296 00ea 0388     	 ldrh r3,[r0]
+ 297 00ec CE07     	 lsls r6,r1,#31
+ 298 00ee 29D5     	 bpl .L39
+ 299 00f0 511E     	 subs r1,r2,#1
+ 300 00f2 4329     	 cmp r1,#67
+ 301 00f4 3ED8     	 bhi .L66
+ 302 00f6 2649     	 ldr r1,.L91+20
+ 303 00f8 0988     	 ldrh r1,[r1]
+ 304 00fa 9142     	 cmp r1,r2
+ 305 00fc 3AD1     	 bne .L66
+ 306 00fe 0279     	 ldrb r2,[r0,#4]
+ 307 0100 02F00C01 	 and r1,r2,#12
+ 308 0104 0429     	 cmp r1,#4
+ 309 0106 35D1     	 bne .L66
+ 310 0108 1F49     	 ldr r1,.L91+12
+ 311 010a 0978     	 ldrb r1,[r1]
+ 312 010c 0229     	 cmp r1,#2
+ 313 010e 05D1     	 bne .L41
+ 314 0110 A3F58053 	 sub r3,r3,#4096
+ 315 0114 B3F5005F 	 cmp r3,#8192
+ 316 0118 04D3     	 bcc .L42
+ 317 011a 2BE0     	 b .L66
+ 318              	.L41:
+ 319 011c 1D49     	 ldr r1,.L91+24
+ 320 011e 0988     	 ldrh r1,[r1]
+ 321 0120 9942     	 cmp r1,r3
+ 322 0122 27D1     	 bne .L66
+ 323              	.L42:
+ 324 0124 02F04001 	 and r1,r2,#64
+ 325 0128 01F0FF00 	 and r0,r1,#255
+ 326 012c 1A4B     	 ldr r3,.L91+28
+ 327 012e 11B1     	 cbz r1,.L43
+ 328 0130 0121     	 movs r1,#1
+ 329 0132 1970     	 strb r1,[r3]
+ 330 0134 00E0     	 b .L44
+ 331              	.L43:
+ 332 0136 1870     	 strb r0,[r3]
+ 333              	.L44:
+ 334 0138 9007     	 lsls r0,r2,#30
+ 335 013a 0AD5     	 bpl .L53
+ 336 013c 104B     	 ldr r3,.L91+4
+ 337 013e 0022     	 movs r2,#0
+ 338 0140 1A70     	 strb r2,[r3]
+ 339 0142 06E0     	 b .L53
+ 340              	.L39:
+ 341 0144 B2B9     	 cbnz r2,.L66
+ 342 0146 124B     	 ldr r3,.L91+20
+ 343 0148 1B88     	 ldrh r3,[r3]
+ 344 014a 9BB9     	 cbnz r3,.L66
+ 345 014c 01E0     	 b .L53
+ 346              	.L89:
+ 347 014e 022D     	 cmp r5,#2
+ 348 0150 C6D8     	 bhi .L51
+ 349              	.L53:
+ 350 0152 124B     	 ldr r3,.L91+32
+ 351 0154 1B78     	 ldrb r3,[r3]
+ 352 0156 AB42     	 cmp r3,r5
+ 353 0158 0ED9     	 bls .L87
+ 354 015a 2846     	 mov r0,r5
+ 355 015c FFF7FEFF 	 bl GetSyncMan
+ 356 0160 0F4B     	 ldr r3,.L91+36
+ 357 0162 8279     	 ldrb r2,[r0,#6]
+ 358 0164 1A70     	 strb r2,[r3]
+ 359 0166 0135     	 adds r5,r5,#1
+ 360 0168 EDB2     	 uxtb r5,r5
+ 361 016a F2E7     	 b .L53
+ 362              	.L31:
+ 363 016c 1620     	 movs r0,#22
+ 364 016e 02E0     	 b .L40
+ 365              	.L60:
+ 366 0170 1E20     	 movs r0,#30
+ 367 0172 00E0     	 b .L40
+ 368              	.L66:
+ 369 0174 1D20     	 movs r0,#29
+ 370              	.L40:
+ 371 0176 0446     	 mov r4,r0
+ 372              	.L87:
+ 373 0178 2046     	 mov r0,r4
+ 374 017a 70BD     	 pop {r4,r5,r6,pc}
+ 375              	.L92:
+ 376              	 .align 2
+ 377              	.L91:
+ 378 017c 00000000 	 .word nMaxEscAddress
+ 379 0180 00000000 	 .word b3BufferMode
+ 380 0184 00000000 	 .word nPdInputSize
+ 381 0188 00000000 	 .word nAlStatus
+ 382 018c 00000000 	 .word nEscAddrInputData
+ 383 0190 00000000 	 .word nPdOutputSize
+ 384 0194 00000000 	 .word nEscAddrOutputData
+ 385 0198 00000000 	 .word bWdTrigger
+ 386 019c 00000000 	 .word nMaxSyncMan
+ 387 01a0 00000000 	 .word .LANCHOR1
+ 389              	 .section .text.StartInputHandler,"ax",%progbits
+ 390              	 .align 1
+ 391              	 .global StartInputHandler
+ 392              	 .thumb
+ 393              	 .thumb_func
+ 395              	StartInputHandler:
+ 396              	 
+ 397              	 
+ 398 0000 2DE9F74F 	 push {r0,r1,r2,r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 399 0004 AB4D     	 ldr r5,.L255
+ 400 0006 AC4A     	 ldr r2,.L255+4
+ 401 0008 AC4C     	 ldr r4,.L255+8
+ 402 000a AD4F     	 ldr r7,.L255+12
+ 403 000c B4F80C90 	 ldrh r9,[r4,#12]
+ 404 0010 B7F80CA0 	 ldrh r10,[r7,#12]
+ 405 0014 0023     	 movs r3,#0
+ 406 0016 0220     	 movs r0,#2
+ 407 0018 2B80     	 strh r3,[r5]
+ 408 001a 1370     	 strb r3,[r2]
+ 409 001c FFF7FEFF 	 bl GetSyncMan
+ 410 0020 4178     	 ldrb r1,[r0,#1]
+ 411 0022 0378     	 ldrb r3,[r0]
+ 412 0024 A74A     	 ldr r2,.L255+16
+ 413 0026 43EA0123 	 orr r3,r3,r1,lsl#8
+ 414 002a 1380     	 strh r3,[r2]
+ 415 002c 0379     	 ldrb r3,[r0,#4]
+ 416 002e 0320     	 movs r0,#3
+ 417 0030 13F0020F 	 tst r3,#2
+ 418 0034 9346     	 mov fp,r2
+ 419 0036 0CBF     	 ite eq
+ 420 0038 0326     	 moveq r6,#3
+ 421 003a 0126     	 movne r6,#1
+ 422 003c FFF7FEFF 	 bl GetSyncMan
+ 423 0040 A14A     	 ldr r2,.L255+20
+ 424 0042 0388     	 ldrh r3,[r0]
+ 425 0044 A149     	 ldr r1,.L255+24
+ 426 0046 1380     	 strh r3,[r2]
+ 427 0048 0279     	 ldrb r2,[r0,#4]
+ 428 004a A148     	 ldr r0,.L255+28
+ 429 004c 0191     	 str r1,[sp,#4]
+ 430 004e 12F0020F 	 tst r2,#2
+ 431 0052 A846     	 mov r8,r5
+ 432 0054 0D88     	 ldrh r5,[r1]
+ 433 0056 0088     	 ldrh r0,[r0]
+ 434 0058 0CBF     	 ite eq
+ 435 005a 0322     	 moveq r2,#3
+ 436 005c 0122     	 movne r2,#1
+ 437 005e 02FB0532 	 mla r2,r2,r5,r3
+ 438 0062 8242     	 cmp r2,r0
+ 439 0064 05DD     	 ble .L96
+ 440 0066 9B49     	 ldr r1,.L255+32
+ 441 0068 0988     	 ldrh r1,[r1]
+ 442 006a 0144     	 add r1,r1,r0
+ 443 006c 8B42     	 cmp r3,r1
+ 444 006e C0F2F181 	 blt .L158
+ 445              	.L96:
+ 446 0072 9949     	 ldr r1,.L255+36
+ 447 0074 0988     	 ldrh r1,[r1]
+ 448 0076 8A42     	 cmp r2,r1
+ 449 0078 05DD     	 ble .L98
+ 450 007a 984A     	 ldr r2,.L255+40
+ 451 007c 1288     	 ldrh r2,[r2]
+ 452 007e 0A44     	 add r2,r2,r1
+ 453 0080 9342     	 cmp r3,r2
+ 454 0082 C0F2E781 	 blt .L158
+ 455              	.L98:
+ 456 0086 DFF868E2 	 ldr lr,.L255+60
+ 457 008a BBF80020 	 ldrh r2,[fp]
+ 458 008e BEF800E0 	 ldrh lr,[lr]
+ 459 0092 06FB0E26 	 mla r6,r6,lr,r2
+ 460 0096 8642     	 cmp r6,r0
+ 461 0098 07DD     	 ble .L99
+ 462 009a DFF838C2 	 ldr ip,.L255+32
+ 463 009e BCF800C0 	 ldrh ip,[ip]
+ 464 00a2 6044     	 add r0,r0,ip
+ 465 00a4 8242     	 cmp r2,r0
+ 466 00a6 C0F2D781 	 blt .L161
+ 467              	.L99:
+ 468 00aa 8E42     	 cmp r6,r1
+ 469 00ac 05DD     	 ble .L100
+ 470 00ae 8B48     	 ldr r0,.L255+40
+ 471 00b0 0088     	 ldrh r0,[r0]
+ 472 00b2 0144     	 add r1,r1,r0
+ 473 00b4 8A42     	 cmp r2,r1
+ 474 00b6 C0F2CF81 	 blt .L161
+ 475              	.L100:
+ 476 00ba 9E42     	 cmp r6,r3
+ 477 00bc 03DD     	 ble .L101
+ 478 00be 2B44     	 add r3,r3,r5
+ 479 00c0 9A42     	 cmp r2,r3
+ 480 00c2 C0F2C981 	 blt .L161
+ 481              	.L101:
+ 482 00c6 864B     	 ldr r3,.L255+44
+ 483 00c8 864A     	 ldr r2,.L255+48
+ 484 00ca 1E78     	 ldrb r6,[r3]
+ 485 00cc 7888     	 ldrh r0,[r7,#2]
+ 486 00ce F6B2     	 uxtb r6,r6
+ 487 00d0 1F33     	 adds r3,r3,#31
+ 488 00d2 16F0090B 	 ands fp,r6,#9
+ 489 00d6 1B68     	 ldr r3,[r3]
+ 490 00d8 1168     	 ldr r1,[r2]
+ 491 00da 6288     	 ldrh r2,[r4,#2]
+ 492 00dc 25D0     	 beq .L168
+ 493 00de 16F0020F 	 tst r6,#2
+ 494 00e2 00F0C181 	 beq .L182
+ 495 00e6 1AEA0909 	 ands r9,r10,r9
+ 496 00ea 0AD0     	 beq .L103
+ 497 00ec 19F0040F 	 tst r9,#4
+ 498 00f0 00F0BA81 	 beq .L182
+ 499 00f4 19F0080F 	 tst r9,#8
+ 500 00f8 03D1     	 bne .L103
+ 501 00fa 16F0040F 	 tst r6,#4
+ 502 00fe 40F0B381 	 bne .L182
+ 503              	.L103:
+ 504 0102 D4F810C0 	 ldr ip,[r4,#16]
+ 505 0106 3BB1     	 cbz r3,.L104
+ 506 0108 6345     	 cmp r3,ip
+ 507 010a C0F0A781 	 bcc .L167
+ 508 010e DFF8E4C1 	 ldr ip,.L255+64
+ 509 0112 6345     	 cmp r3,ip
+ 510 0114 00F2A281 	 bhi .L167
+ 511              	.L104:
+ 512 0118 06F0060C 	 and ip,r6,#6
+ 513 011c BCF1060F 	 cmp ip,#6
+ 514 0120 03D1     	 bne .L168
+ 515 0122 29B1     	 cbz r1,.L169
+ 516 0124 9942     	 cmp r1,r3
+ 517 0126 80F0A181 	 bcs .L105
+ 518              	.L168:
+ 519 012a 4FF0000C 	 mov ip,#0
+ 520 012e 00E0     	 b .L102
+ 521              	.L169:
+ 522 0130 8C46     	 mov ip,r1
+ 523              	.L102:
+ 524 0132 DFF8C491 	 ldr r9,.L255+68
+ 525 0136 99F80090 	 ldrb r9,[r9]
+ 526 013a B9F1000F 	 cmp r9,#0
+ 527 013e 21D0     	 beq .L106
+ 528 0140 BBF1000F 	 cmp fp,#0
+ 529 0144 0BD1     	 bne .L107
+ 530 0146 A2F10209 	 sub r9,r2,#2
+ 531 014a B9F1010F 	 cmp r9,#1
+ 532 014e 40F28B81 	 bls .L182
+ 533 0152 A0F10209 	 sub r9,r0,#2
+ 534 0156 B9F1010F 	 cmp r9,#1
+ 535 015a 44D8     	 bhi .L118
+ 536 015c 84E1     	 b .L182
+ 537              	.L107:
+ 538 015e 16F0040F 	 tst r6,#4
+ 539 0162 05D1     	 bne .L109
+ 540 0164 032A     	 cmp r2,#3
+ 541 0166 00F07F81 	 beq .L182
+ 542 016a 0328     	 cmp r0,#3
+ 543 016c 00F07C81 	 beq .L182
+ 544              	.L109:
+ 545 0170 16F0020F 	 tst r6,#2
+ 546 0174 28D1     	 bne .L110
+ 547 0176 022A     	 cmp r2,#2
+ 548 0178 00F07681 	 beq .L182
+ 549 017c 0228     	 cmp r0,#2
+ 550 017e 40F07B81 	 bne .L240
+ 551 0182 71E1     	 b .L182
+ 552              	.L106:
+ 553 0184 BBF1000F 	 cmp fp,#0
+ 554 0188 0DD1     	 bne .L112
+ 555 018a BEF1000F 	 cmp lr,#0
+ 556 018e 05D0     	 beq .L113
+ 557 0190 002D     	 cmp r5,#0
+ 558 0192 14BF     	 ite ne
+ 559 0194 2220     	 movne r0,#34
+ 560 0196 0020     	 moveq r0,#0
+ 561 0198 0122     	 movs r2,#1
+ 562 019a 24E0     	 b .L118
+ 563              	.L113:
+ 564 019c 281C     	 adds r0,r5,#0
+ 565 019e 18BF     	 it ne
+ 566 01a0 0120     	 movne r0,#1
+ 567 01a2 7246     	 mov r2,lr
+ 568 01a4 1FE0     	 b .L118
+ 569              	.L112:
+ 570 01a6 BEF1000F 	 cmp lr,#0
+ 571 01aa 00F07081 	 beq .L114
+ 572 01ae BCF1000F 	 cmp ip,#0
+ 573 01b2 00F06781 	 beq .L251
+ 574 01b6 002D     	 cmp r5,#0
+ 575 01b8 00F06281 	 beq .L252
+ 576 01bc 0322     	 movs r2,#3
+ 577              	.L153:
+ 578 01be 16F0040F 	 tst r6,#4
+ 579 01c2 14BF     	 ite ne
+ 580 01c4 0320     	 movne r0,#3
+ 581 01c6 0220     	 moveq r0,#2
+ 582              	.L110:
+ 583 01c8 032A     	 cmp r2,#3
+ 584 01ca 05D1     	 bne .L117
+ 585              	.L152:
+ 586 01cc 6362     	 str r3,[r4,#36]
+ 587 01ce 6360     	 str r3,[r4,#4]
+ 588 01d0 7B62     	 str r3,[r7,#36]
+ 589 01d2 7B60     	 str r3,[r7,#4]
+ 590 01d4 0322     	 movs r2,#3
+ 591 01d6 06E0     	 b .L118
+ 592              	.L117:
+ 593 01d8 022A     	 cmp r2,#2
+ 594 01da 04D1     	 bne .L118
+ 595              	.L154:
+ 596 01dc 6362     	 str r3,[r4,#36]
+ 597 01de 6360     	 str r3,[r4,#4]
+ 598 01e0 7B62     	 str r3,[r7,#36]
+ 599 01e2 7B60     	 str r3,[r7,#4]
+ 600 01e4 0222     	 movs r2,#2
+ 601              	.L118:
+ 602 01e6 DFF81491 	 ldr r9,.L255+72
+ 603 01ea 99F80090 	 ldrb r9,[r9]
+ 604 01ee B9F1000F 	 cmp r9,#0
+ 605 01f2 06D1     	 bne .L119
+ 606 01f4 002A     	 cmp r2,#0
+ 607 01f6 00F03381 	 beq .L179
+ 608 01fa 0028     	 cmp r0,#0
+ 609 01fc 00F03081 	 beq .L179
+ 610 0200 01E0     	 b .L120
+ 611              	.L119:
+ 612 0202 02B9     	 cbnz r2,.L120
+ 613 0204 28B1     	 cbz r0,.L121
+ 614              	.L120:
+ 615 0206 DFF8F890 	 ldr r9,.L255+76
+ 616 020a 4FF0010A 	 mov r10,#1
+ 617 020e 89F800A0 	 strb r10,[r9]
+ 618              	.L121:
+ 619 0212 DFF8EC90 	 ldr r9,.L255+76
+ 620 0216 99F80090 	 ldrb r9,[r9]
+ 621 021a B9F1000F 	 cmp r9,#0
+ 622 021e 0AD0     	 beq .L122
+ 623 0220 BEF1000F 	 cmp lr,#0
+ 624 0224 02D0     	 beq .L123
+ 625 0226 4FF48065 	 mov r5,#1024
+ 626 022a 02E0     	 b .L244
+ 627              	.L123:
+ 628 022c 1DB1     	 cbz r5,.L122
+ 629 022e 4FF40065 	 mov r5,#2048
+ 630              	.L244:
+ 631 0232 A8F80050 	 strh r5,[r8]
+ 632              	.L122:
+ 633 0236 951E     	 subs r5,r2,#2
+ 634 0238 012D     	 cmp r5,#1
+ 635 023a 02D9     	 bls .L124
+ 636 023c 851E     	 subs r5,r0,#2
+ 637 023e 012D     	 cmp r5,#1
+ 638 0240 09D8     	 bhi .L125
+ 639              	.L124:
+ 640 0242 294D     	 ldr r5,.L255+52
+ 641 0244 4FF00109 	 mov r9,#1
+ 642 0248 85F80090 	 strb r9,[r5]
+ 643 024c BEF1000F 	 cmp lr,#0
+ 644 0250 01D1     	 bne .L125
+ 645 0252 A8F800E0 	 strh lr,[r8]
+ 646              	.L125:
+ 647 0256 DFF8AC90 	 ldr r9,.L255+80
+ 648 025a 244D     	 ldr r5,.L255+56
+ 649 025c DFF8A8B0 	 ldr fp,.L255+84
+ 650 0260 6280     	 strh r2,[r4,#2]
+ 651 0262 4FF0000A 	 mov r10,#0
+ 652 0266 A9F800A0 	 strh r10,[r9]
+ 653 026a DFF8A090 	 ldr r9,.L255+88
+ 654 026e 7880     	 strh r0,[r7,#2]
+ 655 0270 A5F800A0 	 strh r10,[r5]
+ 656 0274 A9F800A0 	 strh r10,[r9]
+ 657 0278 ABF800A0 	 strh r10,[fp]
+ 658 027c BCF1000F 	 cmp ip,#0
+ 659 0280 46D0     	 beq .L127
+ 660 0282 9942     	 cmp r1,r3
+ 661 0284 01EB030C 	 add ip,r1,r3
+ 662 0288 BCFBF3F2 	 udiv r2,ip,r3
+ 663 028c 07D3     	 bcc .L128
+ 664 028e 03FB12CA 	 mls r10,r3,r2,ip
+ 665 0292 90B2     	 uxth r0,r2
+ 666 0294 BAF1000F 	 cmp r10,#0
+ 667 0298 02D1     	 bne .L245
+ 668 029a 0130     	 adds r0,r0,#1
+ 669 029c 00E0     	 b .L245
+ 670              	.L128:
+ 671 029e 0120     	 movs r0,#1
+ 672              	.L245:
+ 673 02a0 A9F80000 	 strh r0,[r9]
+ 674 02a4 90B2     	 uxth r0,r2
+ 675 02a6 03FB12C2 	 mls r2,r3,r2,ip
+ 676 02aa 02B1     	 cbz r2,.L246
+ 677 02ac 0130     	 adds r0,r0,#1
+ 678              	.L246:
+ 679 02ae 2880     	 strh r0,[r5]
+ 680 02b0 37E0     	 b .L132
+ 681              	.L256:
+ 682 02b2 00BF     	 .align 2
+ 683              	.L255:
+ 684 02b4 00000000 	 .word u16ALEventMask
+ 685 02b8 00000000 	 .word bEcatFirstOutputsReceived
+ 686 02bc 00000000 	 .word sSyncManOutPar
+ 687 02c0 00000000 	 .word sSyncManInPar
+ 688 02c4 00000000 	 .word nEscAddrOutputData
+ 689 02c8 00000000 	 .word nEscAddrInputData
+ 690 02cc 00000000 	 .word nPdInputSize
+ 691 02d0 00000000 	 .word u16EscAddrSendMbx
+ 692 02d4 00000000 	 .word u16SendMbxSize
+ 693 02d8 00000000 	 .word u16EscAddrReceiveMbx
+ 694 02dc 00000000 	 .word u16ReceiveMbxSize
+ 695 02e0 81090154 	 .word 1409354113
+ 696 02e4 A4090154 	 .word 1409354148
+ 697 02e8 00000000 	 .word bDcSyncActive
+ 698 02ec 00000000 	 .word LatchInputSync0Value
+ 699 02f0 00000000 	 .word nPdOutputSize
+ 700 02f4 000050C3 	 .word -1018167296
+ 701 02f8 00000000 	 .word bSyncSetByUser
+ 702 02fc 00000000 	 .word b3BufferMode
+ 703 0300 00000000 	 .word bEscIntEnabled
+ 704 0304 00000000 	 .word LatchInputSync0Counter
+ 705 0308 00000000 	 .word u16SmSync0Counter
+ 706 030c 00000000 	 .word u16SmSync0Value
+ 707              	.L127:
+ 708 0310 022A     	 cmp r2,#2
+ 709 0312 04BF     	 itt eq
+ 710 0314 0122     	 moveq r2,#1
+ 711 0316 A9F80020 	 strheq r2,[r9]
+ 712 031a 0328     	 cmp r0,#3
+ 713 031c 1CBF     	 itt ne
+ 714 031e 0122     	 movne r2,#1
+ 715 0320 2A80     	 strhne r2,[r5]
+ 716              	.L132:
+ 717 0322 5F4A     	 ldr r2,.L257
+ 718 0324 5F4D     	 ldr r5,.L257+4
+ 719 0326 0020     	 movs r0,#0
+ 720 0328 1080     	 strh r0,[r2]
+ 721 032a 5F4A     	 ldr r2,.L257+8
+ 722 032c 1088     	 ldrh r0,[r2]
+ 723 032e 80B2     	 uxth r0,r0
+ 724 0330 BEF1000F 	 cmp lr,#0
+ 725 0334 0ED0     	 beq .L135
+ 726 0336 68B1     	 cbz r0,.L135
+ 727 0338 203A     	 subs r2,r2,#32
+ 728 033a 1288     	 ldrh r2,[r2]
+ 729 033c 92B2     	 uxth r2,r2
+ 730 033e 4AB1     	 cbz r2,.L135
+ 731 0340 0232     	 adds r2,r2,#2
+ 732 0342 4243     	 muls r2,r0,r2
+ 733 0344 02F5C342 	 add r2,r2,#24960
+ 734 0348 2732     	 adds r2,r2,#39
+ 735 034a 46F2A810 	 movw r0,#25000
+ 736 034e B2FBF0F2 	 udiv r2,r2,r0
+ 737 0352 00E0     	 b .L247
+ 738              	.L135:
+ 739 0354 0022     	 movs r2,#0
+ 740              	.L247:
+ 741 0356 2A80     	 strh r2,[r5]
+ 742 0358 2888     	 ldrh r0,[r5]
+ 743 035a 544A     	 ldr r2,.L257+12
+ 744 035c 1278     	 ldrb r2,[r2]
+ 745 035e 10B9     	 cbnz r0,.L137
+ 746 0360 002A     	 cmp r2,#0
+ 747 0362 7FD1     	 bne .L181
+ 748 0364 01E0     	 b .L138
+ 749              	.L137:
+ 750 0366 002A     	 cmp r2,#0
+ 751 0368 7CD0     	 beq .L181
+ 752              	.L138:
+ 753 036a 514A     	 ldr r2,.L257+16
+ 754 036c 1278     	 ldrb r2,[r2]
+ 755 036e 42B1     	 cbz r2,.L139
+ 756 0370 BEF1000F 	 cmp lr,#0
+ 757 0374 05D0     	 beq .L139
+ 758 0376 B8F80020 	 ldrh r2,[r8]
+ 759 037a 42F48062 	 orr r2,r2,#1024
+ 760 037e A8F80020 	 strh r2,[r8]
+ 761              	.L139:
+ 762 0382 4C48     	 ldr r0,.L257+20
+ 763 0384 DFF844C1 	 ldr ip,.L257+44
+ 764 0388 4B4D     	 ldr r5,.L257+24
+ 765 038a 0022     	 movs r2,#0
+ 766 038c 0280     	 strh r2,[r0]
+ 767 038e 8CF80020 	 strb r2,[ip]
+ 768 0392 4A48     	 ldr r0,.L257+28
+ 769 0394 DFF838C1 	 ldr ip,.L257+48
+ 770 0398 0280     	 strh r2,[r0]
+ 771 039a 8CF80020 	 strb r2,[ip]
+ 772 039e 4848     	 ldr r0,.L257+32
+ 773 03a0 DFF830C1 	 ldr ip,.L257+52
+ 774 03a4 2A80     	 strh r2,[r5]
+ 775 03a6 ACF80020 	 strh r2,[ip]
+ 776 03aa 0280     	 strh r2,[r0]
+ 777 03ac 454A     	 ldr r2,.L257+36
+ 778 03ae 1278     	 ldrb r2,[r2]
+ 779 03b0 D2B2     	 uxtb r2,r2
+ 780 03b2 12F0080F 	 tst r2,#8
+ 781 03b6 1EBF     	 ittt ne
+ 782 03b8 B8F800C0 	 ldrhne ip,[r8]
+ 783 03bc 4CF0040C 	 orrne ip,ip,#4
+ 784 03c0 A8F800C0 	 strhne ip,[r8]
+ 785 03c4 1206     	 lsls r2,r2,#24
+ 786 03c6 42BF     	 ittt mi
+ 787 03c8 B8F80020 	 ldrhmi r2,[r8]
+ 788 03cc 42F00802 	 orrmi r2,r2,#8
+ 789 03d0 A8F80020 	 strhmi r2,[r8]
+ 790 03d4 0022     	 movs r2,#0
+ 791 03d6 2285     	 strh r2,[r4,#40]
+ 792 03d8 6285     	 strh r2,[r4,#42]
+ 793 03da 84F84020 	 strb r2,[r4,#64]
+ 794 03de B407     	 lsls r4,r6,#30
+ 795 03e0 3A85     	 strh r2,[r7,#40]
+ 796 03e2 7A85     	 strh r2,[r7,#42]
+ 797 03e4 87F84020 	 strb r2,[r7,#64]
+ 798 03e8 24D5     	 bpl .L143
+ 799 03ea 63B1     	 cbz r3,.L144
+ 800 03ec 364A     	 ldr r2,.L257+40
+ 801 03ee B3FBF2F2 	 udiv r2,r3,r2
+ 802 03f2 042A     	 cmp r2,#4
+ 803 03f4 85BF     	 ittet hi
+ 804 03f6 5200     	 lslhi r2,r2,#1
+ 805 03f8 92B2     	 uxthhi r2,r2
+ 806 03fa 0122     	 movls r2,#1
+ 807 03fc 0A24     	 movhi r4,#10
+ 808 03fe 88BF     	 it hi
+ 809 0400 B2FBF4F2 	 udivhi r2,r2,r4
+ 810 0404 2A80     	 strh r2,[r5]
+ 811              	.L144:
+ 812 0406 7207     	 lsls r2,r6,#29
+ 813 0408 14D5     	 bpl .L143
+ 814 040a 9942     	 cmp r1,r3
+ 815 040c 01D2     	 bcs .L147
+ 816 040e 2B88     	 ldrh r3,[r5]
+ 817 0410 0FE0     	 b .L250
+ 818              	.L147:
+ 819 0412 0B44     	 add r3,r3,r1
+ 820 0414 2C49     	 ldr r1,.L257+40
+ 821 0416 B3FBF1F3 	 udiv r3,r3,r1
+ 822 041a 042B     	 cmp r3,#4
+ 823 041c 89BF     	 itett hi
+ 824 041e 5B00     	 lslhi r3,r3,#1
+ 825 0420 0123     	 movls r3,#1
+ 826 0422 0A21     	 movhi r1,#10
+ 827 0424 B3FBF1F3 	 udivhi r3,r3,r1
+ 828 0428 0380     	 strh r3,[r0]
+ 829 042a 2A88     	 ldrh r2,[r5]
+ 830 042c 0388     	 ldrh r3,[r0]
+ 831 042e 03EB5203 	 add r3,r3,r2,lsr#1
+ 832              	.L250:
+ 833 0432 0380     	 strh r3,[r0]
+ 834              	.L143:
+ 835 0434 BEF1000F 	 cmp lr,#0
+ 836 0438 02D0     	 beq .L150
+ 837 043a 0220     	 movs r0,#2
+ 838 043c FFF7FEFF 	 bl EnableSyncManChannel
+ 839              	.L150:
+ 840 0440 019B     	 ldr r3,[sp,#4]
+ 841 0442 1B88     	 ldrh r3,[r3]
+ 842 0444 13B1     	 cbz r3,.L151
+ 843 0446 0320     	 movs r0,#3
+ 844 0448 FFF7FEFF 	 bl EnableSyncManChannel
+ 845              	.L151:
+ 846 044c FFF7FEFF 	 bl PDO_InputMapping
+ 847 0450 0020     	 movs r0,#0
+ 848 0452 22E0     	 b .L242
+ 849              	.L158:
+ 850 0454 1E20     	 movs r0,#30
+ 851 0456 20E0     	 b .L242
+ 852              	.L161:
+ 853 0458 1D20     	 movs r0,#29
+ 854 045a 1EE0     	 b .L242
+ 855              	.L167:
+ 856 045c 3620     	 movs r0,#54
+ 857 045e 1CE0     	 b .L242
+ 858              	.L179:
+ 859 0460 2920     	 movs r0,#41
+ 860 0462 1AE0     	 b .L242
+ 861              	.L181:
+ 862 0464 1F20     	 movs r0,#31
+ 863 0466 18E0     	 b .L242
+ 864              	.L182:
+ 865 0468 3020     	 movs r0,#48
+ 866 046a 16E0     	 b .L242
+ 867              	.L105:
+ 868 046c 19F0100F 	 tst r9,#16
+ 869 0470 FAD0     	 beq .L182
+ 870 0472 4FF0010C 	 mov ip,#1
+ 871 0476 5CE6     	 b .L102
+ 872              	.L240:
+ 873 0478 032A     	 cmp r2,#3
+ 874 047a 3FF4A7AE 	 beq .L152
+ 875 047e B2E6     	 b .L118
+ 876              	.L252:
+ 877 0480 2846     	 mov r0,r5
+ 878 0482 A3E6     	 b .L152
+ 879              	.L251:
+ 880 0484 0DB1     	 cbz r5,.L253
+ 881 0486 0222     	 movs r2,#2
+ 882 0488 99E6     	 b .L153
+ 883              	.L253:
+ 884 048a 2846     	 mov r0,r5
+ 885 048c A6E6     	 b .L154
+ 886              	.L114:
+ 887 048e 0DB1     	 cbz r5,.L254
+ 888 0490 7246     	 mov r2,lr
+ 889 0492 94E6     	 b .L153
+ 890              	.L254:
+ 891 0494 2846     	 mov r0,r5
+ 892 0496 2A46     	 mov r2,r5
+ 893 0498 A5E6     	 b .L118
+ 894              	.L242:
+ 895 049a 03B0     	 add sp,sp,#12
+ 896              	 
+ 897 049c BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 898              	.L258:
+ 899              	 .align 2
+ 900              	.L257:
+ 901 04a0 00000000 	 .word sCycleDiag
+ 902 04a4 00000000 	 .word EcatWdValue
+ 903 04a8 20040154 	 .word 1409352736
+ 904 04ac 00000000 	 .word bWdTrigger
+ 905 04b0 00000000 	 .word bEscIntEnabled
+ 906 04b4 00000000 	 .word Sync0WdCounter
+ 907 04b8 00000000 	 .word Sync0WdValue
+ 908 04bc 00000000 	 .word Sync1WdCounter
+ 909 04c0 00000000 	 .word Sync1WdValue
+ 910 04c4 51010154 	 .word 1409352017
+ 911 04c8 A0860100 	 .word 100000
+ 912 04cc 00000000 	 .word bDcRunning
+ 913 04d0 00000000 	 .word bSmSyncSequenceValid
+ 914 04d4 00000000 	 .word i16WaitForPllRunningTimeout
+ 916              	 .section .text.StartOutputHandler,"ax",%progbits
+ 917              	 .align 1
+ 918              	 .global StartOutputHandler
+ 919              	 .thumb
+ 920              	 .thumb_func
+ 922              	StartOutputHandler:
+ 923              	 
+ 924              	 
+ 925              	 
+ 926 0000 104B     	 ldr r3,.L270
+ 927 0002 1B78     	 ldrb r3,[r3]
+ 928 0004 03F00F03 	 and r3,r3,#15
+ 929 0008 5A1E     	 subs r2,r3,#1
+ 930 000a 012A     	 cmp r2,#1
+ 931 000c 03D9     	 bls .L260
+ 932 000e 042B     	 cmp r3,#4
+ 933 0010 01D0     	 beq .L260
+ 934 0012 082B     	 cmp r3,#8
+ 935 0014 02D1     	 bne .L261
+ 936              	.L260:
+ 937 0016 0C4B     	 ldr r3,.L270+4
+ 938 0018 1888     	 ldrh r0,[r3]
+ 939 001a 7047     	 bx lr
+ 940              	.L261:
+ 941 001c 0B4B     	 ldr r3,.L270+8
+ 942 001e 1B78     	 ldrb r3,[r3]
+ 943 0020 2BB1     	 cbz r3,.L263
+ 944 0022 0B4B     	 ldr r3,.L270+12
+ 945 0024 C822     	 movs r2,#200
+ 946 0026 1A80     	 strh r2,[r3]
+ 947 0028 0A4B     	 ldr r3,.L270+16
+ 948 002a 0022     	 movs r2,#0
+ 949 002c 1A80     	 strh r2,[r3]
+ 950              	.L263:
+ 951 002e 0A4A     	 ldr r2,.L270+20
+ 952 0030 0023     	 movs r3,#0
+ 953 0032 1385     	 strh r3,[r2,#40]
+ 954 0034 82F84030 	 strb r3,[r2,#64]
+ 955 0038 084A     	 ldr r2,.L270+24
+ 956 003a FF20     	 movs r0,#255
+ 957 003c 1385     	 strh r3,[r2,#40]
+ 958 003e 82F84030 	 strb r3,[r2,#64]
+ 959 0042 7047     	 bx lr
+ 960              	.L271:
+ 961              	 .align 2
+ 962              	.L270:
+ 963 0044 00000000 	 .word u8LocalErrorState
+ 964 0048 00000000 	 .word u16LocalErrorCode
+ 965 004c 00000000 	 .word bDcSyncActive
+ 966 0050 00000000 	 .word i16WaitForPllRunningTimeout
+ 967 0054 00000000 	 .word i16WaitForPllRunningCnt
+ 968 0058 00000000 	 .word sSyncManOutPar
+ 969 005c 00000000 	 .word sSyncManInPar
+ 971              	 .section .text.StopOutputHandler,"ax",%progbits
+ 972              	 .align 1
+ 973              	 .global StopOutputHandler
+ 974              	 .thumb
+ 975              	 .thumb_func
+ 977              	StopOutputHandler:
+ 978              	 
+ 979              	 
+ 980              	 
+ 981 0000 024A     	 ldr r2,.L273
+ 982 0002 0023     	 movs r3,#0
+ 983 0004 1370     	 strb r3,[r2]
+ 984 0006 024A     	 ldr r2,.L273+4
+ 985 0008 1370     	 strb r3,[r2]
+ 986 000a 7047     	 bx lr
+ 987              	.L274:
+ 988              	 .align 2
+ 989              	.L273:
+ 990 000c 00000000 	 .word bEcatFirstOutputsReceived
+ 991 0010 00000000 	 .word bEcatOutputUpdateRunning
+ 993              	 .section .text.StopInputHandler,"ax",%progbits
+ 994              	 .align 1
+ 995              	 .global StopInputHandler
+ 996              	 .thumb
+ 997              	 .thumb_func
+ 999              	StopInputHandler:
+ 1000              	 
+ 1001              	 
+ 1002 0000 08B5     	 push {r3,lr}
+ 1003 0002 1F4B     	 ldr r3,.L284
+ 1004 0004 1B88     	 ldrh r3,[r3]
+ 1005 0006 13B1     	 cbz r3,.L276
+ 1006 0008 0220     	 movs r0,#2
+ 1007 000a FFF7FEFF 	 bl DisableSyncManChannel
+ 1008              	.L276:
+ 1009 000e 1D4B     	 ldr r3,.L284+4
+ 1010 0010 1B88     	 ldrh r3,[r3]
+ 1011 0012 13B1     	 cbz r3,.L277
+ 1012 0014 0320     	 movs r0,#3
+ 1013 0016 FFF7FEFF 	 bl DisableSyncManChannel
+ 1014              	.L277:
+ 1015 001a 4FF2F330 	 movw r0,#62451
+ 1016 001e FFF7FEFF 	 bl ResetALEventMask
+ 1017 0022 194A     	 ldr r2,.L284+8
+ 1018 0024 0023     	 movs r3,#0
+ 1019 0026 1370     	 strb r3,[r2]
+ 1020 0028 184A     	 ldr r2,.L284+12
+ 1021 002a 1370     	 strb r3,[r2]
+ 1022 002c 184A     	 ldr r2,.L284+16
+ 1023 002e 1370     	 strb r3,[r2]
+ 1024 0030 184A     	 ldr r2,.L284+20
+ 1025 0032 1370     	 strb r3,[r2]
+ 1026 0034 184A     	 ldr r2,.L284+24
+ 1027 0036 1370     	 strb r3,[r2]
+ 1028 0038 184A     	 ldr r2,.L284+28
+ 1029 003a 1380     	 strh r3,[r2]
+ 1030 003c 184A     	 ldr r2,.L284+32
+ 1031 003e 1380     	 strh r3,[r2]
+ 1032 0040 184A     	 ldr r2,.L284+36
+ 1033 0042 1380     	 strh r3,[r2]
+ 1034 0044 184A     	 ldr r2,.L284+40
+ 1035 0046 1380     	 strh r3,[r2]
+ 1036 0048 184A     	 ldr r2,.L284+44
+ 1037 004a 1380     	 strh r3,[r2]
+ 1038 004c 184A     	 ldr r2,.L284+48
+ 1039 004e 1380     	 strh r3,[r2]
+ 1040 0050 184A     	 ldr r2,.L284+52
+ 1041 0052 1380     	 strh r3,[r2]
+ 1042 0054 184A     	 ldr r2,.L284+56
+ 1043 0056 1380     	 strh r3,[r2]
+ 1044 0058 184A     	 ldr r2,.L284+60
+ 1045 005a 1385     	 strh r3,[r2,#40]
+ 1046 005c 5385     	 strh r3,[r2,#42]
+ 1047 005e 82F84030 	 strb r3,[r2,#64]
+ 1048 0062 174A     	 ldr r2,.L284+64
+ 1049 0064 1385     	 strh r3,[r2,#40]
+ 1050 0066 5385     	 strh r3,[r2,#42]
+ 1051 0068 82F84030 	 strb r3,[r2,#64]
+ 1052 006c 154A     	 ldr r2,.L284+68
+ 1053 006e 1380     	 strh r3,[r2]
+ 1054 0070 154A     	 ldr r2,.L284+72
+ 1055 0072 1370     	 strb r3,[r2]
+ 1056 0074 154A     	 ldr r2,.L284+76
+ 1057 0076 1370     	 strb r3,[r2]
+ 1058 0078 154A     	 ldr r2,.L284+80
+ 1059 007a 1370     	 strb r3,[r2]
+ 1060 007c 08BD     	 pop {r3,pc}
+ 1061              	.L285:
+ 1062 007e 00BF     	 .align 2
+ 1063              	.L284:
+ 1064 0080 00000000 	 .word nPdOutputSize
+ 1065 0084 00000000 	 .word nPdInputSize
+ 1066 0088 00000000 	 .word bEcatFirstOutputsReceived
+ 1067 008c 00000000 	 .word bEscIntEnabled
+ 1068 0090 00000000 	 .word bDcSyncActive
+ 1069 0094 00000000 	 .word bDcRunning
+ 1070 0098 00000000 	 .word bSmSyncSequenceValid
+ 1071 009c 00000000 	 .word u16SmSync0Value
+ 1072 00a0 00000000 	 .word u16SmSync0Counter
+ 1073 00a4 00000000 	 .word Sync0WdValue
+ 1074 00a8 00000000 	 .word Sync0WdCounter
+ 1075 00ac 00000000 	 .word Sync1WdCounter
+ 1076 00b0 00000000 	 .word Sync1WdValue
+ 1077 00b4 00000000 	 .word LatchInputSync0Value
+ 1078 00b8 00000000 	 .word LatchInputSync0Counter
+ 1079 00bc 00000000 	 .word sSyncManOutPar
+ 1080 00c0 00000000 	 .word sSyncManInPar
+ 1081 00c4 00000000 	 .word i16WaitForPllRunningTimeout
+ 1082 00c8 00000000 	 .word bWdTrigger
+ 1083 00cc 00000000 	 .word bEcatInputUpdateRunning
+ 1084 00d0 00000000 	 .word bSyncSetByUser
+ 1086              	 .section .text.BackToInitTransition,"ax",%progbits
+ 1087              	 .align 1
+ 1088              	 .global BackToInitTransition
+ 1089              	 .thumb
+ 1090              	 .thumb_func
+ 1092              	BackToInitTransition:
+ 1093              	 
+ 1094              	 
+ 1095              	 
+ 1096 0000 014B     	 ldr r3,.L287
+ 1097 0002 0022     	 movs r2,#0
+ 1098 0004 1A70     	 strb r2,[r3]
+ 1099 0006 7047     	 bx lr
+ 1100              	.L288:
+ 1101              	 .align 2
+ 1102              	.L287:
+ 1103 0008 00000000 	 .word bSyncSetByUser
+ 1105              	 .section .text.SetALStatus,"ax",%progbits
+ 1106              	 .align 1
+ 1107              	 .global SetALStatus
+ 1108              	 .thumb
+ 1109              	 .thumb_func
+ 1111              	SetALStatus:
+ 1112              	 
+ 1113              	 
+ 1114              	 
+ 1115 0000 164B     	 ldr r3,.L311
+ 1116 0002 1A78     	 ldrb r2,[r3]
+ 1117 0004 8242     	 cmp r2,r0
+ 1118 0006 4FF6FF72 	 movw r2,#65535
+ 1119 000a 18BF     	 it ne
+ 1120 000c 1870     	 strbne r0,[r3]
+ 1121 000e 9142     	 cmp r1,r2
+ 1122 0010 1EBF     	 ittt ne
+ 1123 0012 02F1A842 	 addne r2,r2,#1409286144
+ 1124 0016 02F23512 	 addwne r2,r2,#309
+ 1125 001a 1180     	 strhne r1,[r2]
+ 1126 001c 1A78     	 ldrb r2,[r3]
+ 1127 001e 104B     	 ldr r3,.L311+4
+ 1128 0020 1A80     	 strh r2,[r3]
+ 1129 0022 104B     	 ldr r3,.L311+8
+ 1130 0024 09B1     	 cbz r1,.L292
+ 1131 0026 C206     	 lsls r2,r0,#27
+ 1132 0028 01D4     	 bmi .L293
+ 1133              	.L292:
+ 1134 002a 0022     	 movs r2,#0
+ 1135 002c 0EE0     	 b .L310
+ 1136              	.L293:
+ 1137 002e 2D29     	 cmp r1,#45
+ 1138 0030 06D0     	 beq .L295
+ 1139 0032 1A29     	 cmp r1,#26
+ 1140 0034 04D0     	 beq .L295
+ 1141 0036 3229     	 cmp r1,#50
+ 1142 0038 02D0     	 beq .L295
+ 1143 003a 0B4A     	 ldr r2,.L311+12
+ 1144 003c 1278     	 ldrb r2,[r2]
+ 1145 003e 0AB1     	 cbz r2,.L296
+ 1146              	.L295:
+ 1147 0040 0122     	 movs r2,#1
+ 1148 0042 03E0     	 b .L310
+ 1149              	.L296:
+ 1150 0044 1B29     	 cmp r1,#27
+ 1151 0046 0CBF     	 ite eq
+ 1152 0048 0222     	 moveq r2,#2
+ 1153 004a 0D22     	 movne r2,#13
+ 1154              	.L310:
+ 1155 004c 1A70     	 strb r2,[r3]
+ 1156 004e 1A78     	 ldrb r2,[r3]
+ 1157 0050 42F01002 	 orr r2,r2,#16
+ 1158 0054 1A70     	 strb r2,[r3]
+ 1159 0056 054B     	 ldr r3,.L311+16
+ 1160 0058 1A70     	 strb r2,[r3]
+ 1161 005a 7047     	 bx lr
+ 1162              	.L312:
+ 1163              	 .align 2
+ 1164              	.L311:
+ 1165 005c 00000000 	 .word nAlStatus
+ 1166 0060 30010154 	 .word 1409351984
+ 1167 0064 00000000 	 .word u8EcatErrorLed
+ 1168 0068 00000000 	 .word u8LocalErrorState
+ 1169 006c 39010154 	 .word 1409351993
+ 1171              	 .section .text.AL_ControlInd,"ax",%progbits
+ 1172              	 .align 1
+ 1173              	 .global AL_ControlInd
+ 1174              	 .thumb
+ 1175              	 .thumb_func
+ 1177              	AL_ControlInd:
+ 1178              	 
+ 1179              	 
+ 1180 0000 2DE9F04F 	 push {r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 1181 0004 BB4F     	 ldr r7,.L512
+ 1182 0006 BC4D     	 ldr r5,.L512+4
+ 1183 0008 BC4C     	 ldr r4,.L512+8
+ 1184 000a 85B0     	 sub sp,sp,#20
+ 1185 000c 4FF6FF73 	 movw r3,#65535
+ 1186 0010 4FF00108 	 mov r8,#1
+ 1187 0014 10F0100F 	 tst r0,#16
+ 1188 0018 3B80     	 strh r3,[r7]
+ 1189 001a 8B46     	 mov fp,r1
+ 1190 001c 85F80080 	 strb r8,[r5]
+ 1191 0020 0197     	 str r7,[sp,#4]
+ 1192 0022 00F00F00 	 and r0,r0,#15
+ 1193 0026 2378     	 ldrb r3,[r4]
+ 1194 0028 05D0     	 beq .L314
+ 1195 002a 23F01003 	 bic r3,r3,#16
+ 1196 002e 2370     	 strb r3,[r4]
+ 1197 0030 CDF80880 	 str r8,[sp,#8]
+ 1198 0034 09E0     	 b .L315
+ 1199              	.L314:
+ 1200 0036 DA06     	 lsls r2,r3,#27
+ 1201 0038 02D5     	 bpl .L316
+ 1202 003a 0128     	 cmp r0,#1
+ 1203 003c 40F01782 	 bne .L313
+ 1204              	.L316:
+ 1205 0040 03F00F03 	 and r3,r3,#15
+ 1206 0044 2370     	 strb r3,[r4]
+ 1207 0046 0023     	 movs r3,#0
+ 1208 0048 0293     	 str r3,[sp,#8]
+ 1209              	.L315:
+ 1210 004a 2378     	 ldrb r3,[r4]
+ 1211 004c DFF8D092 	 ldr r9,.L512+44
+ 1212 0050 C6B2     	 uxtb r6,r0
+ 1213 0052 06EB0313 	 add r3,r6,r3,lsl#4
+ 1214 0056 03F0FF0A 	 and r10,r3,#255
+ 1215 005a BAF1440F 	 cmp r10,#68
+ 1216 005e 26D0     	 beq .L319
+ 1217 0060 0DD8     	 bhi .L320
+ 1218 0062 BAF1220F 	 cmp r10,#34
+ 1219 0066 18D0     	 beq .L321
+ 1220 0068 02D8     	 bhi .L322
+ 1221 006a BAF1120F 	 cmp r10,#18
+ 1222 006e 04E0     	 b .L497
+ 1223              	.L322:
+ 1224 0070 BAF1240F 	 cmp r10,#36
+ 1225 0074 13D0     	 beq .L323
+ 1226 0076 BAF1420F 	 cmp r10,#66
+ 1227              	.L497:
+ 1228 007a 0ED0     	 beq .L321
+ 1229 007c 1FE0     	 b .L318
+ 1230              	.L320:
+ 1231 007e BAF1820F 	 cmp r10,#130
+ 1232 0082 0AD0     	 beq .L321
+ 1233 0084 02D8     	 bhi .L324
+ 1234 0086 BAF1480F 	 cmp r10,#72
+ 1235 008a 04E0     	 b .L498
+ 1236              	.L324:
+ 1237 008c BAF1840F 	 cmp r10,#132
+ 1238 0090 0DD0     	 beq .L319
+ 1239 0092 BAF1880F 	 cmp r10,#136
+ 1240              	.L498:
+ 1241 0096 0AD0     	 beq .L319
+ 1242 0098 11E0     	 b .L318
+ 1243              	.L321:
+ 1244 009a 0220     	 movs r0,#2
+ 1245 009c 09E0     	 b .L499
+ 1246              	.L323:
+ 1247 009e 9848     	 ldr r0,.L512+12
+ 1248 00a0 9849     	 ldr r1,.L512+16
+ 1249 00a2 FFF7FEFF 	 bl APPL_GenerateMapping
+ 1250 00a6 0746     	 mov r7,r0
+ 1251 00a8 0028     	 cmp r0,#0
+ 1252 00aa 40F00381 	 bne .L326
+ 1253              	.L319:
+ 1254 00ae 964A     	 ldr r2,.L512+20
+ 1255 00b0 1078     	 ldrb r0,[r2]
+ 1256              	.L499:
+ 1257 00b2 FFF7FEFF 	 bl CheckSmSettings
+ 1258 00b6 87B2     	 uxth r7,r0
+ 1259 00b8 002F     	 cmp r7,#0
+ 1260 00ba 40F0FB80 	 bne .L326
+ 1261              	.L318:
+ 1262 00be 9349     	 ldr r1,.L512+24
+ 1263 00c0 0391     	 str r1,[sp,#12]
+ 1264 00c2 4FF00008 	 mov r8,#0
+ 1265 00c6 BAF1320F 	 cmp r10,#50
+ 1266 00ca A1F80080 	 strh r8,[r1]
+ 1267 00ce 00F0C881 	 beq .L328
+ 1268 00d2 2FD8     	 bhi .L329
+ 1269 00d4 BAF1210F 	 cmp r10,#33
+ 1270 00d8 00F0C680 	 beq .L330
+ 1271 00dc 12D8     	 bhi .L331
+ 1272 00de BAF1130F 	 cmp r10,#19
+ 1273 00e2 54D0     	 beq .L332
+ 1274 00e4 07D8     	 bhi .L333
+ 1275 00e6 BAF1110F 	 cmp r10,#17
+ 1276 00ea 00F0C880 	 beq .L334
+ 1277 00ee BAF1120F 	 cmp r10,#18
+ 1278 00f2 4ED0     	 beq .L335
+ 1279 00f4 B7E1     	 b .L390
+ 1280              	.L333:
+ 1281 00f6 BAF1140F 	 cmp r10,#20
+ 1282 00fa 00F0B281 	 beq .L328
+ 1283 00fe BAF1180F 	 cmp r10,#24
+ 1284 0102 2DE0     	 b .L509
+ 1285              	.L331:
+ 1286 0104 BAF1240F 	 cmp r10,#36
+ 1287 0108 4CD0     	 beq .L336
+ 1288 010a 06D8     	 bhi .L337
+ 1289 010c BAF1220F 	 cmp r10,#34
+ 1290 0110 00F0B880 	 beq .L338
+ 1291 0114 BAF1230F 	 cmp r10,#35
+ 1292 0118 22E0     	 b .L509
+ 1293              	.L337:
+ 1294 011a BAF1280F 	 cmp r10,#40
+ 1295 011e 00F0A081 	 beq .L328
+ 1296 0122 BAF1310F 	 cmp r10,#49
+ 1297 0126 40F09E81 	 bne .L390
+ 1298 012a 794B     	 ldr r3,.L512+28
+ 1299 012c 1327     	 movs r7,#19
+ 1300 012e 83F80080 	 strb r8,[r3]
+ 1301 0132 39E1     	 b .L366
+ 1302              	.L329:
+ 1303 0134 BAF1440F 	 cmp r10,#68
+ 1304 0138 00F0A480 	 beq .L338
+ 1305 013c 13D8     	 bhi .L340
+ 1306 013e BAF1410F 	 cmp r10,#65
+ 1307 0142 00F08880 	 beq .L341
+ 1308 0146 06D8     	 bhi .L342
+ 1309 0148 BAF1340F 	 cmp r10,#52
+ 1310 014c 00F08981 	 beq .L328
+ 1311 0150 BAF1380F 	 cmp r10,#56
+ 1312 0154 04E0     	 b .L509
+ 1313              	.L342:
+ 1314 0156 BAF1420F 	 cmp r10,#66
+ 1315 015a 6AD0     	 beq .L343
+ 1316 015c BAF1430F 	 cmp r10,#67
+ 1317              	.L509:
+ 1318 0160 40F08181 	 bne .L390
+ 1319 0164 7DE1     	 b .L328
+ 1320              	.L340:
+ 1321 0166 BAF1820F 	 cmp r10,#130
+ 1322 016a 58D0     	 beq .L344
+ 1323 016c 06D8     	 bhi .L345
+ 1324 016e BAF1480F 	 cmp r10,#72
+ 1325 0172 2FD0     	 beq .L346
+ 1326 0174 BAF1810F 	 cmp r10,#129
+ 1327 0178 63D0     	 beq .L347
+ 1328 017a 74E1     	 b .L390
+ 1329              	.L345:
+ 1330 017c BAF1840F 	 cmp r10,#132
+ 1331 0180 45D0     	 beq .L348
+ 1332 0182 C0F06E81 	 bcc .L328
+ 1333 0186 BAF1880F 	 cmp r10,#136
+ 1334 018a 7BD0     	 beq .L338
+ 1335 018c 6BE1     	 b .L390
+ 1336              	.L332:
+ 1337 018e 5746     	 mov r7,r10
+ 1338 0190 0AE1     	 b .L366
+ 1339              	.L335:
+ 1340 0192 FFF7FEFF 	 bl UpdateEEPROMLoadedState
+ 1341 0196 5F4A     	 ldr r2,.L512+32
+ 1342 0198 1278     	 ldrb r2,[r2]
+ 1343 019a 002A     	 cmp r2,#0
+ 1344 019c 40F0F780 	 bne .L349
+ 1345 01a0 5127     	 movs r7,#81
+ 1346 01a2 01E1     	 b .L366
+ 1347              	.L336:
+ 1348 01a4 FFF7FEFF 	 bl StartInputHandler
+ 1349 01a8 0746     	 mov r7,r0
+ 1350 01aa 0028     	 cmp r0,#0
+ 1351 01ac 40F04581 	 bne .L352
+ 1352 01b0 DFF87081 	 ldr r8,.L512+48
+ 1353 01b4 2870     	 strb r0,[r5]
+ 1354 01b6 4046     	 mov r0,r8
+ 1355 01b8 FFF7FEFF 	 bl APPL_StartInputHandler
+ 1356 01bc 0746     	 mov r7,r0
+ 1357 01be 0028     	 cmp r0,#0
+ 1358 01c0 40F03B81 	 bne .L352
+ 1359 01c4 B8F80000 	 ldrh r0,[r8]
+ 1360 01c8 FFF7FEFF 	 bl SetALEventMask
+ 1361 01cc 524B     	 ldr r3,.L512+36
+ 1362 01ce 0122     	 movs r2,#1
+ 1363              	.L502:
+ 1364 01d0 1A70     	 strb r2,[r3]
+ 1365 01d2 E9E0     	 b .L366
+ 1366              	.L346:
+ 1367 01d4 029B     	 ldr r3,[sp,#8]
+ 1368 01d6 53B1     	 cbz r3,.L354
+ 1369 01d8 4A4A     	 ldr r2,.L512+16
+ 1370 01da 1288     	 ldrh r2,[r2]
+ 1371 01dc 0AB1     	 cbz r2,.L355
+ 1372 01de 0220     	 movs r0,#2
+ 1373 01e0 03E0     	 b .L500
+ 1374              	.L355:
+ 1375 01e2 474A     	 ldr r2,.L512+12
+ 1376 01e4 1288     	 ldrh r2,[r2]
+ 1377 01e6 12B1     	 cbz r2,.L354
+ 1378 01e8 0320     	 movs r0,#3
+ 1379              	.L500:
+ 1380 01ea FFF7FEFF 	 bl EnableSyncManChannel
+ 1381              	.L354:
+ 1382 01ee FFF7FEFF 	 bl StartOutputHandler
+ 1383 01f2 0746     	 mov r7,r0
+ 1384 01f4 0028     	 cmp r0,#0
+ 1385 01f6 40F02A81 	 bne .L356
+ 1386 01fa 2870     	 strb r0,[r5]
+ 1387 01fc FFF7FEFF 	 bl APPL_StartOutputHandler
+ 1388 0200 0746     	 mov r7,r0
+ 1389 0202 0028     	 cmp r0,#0
+ 1390 0204 40F02381 	 bne .L356
+ 1391 0208 0122     	 movs r2,#1
+ 1392 020a 444B     	 ldr r3,.L512+40
+ 1393 020c E0E7     	 b .L502
+ 1394              	.L348:
+ 1395 020e FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1396 0212 4746     	 mov r7,r8
+ 1397 0214 FFF7FEFF 	 bl StopOutputHandler
+ 1398 0218 85F80080 	 strb r8,[r5]
+ 1399 021c C4E0     	 b .L366
+ 1400              	.L344:
+ 1401 021e FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1402 0222 0746     	 mov r7,r0
+ 1403 0224 FFF7FEFF 	 bl StopOutputHandler
+ 1404 0228 85F80080 	 strb r8,[r5]
+ 1405 022c 002F     	 cmp r7,#0
+ 1406 022e 40F09880 	 bne .L358
+ 1407              	.L343:
+ 1408 0232 FFF7FEFF 	 bl APPL_StopInputHandler
+ 1409 0236 FFF7FEFF 	 bl StopInputHandler
+ 1410 023a 0021     	 movs r1,#0
+ 1411 023c 2970     	 strb r1,[r5]
+ 1412 023e 0F46     	 mov r7,r1
+ 1413 0240 B2E0     	 b .L366
+ 1414              	.L347:
+ 1415 0242 FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1416 0246 0746     	 mov r7,r0
+ 1417 0248 FFF7FEFF 	 bl StopOutputHandler
+ 1418 024c 85F80080 	 strb r8,[r5]
+ 1419 0250 002F     	 cmp r7,#0
+ 1420 0252 40F08680 	 bne .L358
+ 1421              	.L341:
+ 1422 0256 FFF7FEFF 	 bl APPL_StopInputHandler
+ 1423 025a 0746     	 mov r7,r0
+ 1424 025c FFF7FEFF 	 bl StopInputHandler
+ 1425 0260 0023     	 movs r3,#0
+ 1426 0262 2B70     	 strb r3,[r5]
+ 1427 0264 002F     	 cmp r7,#0
+ 1428 0266 7AD1     	 bne .L391
+ 1429              	.L330:
+ 1430 0268 FFF7FEFF 	 bl MBX_StopMailboxHandler
+ 1431 026c FFF7FEFF 	 bl APPL_StopMailboxHandler
+ 1432 0270 274B     	 ldr r3,.L512+28
+ 1433 0272 0022     	 movs r2,#0
+ 1434 0274 0746     	 mov r7,r0
+ 1435 0276 1A70     	 strb r2,[r3]
+ 1436 0278 4FF0210A 	 mov r10,#33
+ 1437 027c 71E0     	 b .L358
+ 1438              	.L334:
+ 1439 027e 2449     	 ldr r1,.L512+28
+ 1440 0280 81F80080 	 strb r8,[r1]
+ 1441              	.L338:
+ 1442 0284 029B     	 ldr r3,[sp,#8]
+ 1443 0286 13B1     	 cbz r3,.L359
+ 1444 0288 5046     	 mov r0,r10
+ 1445 028a FFF7FEFF 	 bl APPL_AckErrorInd
+ 1446              	.L359:
+ 1447 028e 2378     	 ldrb r3,[r4]
+ 1448 0290 13F00C0F 	 tst r3,#12
+ 1449 0294 00F0E980 	 beq .L393
+ 1450 0298 1A4B     	 ldr r3,.L512+16
+ 1451 029a 1B88     	 ldrh r3,[r3]
+ 1452 029c 0BB1     	 cbz r3,.L360
+ 1453 029e 0220     	 movs r0,#2
+ 1454 02a0 05E0     	 b .L510
+ 1455              	.L360:
+ 1456 02a2 174B     	 ldr r3,.L512+12
+ 1457 02a4 1B88     	 ldrh r3,[r3]
+ 1458 02a6 002B     	 cmp r3,#0
+ 1459 02a8 00F0DF80 	 beq .L393
+ 1460 02ac 0320     	 movs r0,#3
+ 1461              	.L510:
+ 1462 02ae FFF7FEFF 	 bl EnableSyncManChannel
+ 1463 02b2 DAE0     	 b .L393
+ 1464              	.L326:
+ 1465 02b4 2278     	 ldrb r2,[r4]
+ 1466 02b6 042A     	 cmp r2,#4
+ 1467 02b8 08D0     	 beq .L362
+ 1468 02ba 082A     	 cmp r2,#8
+ 1469 02bc 02D0     	 beq .L363
+ 1470 02be 022A     	 cmp r2,#2
+ 1471 02c0 34D1     	 bne .L361
+ 1472 02c2 07E0     	 b .L364
+ 1473              	.L363:
+ 1474 02c4 FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1475 02c8 FFF7FEFF 	 bl StopOutputHandler
+ 1476              	.L362:
+ 1477 02cc FFF7FEFF 	 bl APPL_StopInputHandler
+ 1478 02d0 FFF7FEFF 	 bl StopInputHandler
+ 1479              	.L364:
+ 1480 02d4 162F     	 cmp r7,#22
+ 1481 02d6 27D1     	 bne .L365
+ 1482 02d8 FFF7FEFF 	 bl MBX_StopMailboxHandler
+ 1483 02dc FFF7FEFF 	 bl APPL_StopMailboxHandler
+ 1484 02e0 0020     	 movs r0,#0
+ 1485 02e2 FFF7FEFF 	 bl DisableSyncManChannel
+ 1486 02e6 0120     	 movs r0,#1
+ 1487 02e8 FFF7FEFF 	 bl DisableSyncManChannel
+ 1488 02ec 0123     	 movs r3,#1
+ 1489 02ee 2370     	 strb r3,[r4]
+ 1490 02f0 5AE0     	 b .L366
+ 1491              	.L513:
+ 1492 02f2 00BF     	 .align 2
+ 1493              	.L512:
+ 1494 02f4 00000000 	 .word EsmTimeoutCounter
+ 1495 02f8 00000000 	 .word bApplEsmPending
+ 1496 02fc 00000000 	 .word nAlStatus
+ 1497 0300 00000000 	 .word nPdInputSize
+ 1498 0304 00000000 	 .word nPdOutputSize
+ 1499 0308 00000000 	 .word nMaxSyncMan
+ 1500 030c 00000000 	 .word nEcatStateTrans
+ 1501 0310 00000000 	 .word bSyncSetByUser
+ 1502 0314 00000000 	 .word .LANCHOR0
+ 1503 0318 00000000 	 .word bEcatInputUpdateRunning
+ 1504 031c 00000000 	 .word bEcatOutputUpdateRunning
+ 1505 0320 00000000 	 .word bEcatWaitForAlControlRes
+ 1506 0324 00000000 	 .word u16ALEventMask
+ 1507              	.L365:
+ 1508 0328 0222     	 movs r2,#2
+ 1509 032a 2270     	 strb r2,[r4]
+ 1510              	.L361:
+ 1511 032c FF2F     	 cmp r7,#255
+ 1512 032e 3BD1     	 bne .L366
+ 1513              	.L388:
+ 1514 0330 0122     	 movs r2,#1
+ 1515 0332 89F80020 	 strb r2,[r9]
+ 1516 0336 4F4A     	 ldr r2,.L514
+ 1517 0338 BAF1240F 	 cmp r10,#36
+ 1518 033c A2F800A0 	 strh r10,[r2]
+ 1519 0340 0AD0     	 beq .L368
+ 1520 0342 06D8     	 bhi .L369
+ 1521 0344 AAF11203 	 sub r3,r10,#18
+ 1522 0348 012B     	 cmp r3,#1
+ 1523 034a 12D8     	 bhi .L367
+ 1524 034c 4FF4FA63 	 mov r3,#2000
+ 1525 0350 10E0     	 b .L501
+ 1526              	.L369:
+ 1527 0352 BAF1480F 	 cmp r10,#72
+ 1528 0356 0CD1     	 bne .L367
+ 1529              	.L368:
+ 1530 0358 42F22833 	 movw r3,#9000
+ 1531 035c 0AE0     	 b .L501
+ 1532              	.L391:
+ 1533 035e 4FF0410A 	 mov r10,#65
+ 1534              	.L358:
+ 1535 0362 FF2F     	 cmp r7,#255
+ 1536 0364 20D1     	 bne .L366
+ 1537 0366 039B     	 ldr r3,[sp,#12]
+ 1538 0368 0122     	 movs r2,#1
+ 1539 036a 89F80020 	 strb r2,[r9]
+ 1540 036e A3F800A0 	 strh r10,[r3]
+ 1541              	.L367:
+ 1542 0372 C823     	 movs r3,#200
+ 1543              	.L501:
+ 1544 0374 019A     	 ldr r2,[sp,#4]
+ 1545 0376 1380     	 strh r3,[r2]
+ 1546 0378 019B     	 ldr r3,[sp,#4]
+ 1547 037a 1B88     	 ldrh r3,[r3]
+ 1548 037c 6FF00901 	 mvn r1,#9
+ 1549 0380 1AB2     	 sxth r2,r3
+ 1550 0382 92FBF1F2 	 sdiv r2,r2,r1
+ 1551 0386 1344     	 add r3,r3,r2
+ 1552 0388 019A     	 ldr r2,[sp,#4]
+ 1553 038a 1380     	 strh r3,[r2]
+ 1554 038c 6FE0     	 b .L313
+ 1555              	.L349:
+ 1556 038e FFF7FEFF 	 bl MBX_StartMailboxHandler
+ 1557 0392 0746     	 mov r7,r0
+ 1558 0394 0028     	 cmp r0,#0
+ 1559 0396 46D0     	 beq .L383
+ 1560              	.L350:
+ 1561 0398 FF2F     	 cmp r7,#255
+ 1562 039a C9D0     	 beq .L388
+ 1563 039c 2B78     	 ldrb r3,[r5]
+ 1564 039e 0BB9     	 cbnz r3,.L351
+ 1565 03a0 FFF7FEFF 	 bl APPL_StopMailboxHandler
+ 1566              	.L351:
+ 1567 03a4 FFF7FEFF 	 bl MBX_StopMailboxHandler
+ 1568              	.L366:
+ 1569 03a8 2078     	 ldrb r0,[r4]
+ 1570 03aa 00F00F03 	 and r3,r0,#15
+ 1571 03ae 9E42     	 cmp r6,r3
+ 1572 03b0 31D0     	 beq .L372
+ 1573 03b2 17B9     	 cbnz r7,.L373
+ 1574 03b4 BBF1000F 	 cmp fp,#0
+ 1575 03b8 25D0     	 beq .L374
+ 1576              	.L373:
+ 1577 03ba 3043     	 orrs r0,r0,r6
+ 1578 03bc 0307     	 lsls r3,r0,#28
+ 1579 03be 11D5     	 bpl .L376
+ 1580 03c0 2D4B     	 ldr r3,.L514+4
+ 1581 03c2 1B78     	 ldrb r3,[r3]
+ 1582 03c4 1BB1     	 cbz r3,.L377
+ 1583 03c6 FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1584 03ca FFF7FEFF 	 bl StopOutputHandler
+ 1585              	.L377:
+ 1586 03ce 2B4B     	 ldr r3,.L514+8
+ 1587 03d0 1B88     	 ldrh r3,[r3]
+ 1588 03d2 0BB1     	 cbz r3,.L378
+ 1589 03d4 0220     	 movs r0,#2
+ 1590 03d6 03E0     	 b .L503
+ 1591              	.L378:
+ 1592 03d8 294B     	 ldr r3,.L514+12
+ 1593 03da 1B88     	 ldrh r3,[r3]
+ 1594 03dc 13B1     	 cbz r3,.L376
+ 1595 03de 0320     	 movs r0,#3
+ 1596              	.L503:
+ 1597 03e0 FFF7FEFF 	 bl DisableSyncManChannel
+ 1598              	.L376:
+ 1599 03e4 57B1     	 cbz r7,.L380
+ 1600 03e6 2378     	 ldrb r3,[r4]
+ 1601 03e8 082B     	 cmp r3,#8
+ 1602 03ea 02BF     	 ittt eq
+ 1603 03ec 254B     	 ldreq r3,.L514+16
+ 1604 03ee 0422     	 moveq r2,#4
+ 1605 03f0 1A70     	 strbeq r2,[r3]
+ 1606 03f2 2378     	 ldrb r3,[r4]
+ 1607 03f4 43F01003 	 orr r3,r3,#16
+ 1608 03f8 2370     	 strb r3,[r4]
+ 1609 03fa 06E0     	 b .L382
+ 1610              	.L380:
+ 1611 03fc BBF1000F 	 cmp fp,#0
+ 1612 0400 01D0     	 beq .L374
+ 1613 0402 46F01006 	 orr r6,r6,#16
+ 1614              	.L374:
+ 1615 0406 2670     	 strb r6,[r4]
+ 1616 0408 5F46     	 mov r7,fp
+ 1617              	.L382:
+ 1618 040a 0023     	 movs r3,#0
+ 1619 040c 89F80030 	 strb r3,[r9]
+ 1620 0410 2078     	 ldrb r0,[r4]
+ 1621 0412 3946     	 mov r1,r7
+ 1622 0414 02E0     	 b .L511
+ 1623              	.L372:
+ 1624 0416 0021     	 movs r1,#0
+ 1625 0418 89F80010 	 strb r1,[r9]
+ 1626              	.L511:
+ 1627 041c 05B0     	 add sp,sp,#20
+ 1628              	 
+ 1629 041e BDE8F04F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 1630 0422 FFF7FEBF 	 b SetALStatus
+ 1631              	.L383:
+ 1632 0426 0022     	 movs r2,#0
+ 1633 0428 2A70     	 strb r2,[r5]
+ 1634 042a FFF7FEFF 	 bl APPL_StartMailboxHandler
+ 1635 042e 0746     	 mov r7,r0
+ 1636 0430 0028     	 cmp r0,#0
+ 1637 0432 B1D1     	 bne .L350
+ 1638 0434 0122     	 movs r2,#1
+ 1639 0436 144B     	 ldr r3,.L514+20
+ 1640 0438 CAE6     	 b .L502
+ 1641              	.L352:
+ 1642 043a FF2F     	 cmp r7,#255
+ 1643 043c 3FF478AF 	 beq .L388
+ 1644 0440 2B78     	 ldrb r3,[r5]
+ 1645 0442 0BB9     	 cbnz r3,.L353
+ 1646 0444 FFF7FEFF 	 bl APPL_StopInputHandler
+ 1647              	.L353:
+ 1648 0448 FFF7FEFF 	 bl StopInputHandler
+ 1649 044c ACE7     	 b .L366
+ 1650              	.L356:
+ 1651 044e FF2F     	 cmp r7,#255
+ 1652 0450 3FF46EAF 	 beq .L388
+ 1653 0454 2B78     	 ldrb r3,[r5]
+ 1654 0456 0BB9     	 cbnz r3,.L357
+ 1655 0458 FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1656              	.L357:
+ 1657 045c FFF7FEFF 	 bl StopOutputHandler
+ 1658 0460 A2E7     	 b .L366
+ 1659              	.L328:
+ 1660 0462 1127     	 movs r7,#17
+ 1661 0464 A0E7     	 b .L366
+ 1662              	.L390:
+ 1663 0466 1227     	 movs r7,#18
+ 1664 0468 9EE7     	 b .L366
+ 1665              	.L393:
+ 1666 046a FE27     	 movs r7,#254
+ 1667 046c 9CE7     	 b .L366
+ 1668              	.L313:
+ 1669 046e 05B0     	 add sp,sp,#20
+ 1670              	 
+ 1671 0470 BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 1672              	.L515:
+ 1673              	 .align 2
+ 1674              	.L514:
+ 1675 0474 00000000 	 .word nEcatStateTrans
+ 1676 0478 00000000 	 .word bEcatOutputUpdateRunning
+ 1677 047c 00000000 	 .word nPdOutputSize
+ 1678 0480 00000000 	 .word nPdInputSize
+ 1679 0484 00000000 	 .word nAlStatus
+ 1680 0488 00000000 	 .word bMbxRunning
+ 1682              	 .section .text.AL_ControlRes,"ax",%progbits
+ 1683              	 .align 1
+ 1684              	 .global AL_ControlRes
+ 1685              	 .thumb
+ 1686              	 .thumb_func
+ 1688              	AL_ControlRes:
+ 1689              	 
+ 1690              	 
+ 1691 0000 70B5     	 push {r4,r5,r6,lr}
+ 1692 0002 7C4E     	 ldr r6,.L599
+ 1693 0004 3378     	 ldrb r3,[r6]
+ 1694 0006 002B     	 cmp r3,#0
+ 1695 0008 00F0F280 	 beq .L516
+ 1696 000c 7A4B     	 ldr r3,.L599+4
+ 1697 000e 7B4C     	 ldr r4,.L599+8
+ 1698 0010 B3F90030 	 ldrsh r3,[r3]
+ 1699 0014 002B     	 cmp r3,#0
+ 1700 0016 5FD1     	 bne .L519
+ 1701 0018 2388     	 ldrh r3,[r4]
+ 1702 001a 242B     	 cmp r3,#36
+ 1703 001c C3F30715 	 ubfx r5,r3,#4,#8
+ 1704 0020 14D0     	 beq .L521
+ 1705 0022 03D8     	 bhi .L522
+ 1706 0024 123B     	 subs r3,r3,#18
+ 1707 0026 012B     	 cmp r3,#1
+ 1708 0028 03D9     	 bls .L594
+ 1709 002a D9E0     	 b .L520
+ 1710              	.L522:
+ 1711 002c 482B     	 cmp r3,#72
+ 1712 002e 21D0     	 beq .L524
+ 1713 0030 D6E0     	 b .L520
+ 1714              	.L594:
+ 1715 0032 734B     	 ldr r3,.L599+12
+ 1716 0034 1B78     	 ldrb r3,[r3]
+ 1717 0036 0BB9     	 cbnz r3,.L525
+ 1718 0038 FFF7FEFF 	 bl APPL_StopMailboxHandler
+ 1719              	.L525:
+ 1720 003c FFF7FEFF 	 bl MBX_StopMailboxHandler
+ 1721 0040 704B     	 ldr r3,.L599+16
+ 1722 0042 1B78     	 ldrb r3,[r3]
+ 1723 0044 03F00F03 	 and r3,r3,#15
+ 1724 0048 012B     	 cmp r3,#1
+ 1725 004a 0BE0     	 b .L598
+ 1726              	.L521:
+ 1727 004c 6C4B     	 ldr r3,.L599+12
+ 1728 004e 1B78     	 ldrb r3,[r3]
+ 1729 0050 0BB9     	 cbnz r3,.L528
+ 1730 0052 FFF7FEFF 	 bl APPL_StopInputHandler
+ 1731              	.L528:
+ 1732 0056 FFF7FEFF 	 bl StopInputHandler
+ 1733 005a 6A4B     	 ldr r3,.L599+16
+ 1734 005c 1B78     	 ldrb r3,[r3]
+ 1735 005e 03F00F03 	 and r3,r3,#15
+ 1736 0062 022B     	 cmp r3,#2
+ 1737              	.L598:
+ 1738 0064 40F0BF80 	 bne .L526
+ 1739 0068 674B     	 ldr r3,.L599+20
+ 1740 006a 1C88     	 ldrh r4,[r3]
+ 1741 006c 002D     	 cmp r5,#0
+ 1742 006e 40F0A380 	 bne .L554
+ 1743 0072 BDE0     	 b .L516
+ 1744              	.L524:
+ 1745 0074 654B     	 ldr r3,.L599+24
+ 1746 0076 1B78     	 ldrb r3,[r3]
+ 1747 0078 B3B1     	 cbz r3,.L529
+ 1748 007a 654B     	 ldr r3,.L599+28
+ 1749 007c 1B78     	 ldrb r3,[r3]
+ 1750 007e 002B     	 cmp r3,#0
+ 1751 0080 00F0A580 	 beq .L557
+ 1752 0084 634B     	 ldr r3,.L599+32
+ 1753 0086 1B78     	 ldrb r3,[r3]
+ 1754 0088 23B9     	 cbnz r3,.L531
+ 1755 008a 634B     	 ldr r3,.L599+36
+ 1756 008c 1B88     	 ldrh r3,[r3]
+ 1757 008e 002B     	 cmp r3,#0
+ 1758 0090 40F0A180 	 bne .L560
+ 1759              	.L531:
+ 1760 0094 614B     	 ldr r3,.L599+40
+ 1761 0096 1B78     	 ldrb r3,[r3]
+ 1762 0098 002B     	 cmp r3,#0
+ 1763 009a 00F09A80 	 beq .L559
+ 1764              	.L533:
+ 1765 009e 604B     	 ldr r3,.L599+44
+ 1766 00a0 0122     	 movs r2,#1
+ 1767 00a2 1A70     	 strb r2,[r3]
+ 1768 00a4 0825     	 movs r5,#8
+ 1769 00a6 98E0     	 b .L532
+ 1770              	.L529:
+ 1771 00a8 5B4B     	 ldr r3,.L599+36
+ 1772 00aa 1B88     	 ldrh r3,[r3]
+ 1773 00ac 002B     	 cmp r3,#0
+ 1774 00ae 40F09280 	 bne .L560
+ 1775 00b2 544B     	 ldr r3,.L599+16
+ 1776 00b4 1B78     	 ldrb r3,[r3]
+ 1777 00b6 03F00F03 	 and r3,r3,#15
+ 1778 00ba 042B     	 cmp r3,#4
+ 1779 00bc EFD1     	 bne .L533
+ 1780 00be 524B     	 ldr r3,.L599+20
+ 1781 00c0 1C88     	 ldrh r4,[r3]
+ 1782 00c2 002C     	 cmp r4,#0
+ 1783 00c4 00F08C80 	 beq .L520
+ 1784              	.L553:
+ 1785 00c8 4D4B     	 ldr r3,.L599+12
+ 1786 00ca 1B78     	 ldrb r3,[r3]
+ 1787 00cc 0BB9     	 cbnz r3,.L534
+ 1788 00ce FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1789              	.L534:
+ 1790 00d2 FFF7FEFF 	 bl StopOutputHandler
+ 1791 00d6 87E0     	 b .L535
+ 1792              	.L519:
+ 1793 00d8 2388     	 ldrh r3,[r4]
+ 1794 00da 242B     	 cmp r3,#36
+ 1795 00dc 1FD0     	 beq .L537
+ 1796 00de 03D8     	 bhi .L538
+ 1797 00e0 123B     	 subs r3,r3,#18
+ 1798 00e2 012B     	 cmp r3,#1
+ 1799 00e4 03D9     	 bls .L595
+ 1800 00e6 70BD     	 pop {r4,r5,r6,pc}
+ 1801              	.L538:
+ 1802 00e8 482B     	 cmp r3,#72
+ 1803 00ea 2FD0     	 beq .L540
+ 1804 00ec 70BD     	 pop {r4,r5,r6,pc}
+ 1805              	.L595:
+ 1806 00ee 444B     	 ldr r3,.L599+12
+ 1807 00f0 1A78     	 ldrb r2,[r3]
+ 1808 00f2 002A     	 cmp r2,#0
+ 1809 00f4 7CD0     	 beq .L516
+ 1810 00f6 0022     	 movs r2,#0
+ 1811 00f8 1A70     	 strb r2,[r3]
+ 1812 00fa FFF7FEFF 	 bl APPL_StartMailboxHandler
+ 1813 00fe 30B9     	 cbnz r0,.L542
+ 1814 0100 484B     	 ldr r3,.L599+48
+ 1815 0102 2578     	 ldrb r5,[r4]
+ 1816 0104 0122     	 movs r2,#1
+ 1817 0106 1A70     	 strb r2,[r3]
+ 1818 0108 05F00F05 	 and r5,r5,#15
+ 1819 010c 68E0     	 b .L520
+ 1820              	.L542:
+ 1821 010e FF28     	 cmp r0,#255
+ 1822 0110 6ED0     	 beq .L516
+ 1823 0112 FFF7FEFF 	 bl APPL_StopMailboxHandler
+ 1824 0116 BDE87040 	 pop {r4,r5,r6,lr}
+ 1825 011a FFF7FEBF 	 b MBX_StopMailboxHandler
+ 1826              	.L537:
+ 1827 011e 384B     	 ldr r3,.L599+12
+ 1828 0120 1A78     	 ldrb r2,[r3]
+ 1829 0122 002A     	 cmp r2,#0
+ 1830 0124 64D0     	 beq .L516
+ 1831 0126 0022     	 movs r2,#0
+ 1832 0128 3F48     	 ldr r0,.L599+52
+ 1833 012a 1A70     	 strb r2,[r3]
+ 1834 012c FFF7FEFF 	 bl APPL_StartInputHandler
+ 1835 0130 20B9     	 cbnz r0,.L544
+ 1836 0132 3E4B     	 ldr r3,.L599+56
+ 1837 0134 0122     	 movs r2,#1
+ 1838 0136 1A70     	 strb r2,[r3]
+ 1839 0138 0425     	 movs r5,#4
+ 1840 013a 3CE0     	 b .L545
+ 1841              	.L544:
+ 1842 013c FF28     	 cmp r0,#255
+ 1843 013e 57D0     	 beq .L516
+ 1844 0140 FFF7FEFF 	 bl APPL_StopInputHandler
+ 1845 0144 BDE87040 	 pop {r4,r5,r6,lr}
+ 1846 0148 FFF7FEBF 	 b StopInputHandler
+ 1847              	.L540:
+ 1848 014c 2C4B     	 ldr r3,.L599+12
+ 1849 014e 1978     	 ldrb r1,[r3]
+ 1850 0150 1A46     	 mov r2,r3
+ 1851 0152 0029     	 cmp r1,#0
+ 1852 0154 4CD0     	 beq .L516
+ 1853 0156 2D49     	 ldr r1,.L599+24
+ 1854 0158 0978     	 ldrb r1,[r1]
+ 1855 015a E9B1     	 cbz r1,.L546
+ 1856 015c 3448     	 ldr r0,.L599+60
+ 1857 015e B0F90020 	 ldrsh r2,[r0]
+ 1858 0162 002A     	 cmp r2,#0
+ 1859 0164 44DD     	 ble .L516
+ 1860 0166 3349     	 ldr r1,.L599+64
+ 1861 0168 B1F90040 	 ldrsh r4,[r1]
+ 1862 016c 9442     	 cmp r4,r2
+ 1863 016e 3FDB     	 blt .L516
+ 1864 0170 0022     	 movs r2,#0
+ 1865 0172 0280     	 strh r2,[r0]
+ 1866 0174 0A80     	 strh r2,[r1]
+ 1867 0176 1A70     	 strb r2,[r3]
+ 1868 0178 FFF7FEFF 	 bl APPL_StartOutputHandler
+ 1869 017c 20B9     	 cbnz r0,.L547
+ 1870              	.L549:
+ 1871 017e 284B     	 ldr r3,.L599+44
+ 1872 0180 0122     	 movs r2,#1
+ 1873 0182 1A70     	 strb r2,[r3]
+ 1874 0184 0825     	 movs r5,#8
+ 1875 0186 16E0     	 b .L545
+ 1876              	.L547:
+ 1877 0188 FF28     	 cmp r0,#255
+ 1878 018a 31D0     	 beq .L516
+ 1879              	.L550:
+ 1880 018c FFF7FEFF 	 bl APPL_StopOutputHandler
+ 1881 0190 BDE87040 	 pop {r4,r5,r6,lr}
+ 1882 0194 FFF7FEBF 	 b StopOutputHandler
+ 1883              	.L546:
+ 1884 0198 1F4B     	 ldr r3,.L599+36
+ 1885 019a 1B88     	 ldrh r3,[r3]
+ 1886 019c 13B1     	 cbz r3,.L548
+ 1887 019e 1D4B     	 ldr r3,.L599+32
+ 1888 01a0 1B78     	 ldrb r3,[r3]
+ 1889 01a2 2BB3     	 cbz r3,.L516
+ 1890              	.L548:
+ 1891 01a4 0023     	 movs r3,#0
+ 1892 01a6 1370     	 strb r3,[r2]
+ 1893 01a8 FFF7FEFF 	 bl APPL_StartOutputHandler
+ 1894 01ac 0028     	 cmp r0,#0
+ 1895 01ae E6D0     	 beq .L549
+ 1896 01b0 FF28     	 cmp r0,#255
+ 1897 01b2 EBD1     	 bne .L550
+ 1898 01b4 70BD     	 pop {r4,r5,r6,pc}
+ 1899              	.L545:
+ 1900 01b6 0024     	 movs r4,#0
+ 1901              	.L554:
+ 1902 01b8 0023     	 movs r3,#0
+ 1903 01ba 3370     	 strb r3,[r6]
+ 1904 01bc 0CB1     	 cbz r4,.L552
+ 1905              	.L555:
+ 1906 01be 45F01005 	 orr r5,r5,#16
+ 1907              	.L552:
+ 1908 01c2 2846     	 mov r0,r5
+ 1909 01c4 2146     	 mov r1,r4
+ 1910 01c6 BDE87040 	 pop {r4,r5,r6,lr}
+ 1911 01ca FFF7FEBF 	 b SetALStatus
+ 1912              	.L557:
+ 1913 01ce 2D24     	 movs r4,#45
+ 1914 01d0 7AE7     	 b .L553
+ 1915              	.L559:
+ 1916 01d2 1A24     	 movs r4,#26
+ 1917 01d4 78E7     	 b .L553
+ 1918              	.L560:
+ 1919 01d6 1B24     	 movs r4,#27
+ 1920 01d8 76E7     	 b .L553
+ 1921              	.L532:
+ 1922 01da 0024     	 movs r4,#0
+ 1923 01dc 3470     	 strb r4,[r6]
+ 1924 01de F0E7     	 b .L552
+ 1925              	.L520:
+ 1926 01e0 002D     	 cmp r5,#0
+ 1927 01e2 FAD1     	 bne .L532
+ 1928 01e4 70BD     	 pop {r4,r5,r6,pc}
+ 1929              	.L526:
+ 1930 01e6 0124     	 movs r4,#1
+ 1931              	.L535:
+ 1932 01e8 15B1     	 cbz r5,.L516
+ 1933 01ea 0023     	 movs r3,#0
+ 1934 01ec 3370     	 strb r3,[r6]
+ 1935 01ee E6E7     	 b .L555
+ 1936              	.L516:
+ 1937 01f0 70BD     	 pop {r4,r5,r6,pc}
+ 1938              	.L600:
+ 1939 01f2 00BF     	 .align 2
+ 1940              	.L599:
+ 1941 01f4 00000000 	 .word bEcatWaitForAlControlRes
+ 1942 01f8 00000000 	 .word EsmTimeoutCounter
+ 1943 01fc 00000000 	 .word nEcatStateTrans
+ 1944 0200 00000000 	 .word bApplEsmPending
+ 1945 0204 00000000 	 .word u8LocalErrorState
+ 1946 0208 00000000 	 .word u16LocalErrorCode
+ 1947 020c 00000000 	 .word bDcSyncActive
+ 1948 0210 00000000 	 .word bDcRunning
+ 1949 0214 00000000 	 .word bEcatFirstOutputsReceived
+ 1950 0218 00000000 	 .word nPdOutputSize
+ 1951 021c 00000000 	 .word bSmSyncSequenceValid
+ 1952 0220 00000000 	 .word bEcatOutputUpdateRunning
+ 1953 0224 00000000 	 .word bMbxRunning
+ 1954 0228 00000000 	 .word u16ALEventMask
+ 1955 022c 00000000 	 .word bEcatInputUpdateRunning
+ 1956 0230 00000000 	 .word i16WaitForPllRunningTimeout
+ 1957 0234 00000000 	 .word i16WaitForPllRunningCnt
+ 1959              	 .section .text.DC_CheckWatchdog,"ax",%progbits
+ 1960              	 .align 1
+ 1961              	 .global DC_CheckWatchdog
+ 1962              	 .thumb
+ 1963              	 .thumb_func
+ 1965              	DC_CheckWatchdog:
+ 1966              	 
+ 1967              	 
+ 1968              	 
+ 1969 0000 274B     	 ldr r3,.L635
+ 1970 0002 1B78     	 ldrb r3,[r3]
+ 1971 0004 002B     	 cmp r3,#0
+ 1972 0006 49D0     	 beq .L601
+ 1973 0008 264B     	 ldr r3,.L635+4
+ 1974 000a 1B78     	 ldrb r3,[r3]
+ 1975 000c 002B     	 cmp r3,#0
+ 1976 000e 45D0     	 beq .L601
+ 1977 0010 254B     	 ldr r3,.L635+8
+ 1978 0012 264A     	 ldr r2,.L635+12
+ 1979 0014 1988     	 ldrh r1,[r3]
+ 1980 0016 264B     	 ldr r3,.L635+16
+ 1981 0018 21B1     	 cbz r1,.L605
+ 1982 001a 1088     	 ldrh r0,[r2]
+ 1983 001c 8842     	 cmp r0,r1
+ 1984 001e 01D3     	 bcc .L605
+ 1985 0020 0022     	 movs r2,#0
+ 1986 0022 06E0     	 b .L634
+ 1987              	.L605:
+ 1988 0024 1288     	 ldrh r2,[r2]
+ 1989 0026 8A42     	 cmp r2,r1
+ 1990 0028 3EBF     	 ittt cc
+ 1991 002a 2049     	 ldrcc r1,.L635+12
+ 1992 002c 0132     	 addcc r2,r2,#1
+ 1993 002e 0A80     	 strhcc r2,[r1]
+ 1994 0030 0122     	 movs r2,#1
+ 1995              	.L634:
+ 1996 0032 1A70     	 strb r2,[r3]
+ 1997 0034 1A78     	 ldrb r2,[r3]
+ 1998 0036 62B1     	 cbz r2,.L608
+ 1999 0038 1E4A     	 ldr r2,.L635+20
+ 2000 003a 1088     	 ldrh r0,[r2]
+ 2001 003c 48B1     	 cbz r0,.L608
+ 2002 003e 1E49     	 ldr r1,.L635+24
+ 2003 0040 0A88     	 ldrh r2,[r1]
+ 2004 0042 8242     	 cmp r2,r0
+ 2005 0044 2BBF     	 itete cs
+ 2006 0046 1A4A     	 ldrcs r2,.L635+16
+ 2007 0048 0132     	 addcc r2,r2,#1
+ 2008 004a 0021     	 movcs r1,#0
+ 2009 004c 0A80     	 strhcc r2,[r1]
+ 2010 004e 28BF     	 it cs
+ 2011 0050 1170     	 strbcs r1,[r2]
+ 2012              	.L608:
+ 2013 0052 1A78     	 ldrb r2,[r3]
+ 2014 0054 194B     	 ldr r3,.L635+28
+ 2015 0056 F2B1     	 cbz r2,.L610
+ 2016 0058 194A     	 ldr r2,.L635+32
+ 2017 005a 1289     	 ldrh r2,[r2,#8]
+ 2018 005c 1AB1     	 cbz r2,.L611
+ 2019 005e 1949     	 ldr r1,.L635+36
+ 2020 0060 098D     	 ldrh r1,[r1,#40]
+ 2021 0062 9142     	 cmp r1,r2
+ 2022 0064 0BD2     	 bcs .L612
+ 2023              	.L611:
+ 2024 0066 0122     	 movs r2,#1
+ 2025 0068 1A70     	 strb r2,[r3]
+ 2026 006a 174B     	 ldr r3,.L635+40
+ 2027 006c B3F90030 	 ldrsh r3,[r3]
+ 2028 0070 002B     	 cmp r3,#0
+ 2029 0072 13DD     	 ble .L601
+ 2030 0074 154A     	 ldr r2,.L635+44
+ 2031 0076 1388     	 ldrh r3,[r2]
+ 2032 0078 0133     	 adds r3,r3,#1
+ 2033 007a 1380     	 strh r3,[r2]
+ 2034 007c 7047     	 bx lr
+ 2035              	.L612:
+ 2036 007e 1A78     	 ldrb r2,[r3]
+ 2037 0080 62B1     	 cbz r2,.L601
+ 2038 0082 0022     	 movs r2,#0
+ 2039 0084 1A70     	 strb r2,[r3]
+ 2040 0086 104B     	 ldr r3,.L635+40
+ 2041 0088 B3F90030 	 ldrsh r3,[r3]
+ 2042 008c 9342     	 cmp r3,r2
+ 2043 008e 05DD     	 ble .L601
+ 2044 0090 0E4B     	 ldr r3,.L635+44
+ 2045 0092 1A80     	 strh r2,[r3]
+ 2046 0094 7047     	 bx lr
+ 2047              	.L610:
+ 2048 0096 1978     	 ldrb r1,[r3]
+ 2049 0098 01B1     	 cbz r1,.L601
+ 2050 009a 1A70     	 strb r2,[r3]
+ 2051              	.L601:
+ 2052 009c 7047     	 bx lr
+ 2053              	.L636:
+ 2054 009e 00BF     	 .align 2
+ 2055              	.L635:
+ 2056 00a0 00000000 	 .word bDcSyncActive
+ 2057 00a4 00000000 	 .word bEcatInputUpdateRunning
+ 2058 00a8 00000000 	 .word Sync0WdValue
+ 2059 00ac 00000000 	 .word Sync0WdCounter
+ 2060 00b0 00000000 	 .word bDcRunning
+ 2061 00b4 00000000 	 .word Sync1WdValue
+ 2062 00b8 00000000 	 .word Sync1WdCounter
+ 2063 00bc 00000000 	 .word bSmSyncSequenceValid
+ 2064 00c0 00000000 	 .word sErrorSettings
+ 2065 00c4 00000000 	 .word sSyncManOutPar
+ 2066 00c8 00000000 	 .word i16WaitForPllRunningTimeout
+ 2067 00cc 00000000 	 .word i16WaitForPllRunningCnt
+ 2069              	 .section .text.CheckIfEcatError,"ax",%progbits
+ 2070              	 .align 1
+ 2071              	 .global CheckIfEcatError
+ 2072              	 .thumb
+ 2073              	 .thumb_func
+ 2075              	CheckIfEcatError:
+ 2076              	 
+ 2077              	 
+ 2078              	 
+ 2079 0000 124B     	 ldr r3,.L655
+ 2080 0002 1B88     	 ldrh r3,[r3]
+ 2081 0004 73B1     	 cbz r3,.L638
+ 2082 0006 124B     	 ldr r3,.L655+4
+ 2083 0008 1B88     	 ldrh r3,[r3]
+ 2084 000a DB07     	 lsls r3,r3,#31
+ 2085 000c 0AD4     	 bmi .L638
+ 2086 000e 114B     	 ldr r3,.L655+8
+ 2087 0010 1B88     	 ldrh r3,[r3]
+ 2088 0012 3BB1     	 cbz r3,.L638
+ 2089 0014 104B     	 ldr r3,.L655+12
+ 2090 0016 1B78     	 ldrb r3,[r3]
+ 2091 0018 13B1     	 cbz r3,.L639
+ 2092 001a 0420     	 movs r0,#4
+ 2093 001c 1B21     	 movs r1,#27
+ 2094 001e 12E0     	 b .L654
+ 2095              	.L639:
+ 2096 0020 0E4A     	 ldr r2,.L655+16
+ 2097 0022 1370     	 strb r3,[r2]
+ 2098              	.L638:
+ 2099 0024 0E4B     	 ldr r3,.L655+20
+ 2100 0026 1B78     	 ldrb r3,[r3]
+ 2101 0028 7BB1     	 cbz r3,.L637
+ 2102 002a 0B4B     	 ldr r3,.L655+12
+ 2103 002c 1B78     	 ldrb r3,[r3]
+ 2104 002e 63B1     	 cbz r3,.L637
+ 2105 0030 0C4B     	 ldr r3,.L655+24
+ 2106 0032 1B78     	 ldrb r3,[r3]
+ 2107 0034 13B9     	 cbnz r3,.L641
+ 2108 0036 0420     	 movs r0,#4
+ 2109 0038 2C21     	 movs r1,#44
+ 2110 003a 04E0     	 b .L654
+ 2111              	.L641:
+ 2112 003c 0A4B     	 ldr r3,.L655+28
+ 2113 003e 1B78     	 ldrb r3,[r3]
+ 2114 0040 1BB9     	 cbnz r3,.L637
+ 2115 0042 0420     	 movs r0,#4
+ 2116 0044 1A21     	 movs r1,#26
+ 2117              	.L654:
+ 2118 0046 FFF7FEBF 	 b AL_ControlInd
+ 2119              	.L637:
+ 2120 004a 7047     	 bx lr
+ 2121              	.L656:
+ 2122              	 .align 2
+ 2123              	.L655:
+ 2124 004c 00000000 	 .word EcatWdValue
+ 2125 0050 40040154 	 .word 1409352768
+ 2126 0054 00000000 	 .word nPdOutputSize
+ 2127 0058 00000000 	 .word bEcatOutputUpdateRunning
+ 2128 005c 00000000 	 .word bEcatFirstOutputsReceived
+ 2129 0060 00000000 	 .word bDcSyncActive
+ 2130 0064 00000000 	 .word bDcRunning
+ 2131 0068 00000000 	 .word bSmSyncSequenceValid
+ 2133              	 .section .text.ECAT_StateChange,"ax",%progbits
+ 2134              	 .align 1
+ 2135              	 .global ECAT_StateChange
+ 2136              	 .thumb
+ 2137              	 .thumb_func
+ 2139              	ECAT_StateChange:
+ 2140              	 
+ 2141              	 
+ 2142 0000 70B5     	 push {r4,r5,r6,lr}
+ 2143 0002 0C46     	 mov r4,r1
+ 2144 0004 49B1     	 cbz r1,.L658
+ 2145 0006 00F00F03 	 and r3,r0,#15
+ 2146 000a 5A1E     	 subs r2,r3,#1
+ 2147 000c 012A     	 cmp r2,#1
+ 2148 000e 04D9     	 bls .L658
+ 2149 0010 042B     	 cmp r3,#4
+ 2150 0012 02D0     	 beq .L658
+ 2151 0014 082B     	 cmp r3,#8
+ 2152 0016 40F08880 	 bne .L657
+ 2153              	.L658:
+ 2154 001a 444D     	 ldr r5,.L706
+ 2155 001c 2B78     	 ldrb r3,[r5]
+ 2156 001e 43B9     	 cbnz r3,.L660
+ 2157 0020 434B     	 ldr r3,.L706+4
+ 2158 0022 1978     	 ldrb r1,[r3]
+ 2159 0024 8142     	 cmp r1,r0
+ 2160 0026 12D1     	 bne .L661
+ 2161 0028 424A     	 ldr r2,.L706+8
+ 2162 002a 1288     	 ldrh r2,[r2]
+ 2163 002c A242     	 cmp r2,r4
+ 2164 002e 0ED1     	 bne .L661
+ 2165 0030 70BD     	 pop {r4,r5,r6,pc}
+ 2166              	.L660:
+ 2167 0032 414B     	 ldr r3,.L706+12
+ 2168 0034 1B78     	 ldrb r3,[r3]
+ 2169 0036 A3B1     	 cbz r3,.L663
+ 2170 0038 6CB1     	 cbz r4,.L664
+ 2171 003a 3D4B     	 ldr r3,.L706+4
+ 2172 003c 00F00F00 	 and r0,r0,#15
+ 2173 0040 1870     	 strb r0,[r3]
+ 2174 0042 3C4B     	 ldr r3,.L706+8
+ 2175 0044 1C80     	 strh r4,[r3]
+ 2176 0046 3D4B     	 ldr r3,.L706+16
+ 2177 0048 0022     	 movs r2,#0
+ 2178 004a 1A80     	 strh r2,[r3]
+ 2179 004c 70BD     	 pop {r4,r5,r6,pc}
+ 2180              	.L661:
+ 2181 004e 002C     	 cmp r4,#0
+ 2182 0050 54D1     	 bne .L705
+ 2183              	.L679:
+ 2184 0052 0029     	 cmp r1,#0
+ 2185 0054 69D0     	 beq .L657
+ 2186              	.L664:
+ 2187 0056 364A     	 ldr r2,.L706+4
+ 2188 0058 0023     	 movs r3,#0
+ 2189 005a 1370     	 strb r3,[r2]
+ 2190 005c 354A     	 ldr r2,.L706+8
+ 2191 005e 1380     	 strh r3,[r2]
+ 2192 0060 70BD     	 pop {r4,r5,r6,pc}
+ 2193              	.L663:
+ 2194 0062 374E     	 ldr r6,.L706+20
+ 2195 0064 04B3     	 cbz r4,.L665
+ 2196 0066 324B     	 ldr r3,.L706+4
+ 2197 0068 00F00F00 	 and r0,r0,#15
+ 2198 006c 1870     	 strb r0,[r3]
+ 2199 006e 314B     	 ldr r3,.L706+8
+ 2200 0070 1C80     	 strh r4,[r3]
+ 2201 0072 3388     	 ldrh r3,[r6]
+ 2202 0074 242B     	 cmp r3,#36
+ 2203 0076 0FD0     	 beq .L667
+ 2204 0078 07D8     	 bhi .L668
+ 2205 007a 123B     	 subs r3,r3,#18
+ 2206 007c 012B     	 cmp r3,#1
+ 2207 007e 0FD8     	 bhi .L666
+ 2208 0080 FFF7FEFF 	 bl APPL_StopMailboxHandler
+ 2209 0084 FFF7FEFF 	 bl MBX_StopMailboxHandler
+ 2210 0088 0AE0     	 b .L666
+ 2211              	.L668:
+ 2212 008a 482B     	 cmp r3,#72
+ 2213 008c 08D1     	 bne .L666
+ 2214 008e FFF7FEFF 	 bl APPL_StopOutputHandler
+ 2215 0092 FFF7FEFF 	 bl StopOutputHandler
+ 2216 0096 03E0     	 b .L666
+ 2217              	.L667:
+ 2218 0098 FFF7FEFF 	 bl APPL_StopInputHandler
+ 2219 009c FFF7FEFF 	 bl StopInputHandler
+ 2220              	.L666:
+ 2221 00a0 3088     	 ldrh r0,[r6]
+ 2222 00a2 C0F30710 	 ubfx r0,r0,#4,#8
+ 2223 00a6 18E0     	 b .L671
+ 2224              	.L665:
+ 2225 00a8 3388     	 ldrh r3,[r6]
+ 2226 00aa 242B     	 cmp r3,#36
+ 2227 00ac 0BD0     	 beq .L673
+ 2228 00ae 05D8     	 bhi .L674
+ 2229 00b0 123B     	 subs r3,r3,#18
+ 2230 00b2 012B     	 cmp r3,#1
+ 2231 00b4 0ED8     	 bhi .L672
+ 2232 00b6 234B     	 ldr r3,.L706+24
+ 2233 00b8 0122     	 movs r2,#1
+ 2234 00ba 0AE0     	 b .L704
+ 2235              	.L674:
+ 2236 00bc 482B     	 cmp r3,#72
+ 2237 00be 09D1     	 bne .L672
+ 2238 00c0 0122     	 movs r2,#1
+ 2239 00c2 214B     	 ldr r3,.L706+28
+ 2240 00c4 05E0     	 b .L704
+ 2241              	.L673:
+ 2242 00c6 214B     	 ldr r3,.L706+32
+ 2243 00c8 1888     	 ldrh r0,[r3]
+ 2244 00ca FFF7FEFF 	 bl SetALEventMask
+ 2245 00ce 204B     	 ldr r3,.L706+36
+ 2246 00d0 0122     	 movs r2,#1
+ 2247              	.L704:
+ 2248 00d2 1A70     	 strb r2,[r3]
+ 2249              	.L672:
+ 2250 00d4 3078     	 ldrb r0,[r6]
+ 2251 00d6 00F00F00 	 and r0,r0,#15
+ 2252              	.L671:
+ 2253 00da 0023     	 movs r3,#0
+ 2254 00dc 2B70     	 strb r3,[r5]
+ 2255 00de 14B1     	 cbz r4,.L677
+ 2256 00e0 40F01000 	 orr r0,r0,#16
+ 2257 00e4 05E0     	 b .L678
+ 2258              	.L677:
+ 2259 00e6 124B     	 ldr r3,.L706+4
+ 2260 00e8 1A78     	 ldrb r2,[r3]
+ 2261 00ea 12B1     	 cbz r2,.L678
+ 2262 00ec 1C70     	 strb r4,[r3]
+ 2263 00ee 114B     	 ldr r3,.L706+8
+ 2264 00f0 1C80     	 strh r4,[r3]
+ 2265              	.L678:
+ 2266 00f2 2146     	 mov r1,r4
+ 2267 00f4 BDE87040 	 pop {r4,r5,r6,lr}
+ 2268 00f8 FFF7FEBF 	 b SetALStatus
+ 2269              	.L705:
+ 2270 00fc 00F00F02 	 and r2,r0,#15
+ 2271 0100 082A     	 cmp r2,#8
+ 2272 0102 A6D0     	 beq .L679
+ 2273 0104 551E     	 subs r5,r2,#1
+ 2274 0106 012D     	 cmp r5,#1
+ 2275 0108 01D9     	 bls .L680
+ 2276 010a 042A     	 cmp r2,#4
+ 2277 010c A1D1     	 bne .L679
+ 2278              	.L680:
+ 2279 010e 1A70     	 strb r2,[r3]
+ 2280 0110 084B     	 ldr r3,.L706+8
+ 2281 0112 1C80     	 strh r4,[r3]
+ 2282 0114 0F4B     	 ldr r3,.L706+40
+ 2283 0116 1B78     	 ldrb r3,[r3]
+ 2284 0118 03F00F03 	 and r3,r3,#15
+ 2285 011c 082B     	 cmp r3,#8
+ 2286 011e 04D1     	 bne .L657
+ 2287 0120 2146     	 mov r1,r4
+ 2288 0122 BDE87040 	 pop {r4,r5,r6,lr}
+ 2289 0126 FFF7FEBF 	 b AL_ControlInd
+ 2290              	.L657:
+ 2291 012a 70BD     	 pop {r4,r5,r6,pc}
+ 2292              	.L707:
+ 2293              	 .align 2
+ 2294              	.L706:
+ 2295 012c 00000000 	 .word bEcatWaitForAlControlRes
+ 2296 0130 00000000 	 .word u8LocalErrorState
+ 2297 0134 00000000 	 .word u16LocalErrorCode
+ 2298 0138 00000000 	 .word bApplEsmPending
+ 2299 013c 00000000 	 .word EsmTimeoutCounter
+ 2300 0140 00000000 	 .word nEcatStateTrans
+ 2301 0144 00000000 	 .word bMbxRunning
+ 2302 0148 00000000 	 .word bEcatOutputUpdateRunning
+ 2303 014c 00000000 	 .word u16ALEventMask
+ 2304 0150 00000000 	 .word bEcatInputUpdateRunning
+ 2305 0154 00000000 	 .word nAlStatus
+ 2307              	 .section .text.ECAT_Init,"ax",%progbits
+ 2308              	 .align 1
+ 2309              	 .global ECAT_Init
+ 2310              	 .thumb
+ 2311              	 .thumb_func
+ 2313              	ECAT_Init:
+ 2314              	 
+ 2315              	 
+ 2316 0000 38B5     	 push {r3,r4,r5,lr}
+ 2317 0002 284B     	 ldr r3,.L712
+ 2318 0004 284C     	 ldr r4,.L712+4
+ 2319 0006 1B78     	 ldrb r3,[r3]
+ 2320 0008 2370     	 strb r3,[r4]
+ 2321 000a 284B     	 ldr r3,.L712+8
+ 2322 000c 284A     	 ldr r2,.L712+12
+ 2323 000e 1B88     	 ldrh r3,[r3]
+ 2324 0010 9BB2     	 uxth r3,r3
+ 2325 0012 9B02     	 lsls r3,r3,#10
+ 2326 0014 03F6FF73 	 addw r3,r3,#4095
+ 2327 0018 1380     	 strh r3,[r2]
+ 2328 001a FFF7FEFF 	 bl UpdateEEPROMLoadedState
+ 2329 001e 0025     	 movs r5,#0
+ 2330              	.L709:
+ 2331 0020 2378     	 ldrb r3,[r4]
+ 2332 0022 E8B2     	 uxtb r0,r5
+ 2333 0024 8342     	 cmp r3,r0
+ 2334 0026 05F10105 	 add r5,r5,#1
+ 2335 002a 02D9     	 bls .L711
+ 2336 002c FFF7FEFF 	 bl DisableSyncManChannel
+ 2337 0030 F6E7     	 b .L709
+ 2338              	.L711:
+ 2339 0032 FFF7FEFF 	 bl MBX_Init
+ 2340 0036 1F4B     	 ldr r3,.L712+16
+ 2341 0038 0024     	 movs r4,#0
+ 2342 003a 1C70     	 strb r4,[r3]
+ 2343 003c 1E4B     	 ldr r3,.L712+20
+ 2344 003e 1C70     	 strb r4,[r3]
+ 2345 0040 1E4B     	 ldr r3,.L712+24
+ 2346 0042 1C70     	 strb r4,[r3]
+ 2347 0044 1E4B     	 ldr r3,.L712+28
+ 2348 0046 1C70     	 strb r4,[r3]
+ 2349 0048 1E4B     	 ldr r3,.L712+32
+ 2350 004a 1C70     	 strb r4,[r3]
+ 2351 004c 1E4B     	 ldr r3,.L712+36
+ 2352 004e 1C70     	 strb r4,[r3]
+ 2353 0050 1E4B     	 ldr r3,.L712+40
+ 2354 0052 1C80     	 strh r4,[r3]
+ 2355 0054 1E4B     	 ldr r3,.L712+44
+ 2356 0056 1C80     	 strh r4,[r3]
+ 2357 0058 1E4B     	 ldr r3,.L712+48
+ 2358 005a 1C80     	 strh r4,[r3]
+ 2359 005c 1E4B     	 ldr r3,.L712+52
+ 2360 005e 1C80     	 strh r4,[r3]
+ 2361 0060 1E4B     	 ldr r3,.L712+56
+ 2362 0062 1C80     	 strh r4,[r3]
+ 2363 0064 1E4B     	 ldr r3,.L712+60
+ 2364 0066 1C70     	 strb r4,[r3]
+ 2365 0068 1E4B     	 ldr r3,.L712+64
+ 2366 006a 1C70     	 strb r4,[r3]
+ 2367 006c 1E4B     	 ldr r3,.L712+68
+ 2368 006e 1C80     	 strh r4,[r3]
+ 2369 0070 1E4B     	 ldr r3,.L712+72
+ 2370 0072 1C80     	 strh r4,[r3]
+ 2371 0074 1E4B     	 ldr r3,.L712+76
+ 2372 0076 1C80     	 strh r4,[r3]
+ 2373 0078 1E4B     	 ldr r3,.L712+80
+ 2374 007a 1C80     	 strh r4,[r3]
+ 2375 007c 1E4B     	 ldr r3,.L712+84
+ 2376 007e 0120     	 movs r0,#1
+ 2377 0080 2146     	 mov r1,r4
+ 2378 0082 1870     	 strb r0,[r3]
+ 2379 0084 FFF7FEFF 	 bl SetALStatus
+ 2380 0088 1C4B     	 ldr r3,.L712+88
+ 2381 008a 1C80     	 strh r4,[r3]
+ 2382 008c 1C4B     	 ldr r3,.L712+92
+ 2383 008e 1C70     	 strb r4,[r3]
+ 2384 0090 1C4B     	 ldr r3,.L712+96
+ 2385 0092 1C70     	 strb r4,[r3]
+ 2386 0094 FFF7FEFF 	 bl COE_Init
+ 2387 0098 2046     	 mov r0,r4
+ 2388 009a BDE83840 	 pop {r3,r4,r5,lr}
+ 2389 009e FFF7FEBF 	 b ResetALEventMask
+ 2390              	.L713:
+ 2391 00a2 00BF     	 .align 2
+ 2392              	.L712:
+ 2393 00a4 05000154 	 .word 1409351685
+ 2394 00a8 00000000 	 .word nMaxSyncMan
+ 2395 00ac 06000154 	 .word 1409351686
+ 2396 00b0 00000000 	 .word nMaxEscAddress
+ 2397 00b4 00000000 	 .word bApplEsmPending
+ 2398 00b8 00000000 	 .word bEcatWaitForAlControlRes
+ 2399 00bc 00000000 	 .word bEcatFirstOutputsReceived
+ 2400 00c0 00000000 	 .word bEcatOutputUpdateRunning
+ 2401 00c4 00000000 	 .word bEcatInputUpdateRunning
+ 2402 00c8 00000000 	 .word bWdTrigger
+ 2403 00cc 00000000 	 .word EcatWdValue
+ 2404 00d0 00000000 	 .word Sync0WdCounter
+ 2405 00d4 00000000 	 .word Sync0WdValue
+ 2406 00d8 00000000 	 .word Sync1WdCounter
+ 2407 00dc 00000000 	 .word Sync1WdValue
+ 2408 00e0 00000000 	 .word bDcSyncActive
+ 2409 00e4 00000000 	 .word u8LocalErrorState
+ 2410 00e8 00000000 	 .word u16LocalErrorCode
+ 2411 00ec 00000000 	 .word u16ALEventMask
+ 2412 00f0 00000000 	 .word nPdOutputSize
+ 2413 00f4 00000000 	 .word nPdInputSize
+ 2414 00f8 00000000 	 .word nAlStatus
+ 2415 00fc 00000000 	 .word nEcatStateTrans
+ 2416 0100 00000000 	 .word u8EcatErrorLed
+ 2417 0104 00000000 	 .word bEscIntEnabled
+ 2419              	 .section .text.ECAT_Main,"ax",%progbits
+ 2420              	 .align 1
+ 2421              	 .global ECAT_Main
+ 2422              	 .thumb
+ 2423              	 .thumb_func
+ 2425              	ECAT_Main:
+ 2426              	 
+ 2427              	 
+ 2428 0000 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+ 2429 0004 3B4F     	 ldr r7,.L753
+ 2430 0006 FFF7FEFF 	 bl MBX_Main
+ 2431 000a 3C78     	 ldrb r4,[r7]
+ 2432 000c 34B1     	 cbz r4,.L728
+ 2433 000e 3A4B     	 ldr r3,.L753+4
+ 2434 0010 1B78     	 ldrb r3,[r3]
+ 2435 0012 DEB2     	 uxtb r6,r3
+ 2436 0014 394B     	 ldr r3,.L753+8
+ 2437 0016 1C78     	 ldrb r4,[r3]
+ 2438 0018 E4B2     	 uxtb r4,r4
+ 2439 001a 00E0     	 b .L715
+ 2440              	.L728:
+ 2441 001c 0126     	 movs r6,#1
+ 2442              	.L715:
+ 2443 001e 384B     	 ldr r3,.L753+12
+ 2444 0020 D3F82052 	 ldr r5,[r3,#544]
+ 2445 0024 ADB2     	 uxth r5,r5
+ 2446 0026 A906     	 lsls r1,r5,#26
+ 2447 0028 01D5     	 bpl .L716
+ 2448 002a FFF7FEFF 	 bl EEPROM_CommandHandler
+ 2449              	.L716:
+ 2450 002e 15F0010F 	 tst r5,#1
+ 2451 0032 DFF8EC80 	 ldr r8,.L753+44
+ 2452 0036 09D0     	 beq .L717
+ 2453 0038 98F80010 	 ldrb r1,[r8]
+ 2454 003c 31B9     	 cbnz r1,.L717
+ 2455 003e 314B     	 ldr r3,.L753+16
+ 2456 0040 25F01105 	 bic r5,r5,#17
+ 2457 0044 1878     	 ldrb r0,[r3]
+ 2458 0046 ADB2     	 uxth r5,r5
+ 2459 0048 FFF7FEFF 	 bl AL_ControlInd
+ 2460              	.L717:
+ 2461 004c EA06     	 lsls r2,r5,#27
+ 2462 004e 11D5     	 bpl .L718
+ 2463 0050 98F80030 	 ldrb r3,[r8]
+ 2464 0054 73B9     	 cbnz r3,.L718
+ 2465 0056 2C4B     	 ldr r3,.L753+20
+ 2466 0058 1878     	 ldrb r0,[r3]
+ 2467 005a 00F01003 	 and r3,r0,#16
+ 2468 005e 03F0FF01 	 and r1,r3,#255
+ 2469 0062 3BB9     	 cbnz r3,.L718
+ 2470 0064 20F01003 	 bic r3,r0,#16
+ 2471 0068 012B     	 cmp r3,#1
+ 2472 006a 03D0     	 beq .L718
+ 2473 006c 00F00F00 	 and r0,r0,#15
+ 2474 0070 FFF7FEFF 	 bl AL_ControlInd
+ 2475              	.L718:
+ 2476 0074 98F80030 	 ldrb r3,[r8]
+ 2477 0078 0BB1     	 cbz r3,.L719
+ 2478 007a FFF7FEFF 	 bl AL_ControlRes
+ 2479              	.L719:
+ 2480 007e 3B78     	 ldrb r3,[r7]
+ 2481 0080 002B     	 cmp r3,#0
+ 2482 0082 35D0     	 beq .L714
+ 2483 0084 16F00101 	 ands r1,r6,#1
+ 2484 0088 05D1     	 bne .L722
+ 2485 008a 1F4B     	 ldr r3,.L753+20
+ 2486 008c 1878     	 ldrb r0,[r3]
+ 2487 008e 00F00F00 	 and r0,r0,#15
+ 2488 0092 FFF7FEFF 	 bl AL_ControlInd
+ 2489              	.L722:
+ 2490 0096 04F00804 	 and r4,r4,#8
+ 2491 009a 04F0FF03 	 and r3,r4,#255
+ 2492 009e 7CB9     	 cbnz r4,.L723
+ 2493 00a0 1A4A     	 ldr r2,.L753+24
+ 2494 00a2 1278     	 ldrb r2,[r2]
+ 2495 00a4 62B1     	 cbz r2,.L723
+ 2496 00a6 1A4A     	 ldr r2,.L753+28
+ 2497 00a8 1370     	 strb r3,[r2]
+ 2498 00aa 1A4B     	 ldr r3,.L753+32
+ 2499 00ac 1278     	 ldrb r2,[r2]
+ 2500 00ae 1B88     	 ldrh r3,[r3]
+ 2501 00b0 03F1A843 	 add r3,r3,#1409286144
+ 2502 00b4 03F58033 	 add r3,r3,#65536
+ 2503 00b8 D2B2     	 uxtb r2,r2
+ 2504 00ba 1A70     	 strb r2,[r3]
+ 2505 00bc FFF7FEFF 	 bl MBX_MailboxReadInd
+ 2506              	.L723:
+ 2507 00c0 06F00203 	 and r3,r6,#2
+ 2508 00c4 03F0FF04 	 and r4,r3,#255
+ 2509 00c8 134A     	 ldr r2,.L753+36
+ 2510 00ca 13B1     	 cbz r3,.L724
+ 2511 00cc 1378     	 ldrb r3,[r2]
+ 2512 00ce 33B9     	 cbnz r3,.L725
+ 2513 00d0 01E0     	 b .L726
+ 2514              	.L724:
+ 2515 00d2 1378     	 ldrb r3,[r2]
+ 2516 00d4 1BB1     	 cbz r3,.L725
+ 2517              	.L726:
+ 2518 00d6 FFF7FEFF 	 bl MBX_MailboxRepeatReq
+ 2519 00da 104B     	 ldr r3,.L753+40
+ 2520 00dc 1C70     	 strb r4,[r3]
+ 2521              	.L725:
+ 2522 00de 084B     	 ldr r3,.L753+12
+ 2523 00e0 D3F82032 	 ldr r3,[r3,#544]
+ 2524 00e4 DB05     	 lsls r3,r3,#23
+ 2525 00e6 03D5     	 bpl .L714
+ 2526 00e8 BDE8F041 	 pop {r4,r5,r6,r7,r8,lr}
+ 2527 00ec FFF7FEBF 	 b MBX_CheckAndCopyMailbox
+ 2528              	.L714:
+ 2529 00f0 BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 2530              	.L754:
+ 2531              	 .align 2
+ 2532              	.L753:
+ 2533 00f4 00000000 	 .word bMbxRunning
+ 2534 00f8 0E080154 	 .word 1409353742
+ 2535 00fc 0D080154 	 .word 1409353741
+ 2536 0100 00000154 	 .word 1409351680
+ 2537 0104 20010154 	 .word 1409351968
+ 2538 0108 00000000 	 .word nAlStatus
+ 2539 010c 00000000 	 .word bSendMbxIsFull
+ 2540 0110 00000000 	 .word u8dummy
+ 2541 0114 00000000 	 .word u16EscAddrSendMbx
+ 2542 0118 00000000 	 .word bMbxRepeatToggle
+ 2543 011c 0F080154 	 .word 1409353743
+ 2544 0120 00000000 	 .word bEcatWaitForAlControlRes
+ 2546              	 .global EepromLoaded
+ 2547              	 .comm SyncManInfo,8,1
+ 2548              	 .global SMActivate
+ 2549              	 .comm u8dummy,1,1
+ 2550              	 .comm u16ALEventMask,2,2
+ 2551              	 .comm nEscAddrInputData,2,2
+ 2552              	 .comm nEscAddrOutputData,2,2
+ 2553              	 .comm EcatWdValue,2,2
+ 2554              	 .comm nAlStatus,1,1
+ 2555              	 .comm nMaxEscAddress,2,2
+ 2556              	 .comm nMaxSyncMan,1,1
+ 2557              	 .comm nPdOutputSize,2,2
+ 2558              	 .comm nPdInputSize,2,2
+ 2559              	 .comm u8EcatRunLed,1,1
+ 2560              	 .comm u8EcatErrorLed,1,1
+ 2561              	 .comm nEcatStateTrans,2,2
+ 2562              	 .comm bEcatWaitForAlControlRes,1,1
+ 2563              	 .comm bApplEsmPending,1,1
+ 2564              	 .comm u8LocalErrorState,1,1
+ 2565              	 .comm u16LocalErrorCode,2,2
+ 2566              	 .comm b3BufferMode,1,1
+ 2567              	 .comm bEscIntEnabled,1,1
+ 2568              	 .comm b32BitDc,1,1
+ 2569              	 .comm LatchInputSync0Counter,2,2
+ 2570              	 .comm LatchInputSync0Value,2,2
+ 2571              	 .comm Sync1WdValue,2,2
+ 2572              	 .comm Sync1WdCounter,2,2
+ 2573              	 .comm Sync0WdValue,2,2
+ 2574              	 .comm Sync0WdCounter,2,2
+ 2575              	 .comm i16WaitForPllRunningCnt,2,2
+ 2576              	 .comm i16WaitForPllRunningTimeout,2,2
+ 2577              	 .comm bSmSyncSequenceValid,1,1
+ 2578              	 .comm u16SmSync0Value,2,2
+ 2579              	 .comm u16SmSync0Counter,2,2
+ 2580              	 .comm bDcRunning,1,1
+ 2581              	 .comm EsmTimeoutCounter,2,2
+ 2582              	 .comm bDcSyncActive,1,1
+ 2583              	 .comm bWdTrigger,1,1
+ 2584              	 .comm bEcatFirstOutputsReceived,1,1
+ 2585              	 .comm bEcatInputUpdateRunning,1,1
+ 2586              	 .comm bEcatOutputUpdateRunning,1,1
+ 2587              	 .section .bss.EepromLoaded,"aw",%nobits
+ 2588              	 .set .LANCHOR0,.+0
+ 2591              	EepromLoaded:
+ 2592 0000 00       	 .space 1
+ 2593              	 .section .bss.SMActivate,"aw",%nobits
+ 2594              	 .set .LANCHOR1,.+0
+ 2597              	SMActivate:
+ 2598 0000 00       	 .space 1
+ 2599              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ecatslv.c
+    {standard input}:17     .text.ResetALEventMask:00000000 $t
+    {standard input}:22     .text.ResetALEventMask:00000000 ResetALEventMask
+    {standard input}:36     .text.ResetALEventMask:00000018 $d
+    {standard input}:39     .text.SetALEventMask:00000000 $t
+    {standard input}:44     .text.SetALEventMask:00000000 SetALEventMask
+    {standard input}:59     .text.SetALEventMask:00000018 $d
+    {standard input}:62     .text.UpdateEEPROMLoadedState:00000000 $t
+    {standard input}:67     .text.UpdateEEPROMLoadedState:00000000 UpdateEEPROMLoadedState
+    {standard input}:90     .text.UpdateEEPROMLoadedState:0000001c $d
+    {standard input}:94     .text.GetSyncMan:00000000 $t
+    {standard input}:99     .text.GetSyncMan:00000000 GetSyncMan
+    {standard input}:115    .text.GetSyncMan:00000018 $d
+                            *COM*:00000008 SyncManInfo
+    {standard input}:118    .text.DisableSyncManChannel:00000000 $t
+    {standard input}:123    .text.DisableSyncManChannel:00000000 DisableSyncManChannel
+    {standard input}:149    .text.DisableSyncManChannel:0000002c $d
+    {standard input}:152    .text.EnableSyncManChannel:00000000 $t
+    {standard input}:157    .text.EnableSyncManChannel:00000000 EnableSyncManChannel
+    {standard input}:183    .text.EnableSyncManChannel:0000002c $d
+    {standard input}:186    .text.CheckSmSettings:00000000 $t
+    {standard input}:191    .text.CheckSmSettings:00000000 CheckSmSettings
+    {standard input}:378    .text.CheckSmSettings:0000017c $d
+                            *COM*:00000002 nMaxEscAddress
+                            *COM*:00000001 b3BufferMode
+                            *COM*:00000002 nPdInputSize
+                            *COM*:00000001 nAlStatus
+                            *COM*:00000002 nEscAddrInputData
+                            *COM*:00000002 nPdOutputSize
+                            *COM*:00000002 nEscAddrOutputData
+                            *COM*:00000001 bWdTrigger
+                            *COM*:00000001 nMaxSyncMan
+    {standard input}:390    .text.StartInputHandler:00000000 $t
+    {standard input}:395    .text.StartInputHandler:00000000 StartInputHandler
+    {standard input}:684    .text.StartInputHandler:000002b4 $d
+                            *COM*:00000002 u16ALEventMask
+                            *COM*:00000001 bEcatFirstOutputsReceived
+                            *COM*:00000001 bDcSyncActive
+                            *COM*:00000002 LatchInputSync0Value
+                            *COM*:00000001 bEscIntEnabled
+                            *COM*:00000002 LatchInputSync0Counter
+                            *COM*:00000002 u16SmSync0Counter
+                            *COM*:00000002 u16SmSync0Value
+    {standard input}:708    .text.StartInputHandler:00000310 $t
+    {standard input}:901    .text.StartInputHandler:000004a0 $d
+                            *COM*:00000002 EcatWdValue
+                            *COM*:00000002 Sync0WdCounter
+                            *COM*:00000002 Sync0WdValue
+                            *COM*:00000002 Sync1WdCounter
+                            *COM*:00000002 Sync1WdValue
+                            *COM*:00000001 bDcRunning
+                            *COM*:00000001 bSmSyncSequenceValid
+                            *COM*:00000002 i16WaitForPllRunningTimeout
+    {standard input}:917    .text.StartOutputHandler:00000000 $t
+    {standard input}:922    .text.StartOutputHandler:00000000 StartOutputHandler
+    {standard input}:963    .text.StartOutputHandler:00000044 $d
+                            *COM*:00000001 u8LocalErrorState
+                            *COM*:00000002 u16LocalErrorCode
+                            *COM*:00000002 i16WaitForPllRunningCnt
+    {standard input}:972    .text.StopOutputHandler:00000000 $t
+    {standard input}:977    .text.StopOutputHandler:00000000 StopOutputHandler
+    {standard input}:990    .text.StopOutputHandler:0000000c $d
+                            *COM*:00000001 bEcatOutputUpdateRunning
+    {standard input}:994    .text.StopInputHandler:00000000 $t
+    {standard input}:999    .text.StopInputHandler:00000000 StopInputHandler
+    {standard input}:1064   .text.StopInputHandler:00000080 $d
+                            *COM*:00000001 bEcatInputUpdateRunning
+    {standard input}:1087   .text.BackToInitTransition:00000000 $t
+    {standard input}:1092   .text.BackToInitTransition:00000000 BackToInitTransition
+    {standard input}:1103   .text.BackToInitTransition:00000008 $d
+    {standard input}:1106   .text.SetALStatus:00000000 $t
+    {standard input}:1111   .text.SetALStatus:00000000 SetALStatus
+    {standard input}:1165   .text.SetALStatus:0000005c $d
+                            *COM*:00000001 u8EcatErrorLed
+    {standard input}:1172   .text.AL_ControlInd:00000000 $t
+    {standard input}:1177   .text.AL_ControlInd:00000000 AL_ControlInd
+    {standard input}:1494   .text.AL_ControlInd:000002f4 $d
+                            *COM*:00000002 EsmTimeoutCounter
+                            *COM*:00000001 bApplEsmPending
+                            *COM*:00000002 nEcatStateTrans
+                            *COM*:00000001 bEcatWaitForAlControlRes
+    {standard input}:1508   .text.AL_ControlInd:00000328 $t
+    {standard input}:1675   .text.AL_ControlInd:00000474 $d
+    {standard input}:1683   .text.AL_ControlRes:00000000 $t
+    {standard input}:1688   .text.AL_ControlRes:00000000 AL_ControlRes
+    {standard input}:1941   .text.AL_ControlRes:000001f4 $d
+    {standard input}:1960   .text.DC_CheckWatchdog:00000000 $t
+    {standard input}:1965   .text.DC_CheckWatchdog:00000000 DC_CheckWatchdog
+    {standard input}:2056   .text.DC_CheckWatchdog:000000a0 $d
+    {standard input}:2070   .text.CheckIfEcatError:00000000 $t
+    {standard input}:2075   .text.CheckIfEcatError:00000000 CheckIfEcatError
+    {standard input}:2124   .text.CheckIfEcatError:0000004c $d
+    {standard input}:2134   .text.ECAT_StateChange:00000000 $t
+    {standard input}:2139   .text.ECAT_StateChange:00000000 ECAT_StateChange
+    {standard input}:2295   .text.ECAT_StateChange:0000012c $d
+    {standard input}:2308   .text.ECAT_Init:00000000 $t
+    {standard input}:2313   .text.ECAT_Init:00000000 ECAT_Init
+    {standard input}:2393   .text.ECAT_Init:000000a4 $d
+    {standard input}:2420   .text.ECAT_Main:00000000 $t
+    {standard input}:2425   .text.ECAT_Main:00000000 ECAT_Main
+    {standard input}:2533   .text.ECAT_Main:000000f4 $d
+                            *COM*:00000001 u8dummy
+    {standard input}:2591   .bss.EepromLoaded:00000000 EepromLoaded
+    {standard input}:2597   .bss.SMActivate:00000000 SMActivate
+                            *COM*:00000001 u8EcatRunLed
+                            *COM*:00000001 b32BitDc
+    {standard input}:2592   .bss.EepromLoaded:00000000 $d
+    {standard input}:2598   .bss.SMActivate:00000000 $d
+
+UNDEFINED SYMBOLS
+DISABLE_ESC_INT
+ENABLE_ESC_INT
+sSyncManOutPar
+sSyncManInPar
+u16EscAddrSendMbx
+u16SendMbxSize
+u16EscAddrReceiveMbx
+u16ReceiveMbxSize
+bSyncSetByUser
+PDO_InputMapping
+sCycleDiag
+APPL_GenerateMapping
+APPL_StartInputHandler
+APPL_StartOutputHandler
+APPL_StopOutputHandler
+APPL_StopInputHandler
+MBX_StopMailboxHandler
+APPL_StopMailboxHandler
+APPL_AckErrorInd
+MBX_StartMailboxHandler
+APPL_StartMailboxHandler
+bMbxRunning
+sErrorSettings
+MBX_Init
+COE_Init
+MBX_Main
+EEPROM_CommandHandler
+MBX_MailboxReadInd
+MBX_MailboxRepeatReq
+MBX_CheckAndCopyMailbox
+bSendMbxIsFull
+bMbxRepeatToggle

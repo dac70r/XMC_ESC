@@ -1,0 +1,1419 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "coeappl.c"
+  16              	 .section .text.COE_SyncTimeStamp,"ax",%progbits
+  17              	 .align 1
+  18              	 .global COE_SyncTimeStamp
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	COE_SyncTimeStamp:
+  23              	 
+  24              	 
+  25 0000 0F4B     	 ldr r3,.L6
+  26 0002 1049     	 ldr r1,.L6+4
+  27 0004 1A78     	 ldrb r2,[r3]
+  28 0006 104B     	 ldr r3,.L6+8
+  29 0008 30B5     	 push {r4,r5,lr}
+  30 000a 8AB1     	 cbz r2,.L2
+  31 000c 0F48     	 ldr r0,.L6+12
+  32 000e 1C68     	 ldr r4,[r3]
+  33 0010 0568     	 ldr r5,[r0]
+  34 0012 D1E90023 	 ldrd r2,[r1]
+  35 0016 0022     	 movs r2,#0
+  36 0018 2243     	 orrs r2,r2,r4
+  37 001a AC42     	 cmp r4,r5
+  38 001c C1E90023 	 strd r2,[r1]
+  39 0020 04D2     	 bcs .L3
+  40 0022 0032     	 adds r2,r2,#0
+  41 0024 43F10103 	 adc r3,r3,#1
+  42 0028 C1E90023 	 strd r2,[r1]
+  43              	.L3:
+  44 002c 0460     	 str r4,[r0]
+  45 002e 03E0     	 b .L4
+  46              	.L2:
+  47 0030 D3E90023 	 ldrd r2,[r3]
+  48 0034 C1E90023 	 strd r2,[r1]
+  49              	.L4:
+  50 0038 054B     	 ldr r3,.L6+16
+  51 003a 0022     	 movs r2,#0
+  52 003c 1A60     	 str r2,[r3]
+  53 003e 30BD     	 pop {r4,r5,pc}
+  54              	.L7:
+  55              	 .align 2
+  56              	.L6:
+  57 0040 00000000 	 .word b32BitDc
+  58 0044 00000000 	 .word .LANCHOR0
+  59 0048 10090154 	 .word 1409354000
+  60 004c 00000000 	 .word u32LastDc32Value
+  61 0050 00000000 	 .word u32CheckForDcOverrunCnt
+  63              	 .section .text.Read0x10F8,"ax",%progbits
+  64              	 .align 1
+  65              	 .global Read0x10F8
+  66              	 .thumb
+  67              	 .thumb_func
+  69              	Read0x10F8:
+  70              	 
+  71              	 
+  72 0000 70B5     	 push {r4,r5,r6,lr}
+  73 0002 1E46     	 mov r6,r3
+  74 0004 41F2F803 	 movw r3,#4344
+  75 0008 9842     	 cmp r0,r3
+  76 000a 0C46     	 mov r4,r1
+  77 000c 1546     	 mov r5,r2
+  78 000e 0ED1     	 bne .L10
+  79 0010 9DF81030 	 ldrb r3,[sp,#16]
+  80 0014 6BB9     	 cbnz r3,.L11
+  81 0016 71B9     	 cbnz r1,.L12
+  82 0018 082A     	 cmp r2,#8
+  83 001a 0ED8     	 bhi .L13
+  84 001c FFF7FEFF 	 bl COE_SyncTimeStamp
+  85 0020 3046     	 mov r0,r6
+  86 0022 0749     	 ldr r1,.L14
+  87 0024 2A46     	 mov r2,r5
+  88 0026 FFF7FEFF 	 bl memcpy
+  89 002a 2046     	 mov r0,r4
+  90 002c 70BD     	 pop {r4,r5,r6,pc}
+  91              	.L10:
+  92 002e 0B20     	 movs r0,#11
+  93 0030 70BD     	 pop {r4,r5,r6,pc}
+  94              	.L11:
+  95 0032 0520     	 movs r0,#5
+  96 0034 70BD     	 pop {r4,r5,r6,pc}
+  97              	.L12:
+  98 0036 1120     	 movs r0,#17
+  99 0038 70BD     	 pop {r4,r5,r6,pc}
+ 100              	.L13:
+ 101 003a 0F20     	 movs r0,#15
+ 102 003c 70BD     	 pop {r4,r5,r6,pc}
+ 103              	.L15:
+ 104 003e 00BF     	 .align 2
+ 105              	.L14:
+ 106 0040 00000000 	 .word .LANCHOR0
+ 108              	 .section .text.COE_GetObjectDictionary,"ax",%progbits
+ 109              	 .align 1
+ 110              	 .global COE_GetObjectDictionary
+ 111              	 .thumb
+ 112              	 .thumb_func
+ 114              	COE_GetObjectDictionary:
+ 115              	 
+ 116              	 
+ 117              	 
+ 118 0000 014B     	 ldr r3,.L17
+ 119 0002 1868     	 ldr r0,[r3]
+ 120 0004 7047     	 bx lr
+ 121              	.L18:
+ 122 0006 00BF     	 .align 2
+ 123              	.L17:
+ 124 0008 00000000 	 .word .LANCHOR1
+ 126              	 .section .text.COE_UpdateSyncErrorStatus,"ax",%progbits
+ 127              	 .align 1
+ 128              	 .global COE_UpdateSyncErrorStatus
+ 129              	 .thumb
+ 130              	 .thumb_func
+ 132              	COE_UpdateSyncErrorStatus:
+ 133              	 
+ 134              	 
+ 135 0000 0F4B     	 ldr r3,.L26
+ 136 0002 5A8D     	 ldrh r2,[r3,#42]
+ 137 0004 10B5     	 push {r4,lr}
+ 138 0006 1946     	 mov r1,r3
+ 139 0008 22B9     	 cbnz r2,.L20
+ 140 000a 0E48     	 ldr r0,.L26+4
+ 141 000c 1C8D     	 ldrh r4,[r3,#40]
+ 142 000e 0089     	 ldrh r0,[r0,#8]
+ 143 0010 8442     	 cmp r4,r0
+ 144 0012 03D9     	 bls .L21
+ 145              	.L20:
+ 146 0014 0123     	 movs r3,#1
+ 147 0016 81F84030 	 strb r3,[r1,#64]
+ 148 001a 01E0     	 b .L22
+ 149              	.L21:
+ 150 001c 83F84020 	 strb r2,[r3,#64]
+ 151              	.L22:
+ 152 0020 094B     	 ldr r3,.L26+8
+ 153 0022 5A8D     	 ldrh r2,[r3,#42]
+ 154 0024 1946     	 mov r1,r3
+ 155 0026 22B9     	 cbnz r2,.L23
+ 156 0028 0648     	 ldr r0,.L26+4
+ 157 002a 1C8D     	 ldrh r4,[r3,#40]
+ 158 002c 0089     	 ldrh r0,[r0,#8]
+ 159 002e 8442     	 cmp r4,r0
+ 160 0030 03D9     	 bls .L24
+ 161              	.L23:
+ 162 0032 0123     	 movs r3,#1
+ 163 0034 81F84030 	 strb r3,[r1,#64]
+ 164 0038 10BD     	 pop {r4,pc}
+ 165              	.L24:
+ 166 003a 83F84020 	 strb r2,[r3,#64]
+ 167 003e 10BD     	 pop {r4,pc}
+ 168              	.L27:
+ 169              	 .align 2
+ 170              	.L26:
+ 171 0040 00000000 	 .word sSyncManOutPar
+ 172 0044 00000000 	 .word sErrorSettings
+ 173 0048 00000000 	 .word sSyncManInPar
+ 175              	 .section .text.COE_AddObjectToDic,"ax",%progbits
+ 176              	 .align 1
+ 177              	 .global COE_AddObjectToDic
+ 178              	 .thumb
+ 179              	 .thumb_func
+ 181              	COE_AddObjectToDic:
+ 182              	 
+ 183              	 
+ 184 0000 10B5     	 push {r4,lr}
+ 185 0002 28B3     	 cbz r0,.L36
+ 186 0004 1349     	 ldr r1,.L42
+ 187 0006 0B68     	 ldr r3,[r1]
+ 188 0008 1BB9     	 cbnz r3,.L30
+ 189 000a 0860     	 str r0,[r1]
+ 190 000c 4360     	 str r3,[r0,#4]
+ 191 000e 0360     	 str r3,[r0]
+ 192 0010 15E0     	 b .L41
+ 193              	.L30:
+ 194 0012 0489     	 ldrh r4,[r0,#8]
+ 195 0014 1A89     	 ldrh r2,[r3,#8]
+ 196 0016 A242     	 cmp r2,r4
+ 197 0018 06D9     	 bls .L34
+ 198 001a 0022     	 movs r2,#0
+ 199 001c 80E80C00 	 stmia r0,{r2,r3}
+ 200 0020 1860     	 str r0,[r3]
+ 201 0022 0860     	 str r0,[r1]
+ 202 0024 0BE0     	 b .L41
+ 203              	.L37:
+ 204 0026 1346     	 mov r3,r2
+ 205              	.L34:
+ 206 0028 1A89     	 ldrh r2,[r3,#8]
+ 207 002a A242     	 cmp r2,r4
+ 208 002c 10D0     	 beq .L36
+ 209 002e 08D9     	 bls .L32
+ 210 0030 1A68     	 ldr r2,[r3]
+ 211 0032 80E80C00 	 stmia r0,{r2,r3}
+ 212 0036 1A68     	 ldr r2,[r3]
+ 213 0038 02B1     	 cbz r2,.L33
+ 214 003a 5060     	 str r0,[r2,#4]
+ 215              	.L33:
+ 216 003c 1860     	 str r0,[r3]
+ 217              	.L41:
+ 218 003e 0020     	 movs r0,#0
+ 219 0040 10BD     	 pop {r4,pc}
+ 220              	.L32:
+ 221 0042 5A68     	 ldr r2,[r3,#4]
+ 222 0044 002A     	 cmp r2,#0
+ 223 0046 EED1     	 bne .L37
+ 224 0048 5860     	 str r0,[r3,#4]
+ 225 004a 0360     	 str r3,[r0]
+ 226 004c 4260     	 str r2,[r0,#4]
+ 227 004e F6E7     	 b .L41
+ 228              	.L36:
+ 229 0050 0120     	 movs r0,#1
+ 230 0052 10BD     	 pop {r4,pc}
+ 231              	.L43:
+ 232              	 .align 2
+ 233              	.L42:
+ 234 0054 00000000 	 .word .LANCHOR1
+ 236              	 .section .text.COE_RemoveDicEntry,"ax",%progbits
+ 237              	 .align 1
+ 238              	 .global COE_RemoveDicEntry
+ 239              	 .thumb
+ 240              	 .thumb_func
+ 242              	COE_RemoveDicEntry:
+ 243              	 
+ 244              	 
+ 245 0000 0C4A     	 ldr r2,.L59
+ 246 0002 30B5     	 push {r4,r5,lr}
+ 247 0004 1568     	 ldr r5,[r2]
+ 248 0006 2B46     	 mov r3,r5
+ 249              	.L45:
+ 250 0008 93B1     	 cbz r3,.L44
+ 251 000a 1989     	 ldrh r1,[r3,#8]
+ 252 000c 8142     	 cmp r1,r0
+ 253 000e 0DD1     	 bne .L46
+ 254 0010 1C68     	 ldr r4,[r3]
+ 255 0012 5968     	 ldr r1,[r3,#4]
+ 256 0014 04B1     	 cbz r4,.L47
+ 257 0016 6160     	 str r1,[r4,#4]
+ 258              	.L47:
+ 259 0018 01B1     	 cbz r1,.L48
+ 260 001a 0C60     	 str r4,[r1]
+ 261              	.L48:
+ 262 001c 0024     	 movs r4,#0
+ 263 001e 1C60     	 str r4,[r3]
+ 264 0020 5C60     	 str r4,[r3,#4]
+ 265 0022 2B89     	 ldrh r3,[r5,#8]
+ 266 0024 8342     	 cmp r3,r0
+ 267 0026 03D1     	 bne .L44
+ 268 0028 1160     	 str r1,[r2]
+ 269 002a 30BD     	 pop {r4,r5,pc}
+ 270              	.L46:
+ 271 002c 5B68     	 ldr r3,[r3,#4]
+ 272 002e EBE7     	 b .L45
+ 273              	.L44:
+ 274 0030 30BD     	 pop {r4,r5,pc}
+ 275              	.L60:
+ 276 0032 00BF     	 .align 2
+ 277              	.L59:
+ 278 0034 00000000 	 .word .LANCHOR1
+ 280              	 .section .text.COE_ClearObjDictionary,"ax",%progbits
+ 281              	 .align 1
+ 282              	 .global COE_ClearObjDictionary
+ 283              	 .thumb
+ 284              	 .thumb_func
+ 286              	COE_ClearObjDictionary:
+ 287              	 
+ 288              	 
+ 289 0000 38B5     	 push {r3,r4,r5,lr}
+ 290 0002 054B     	 ldr r3,.L65
+ 291 0004 1C68     	 ldr r4,[r3]
+ 292 0006 1D46     	 mov r5,r3
+ 293              	.L62:
+ 294 0008 24B1     	 cbz r4,.L64
+ 295 000a 2089     	 ldrh r0,[r4,#8]
+ 296 000c 6468     	 ldr r4,[r4,#4]
+ 297 000e FFF7FEFF 	 bl COE_RemoveDicEntry
+ 298 0012 F9E7     	 b .L62
+ 299              	.L64:
+ 300 0014 2C60     	 str r4,[r5]
+ 301 0016 38BD     	 pop {r3,r4,r5,pc}
+ 302              	.L66:
+ 303              	 .align 2
+ 304              	.L65:
+ 305 0018 00000000 	 .word .LANCHOR1
+ 307              	 .section .text.AddObjectsToObjDictionary,"ax",%progbits
+ 308              	 .align 1
+ 309              	 .global AddObjectsToObjDictionary
+ 310              	 .thumb
+ 311              	 .thumb_func
+ 313              	AddObjectsToObjDictionary:
+ 314              	 
+ 315              	 
+ 316 0000 10B5     	 push {r4,lr}
+ 317 0002 0446     	 mov r4,r0
+ 318              	.L68:
+ 319 0004 2289     	 ldrh r2,[r4,#8]
+ 320 0006 4FF6FF73 	 movw r3,#65535
+ 321 000a 9A42     	 cmp r2,r3
+ 322 000c 05D0     	 beq .L71
+ 323 000e 2046     	 mov r0,r4
+ 324 0010 FFF7FEFF 	 bl COE_AddObjectToDic
+ 325 0014 10B9     	 cbnz r0,.L69
+ 326 0016 2834     	 adds r4,r4,#40
+ 327 0018 F4E7     	 b .L68
+ 328              	.L71:
+ 329 001a 0020     	 movs r0,#0
+ 330              	.L69:
+ 331 001c 10BD     	 pop {r4,pc}
+ 333              	 .section .text.COE_ObjDictionaryInit,"ax",%progbits
+ 334              	 .align 1
+ 335              	 .global COE_ObjDictionaryInit
+ 336              	 .thumb
+ 337              	 .thumb_func
+ 339              	COE_ObjDictionaryInit:
+ 340              	 
+ 341              	 
+ 342 0000 08B5     	 push {r3,lr}
+ 343 0002 064B     	 ldr r3,.L74
+ 344 0004 0648     	 ldr r0,.L74+4
+ 345 0006 0022     	 movs r2,#0
+ 346 0008 1A60     	 str r2,[r3]
+ 347 000a FFF7FEFF 	 bl AddObjectsToObjDictionary
+ 348 000e 20B9     	 cbnz r0,.L73
+ 349 0010 0448     	 ldr r0,.L74+8
+ 350 0012 BDE80840 	 pop {r3,lr}
+ 351 0016 FFF7FEBF 	 b AddObjectsToObjDictionary
+ 352              	.L73:
+ 353 001a 08BD     	 pop {r3,pc}
+ 354              	.L75:
+ 355              	 .align 2
+ 356              	.L74:
+ 357 001c 00000000 	 .word .LANCHOR1
+ 358 0020 00000000 	 .word .LANCHOR2
+ 359 0024 00000000 	 .word .LANCHOR3
+ 361              	 .section .text.COE_ObjInit,"ax",%progbits
+ 362              	 .align 1
+ 363              	 .global COE_ObjInit
+ 364              	 .thumb
+ 365              	 .thumb_func
+ 367              	COE_ObjInit:
+ 368              	 
+ 369              	 
+ 370 0000 254B     	 ldr r3,.L83
+ 371 0002 264A     	 ldr r2,.L83+4
+ 372 0004 10B5     	 push {r4,lr}
+ 373 0006 2020     	 movs r0,#32
+ 374 0008 0024     	 movs r4,#0
+ 375 000a 44F21F01 	 movw r1,#16415
+ 376 000e 1880     	 strh r0,[r3]
+ 377 0010 5C80     	 strh r4,[r3,#2]
+ 378 0012 5C60     	 str r4,[r3,#4]
+ 379 0014 9981     	 strh r1,[r3,#12]
+ 380 0016 1A61     	 str r2,[r3,#16]
+ 381 0018 5C61     	 str r4,[r3,#20]
+ 382 001a 9C83     	 strh r4,[r3,#28]
+ 383 001c 1C62     	 str r4,[r3,#32]
+ 384 001e 1C85     	 strh r4,[r3,#40]
+ 385 0020 5C85     	 strh r4,[r3,#42]
+ 386 0022 83F84040 	 strb r4,[r3,#64]
+ 387 0026 1E4B     	 ldr r3,.L83+8
+ 388 0028 1880     	 strh r0,[r3]
+ 389 002a 5C80     	 strh r4,[r3,#2]
+ 390 002c 5C60     	 str r4,[r3,#4]
+ 391 002e 9981     	 strh r1,[r3,#12]
+ 392 0030 1A61     	 str r2,[r3,#16]
+ 393 0032 5C61     	 str r4,[r3,#20]
+ 394 0034 9C83     	 strh r4,[r3,#28]
+ 395 0036 1C62     	 str r4,[r3,#32]
+ 396 0038 1C85     	 strh r4,[r3,#40]
+ 397 003a 5C85     	 strh r4,[r3,#42]
+ 398 003c 83F84040 	 strb r4,[r3,#64]
+ 399 0040 184B     	 ldr r3,.L83+12
+ 400 0042 1C70     	 strb r4,[r3]
+ 401 0044 FFF7FEFF 	 bl COE_ObjDictionaryInit
+ 402 0048 08B1     	 cbz r0,.L77
+ 403 004a FFF7FEFF 	 bl COE_ClearObjDictionary
+ 404              	.L77:
+ 405 004e 164B     	 ldr r3,.L83+16
+ 406 0050 1C70     	 strb r4,[r3]
+ 407 0052 164B     	 ldr r3,.L83+20
+ 408 0054 1C70     	 strb r4,[r3]
+ 409 0056 164B     	 ldr r3,.L83+24
+ 410 0058 1C80     	 strh r4,[r3]
+ 411 005a 164B     	 ldr r3,.L83+28
+ 412 005c 1C70     	 strb r4,[r3]
+ 413 005e 164B     	 ldr r3,.L83+32
+ 414 0060 1C60     	 str r4,[r3]
+ 415 0062 164B     	 ldr r3,.L83+36
+ 416 0064 1C60     	 str r4,[r3]
+ 417 0066 164B     	 ldr r3,.L83+40
+ 418 0068 1C60     	 str r4,[r3]
+ 419 006a 164B     	 ldr r3,.L83+44
+ 420 006c 1C60     	 str r4,[r3]
+ 421 006e 164B     	 ldr r3,.L83+48
+ 422 0070 1B68     	 ldr r3,[r3]
+ 423 0072 13F0080F 	 tst r3,#8
+ 424 0076 154B     	 ldr r3,.L83+52
+ 425 0078 01BF     	 itttt eq
+ 426 007a 0122     	 moveq r2,#1
+ 427 007c 1A70     	 strbeq r2,[r3]
+ 428 007e 144B     	 ldreq r3,.L83+56
+ 429 0080 1A68     	 ldreq r2,[r3]
+ 430 0082 0DBF     	 iteet eq
+ 431 0084 134B     	 ldreq r3,.L83+60
+ 432 0086 0022     	 movne r2,#0
+ 433 0088 1A70     	 strbne r2,[r3]
+ 434 008a 1A60     	 streq r2,[r3]
+ 435 008c 124B     	 ldr r3,.L83+64
+ 436 008e 4FF47A62 	 mov r2,#4000
+ 437 0092 1A60     	 str r2,[r3]
+ 438 0094 10BD     	 pop {r4,pc}
+ 439              	.L84:
+ 440 0096 00BF     	 .align 2
+ 441              	.L83:
+ 442 0098 00000000 	 .word sSyncManOutPar
+ 443 009c 48E80100 	 .word 125000
+ 444 00a0 00000000 	 .word sSyncManInPar
+ 445 00a4 00000000 	 .word bSyncSetByUser
+ 446 00a8 00000000 	 .word u8PendingSdo
+ 447 00ac 00000000 	 .word bStoreCompleteAccess
+ 448 00b0 00000000 	 .word u16StoreIndex
+ 449 00b4 00000000 	 .word u8StoreSubindex
+ 450 00b8 00000000 	 .word u32StoreDataSize
+ 451 00bc 00000000 	 .word pStoreData
+ 452 00c0 00000000 	 .word pSdoPendFunc
+ 453 00c4 00000000 	 .word pSdoSegData
+ 454 00c8 08000154 	 .word 1409351688
+ 455 00cc 00000000 	 .word b32BitDc
+ 456 00d0 10090154 	 .word 1409354000
+ 457 00d4 00000000 	 .word u32LastDc32Value
+ 458 00d8 00000000 	 .word u32CheckForDcOverrunCnt
+ 460              	 .section .text.COE_Main,"ax",%progbits
+ 461              	 .align 1
+ 462              	 .global COE_Main
+ 463              	 .thumb
+ 464              	 .thumb_func
+ 466              	COE_Main:
+ 467              	 
+ 468              	 
+ 469 0000 2DE9F04F 	 push {r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 470 0004 214E     	 ldr r6,.L101
+ 471 0006 D6F800C0 	 ldr ip,[r6]
+ 472 000a 85B0     	 sub sp,sp,#20
+ 473 000c BCF1000F 	 cmp ip,#0
+ 474 0010 38D0     	 beq .L85
+ 475 0012 1F4F     	 ldr r7,.L101+4
+ 476 0014 DFF88C90 	 ldr r9,.L101+24
+ 477 0018 DFF88C80 	 ldr r8,.L101+28
+ 478 001c 1D4D     	 ldr r5,.L101+8
+ 479 001e 1E4C     	 ldr r4,.L101+12
+ 480 0020 3B78     	 ldrb r3,[r7]
+ 481 0022 0093     	 str r3,[sp]
+ 482 0024 B9F80000 	 ldrh r0,[r9]
+ 483 0028 98F80010 	 ldrb r1,[r8]
+ 484 002c 2A68     	 ldr r2,[r5]
+ 485 002e 2368     	 ldr r3,[r4]
+ 486 0030 E047     	 blx ip
+ 487 0032 FF28     	 cmp r0,#255
+ 488 0034 8346     	 mov fp,r0
+ 489 0036 25D0     	 beq .L85
+ 490 0038 184A     	 ldr r2,.L101+16
+ 491 003a 1378     	 ldrb r3,[r2]
+ 492 003c 013B     	 subs r3,r3,#1
+ 493 003e 9246     	 mov r10,r2
+ 494 0040 032B     	 cmp r3,#3
+ 495 0042 14D8     	 bhi .L89
+ 496 0044 DFE803F0 	 tbb [pc,r3]
+ 497              	.L91:
+ 498 0048 0B       	 .byte (.L90-.L91)/2
+ 499 0049 02       	 .byte (.L92-.L91)/2
+ 500 004a 0F       	 .byte (.L93-.L91)/2
+ 501 004b 0F       	 .byte (.L93-.L91)/2
+ 502              	 .p2align 1
+ 503              	.L92:
+ 504 004c 144B     	 ldr r3,.L101+20
+ 505 004e 0393     	 str r3,[sp,#12]
+ 506 0050 1868     	 ldr r0,[r3]
+ 507 0052 20B1     	 cbz r0,.L90
+ 508 0054 FFF7FEFF 	 bl free
+ 509 0058 039B     	 ldr r3,[sp,#12]
+ 510 005a 0022     	 movs r2,#0
+ 511 005c 1A60     	 str r2,[r3]
+ 512              	.L90:
+ 513 005e 0021     	 movs r1,#0
+ 514 0060 5846     	 mov r0,fp
+ 515 0062 0A46     	 mov r2,r1
+ 516 0064 01E0     	 b .L100
+ 517              	.L93:
+ 518 0066 2968     	 ldr r1,[r5]
+ 519 0068 2268     	 ldr r2,[r4]
+ 520              	.L100:
+ 521 006a FFF7FEFF 	 bl SDOS_SdoRes
+ 522              	.L89:
+ 523 006e 0023     	 movs r3,#0
+ 524 0070 8AF80030 	 strb r3,[r10]
+ 525 0074 A9F80030 	 strh r3,[r9]
+ 526 0078 88F80030 	 strb r3,[r8]
+ 527 007c 2B60     	 str r3,[r5]
+ 528 007e 2360     	 str r3,[r4]
+ 529 0080 3B70     	 strb r3,[r7]
+ 530 0082 3360     	 str r3,[r6]
+ 531              	.L85:
+ 532 0084 05B0     	 add sp,sp,#20
+ 533              	 
+ 534 0086 BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 535              	.L102:
+ 536 008a 00BF     	 .align 2
+ 537              	.L101:
+ 538 008c 00000000 	 .word pSdoPendFunc
+ 539 0090 00000000 	 .word bStoreCompleteAccess
+ 540 0094 00000000 	 .word u32StoreDataSize
+ 541 0098 00000000 	 .word pStoreData
+ 542 009c 00000000 	 .word u8PendingSdo
+ 543 00a0 00000000 	 .word pSdoSegData
+ 544 00a4 00000000 	 .word u16StoreIndex
+ 545 00a8 00000000 	 .word u8StoreSubindex
+ 547              	 .global GenObjDic
+ 548              	 .global ObjDicList
+ 549              	 .global aName0x1C33
+ 550              	 .global aName0x1C32
+ 551              	 .global asEntryDesc0x1C3x
+ 552              	 .global aName0x1C00
+ 553              	 .global asEntryDesc0x1C00
+ 554              	 .global sSyncmanagertype
+ 555              	 .global aName0x10F8
+ 556              	 .global sEntryDesc0x10F8
+ 557              	 .global aName0x10F1
+ 558              	 .global asEntryDesc0x10F1
+ 559              	 .global aName0x1018
+ 560              	 .global asEntryDesc0x1018
+ 561              	 .global sIdentity
+ 562              	 .global aName0x100A
+ 563              	 .global sEntryDesc0x100A
+ 564              	 .global acSoftwareversion
+ 565              	 .global aName0x1009
+ 566              	 .global sEntryDesc0x1009
+ 567              	 .global acHardwareversion
+ 568              	 .global aName0x1008
+ 569              	 .global sEntryDesc0x1008
+ 570              	 .global acDevicename
+ 571              	 .global aName0x1001
+ 572              	 .global sEntryDesc0x1001
+ 573              	 .global u16ErrorRegister
+ 574              	 .global aName0x1000
+ 575              	 .global sEntryDesc0x1000
+ 576              	 .global u32Devicetype
+ 577              	 .global ApplicationObjDic
+ 578              	 .global aName0x7000
+ 579              	 .global asEntryDesc0x7000
+ 580              	 .global aName0x6000
+ 581              	 .global asEntryDesc0x6000
+ 582              	 .global aName0x1C13
+ 583              	 .global asEntryDesc0x1C13
+ 584              	 .global aName0x1C12
+ 585              	 .global asEntryDesc0x1C12
+ 586              	 .global aName0x1A00
+ 587              	 .global asEntryDesc0x1A00
+ 588              	 .global aName0x1600
+ 589              	 .global asEntryDesc0x1600
+ 590              	 .comm u32CheckForDcOverrunCnt,4,4
+ 591              	 .comm u32LastDc32Value,4,4
+ 592              	 .global u64Timestamp
+ 593              	 .section .rodata.aName0x6000,"a",%progbits
+ 596              	aName0x6000:
+ 597 0000 494E5F47 	 .ascii "IN_GENERIC\000IN_GEN_INT1\000\377\000"
+ 597      454E4552 
+ 597      49430049 
+ 597      4E5F4745 
+ 597      4E5F494E 
+ 598              	 .section .rodata.sEntryDesc0x1009,"a",%progbits
+ 599              	 .align 1
+ 602              	sEntryDesc0x1009:
+ 603 0000 0900     	 .short 9
+ 604 0002 1800     	 .short 24
+ 605 0004 0700     	 .short 7
+ 606              	 .section .rodata.aName0x1000,"a",%progbits
+ 609              	aName0x1000:
+ 610 0000 44657669 	 .ascii "Device type\000"
+ 610      63652074 
+ 610      79706500 
+ 611              	 .section .rodata.aName0x1001,"a",%progbits
+ 614              	aName0x1001:
+ 615 0000 4572726F 	 .ascii "Error register\000"
+ 615      72207265 
+ 615      67697374 
+ 615      657200
+ 616              	 .section .data.acHardwareversion,"aw",%progbits
+ 619              	acHardwareversion:
+ 620 0000 312E3000 	 .ascii "1.0\000"
+ 621              	 .section .rodata.aName0x1A00,"a",%progbits
+ 624              	aName0x1A00:
+ 625 0000 494E5F47 	 .ascii "IN_GENERIC process data mapping\000SubIndex 001\000"
+ 625      454E4552 
+ 625      49432070 
+ 625      726F6365 
+ 625      73732064 
+ 626 002d FF00     	 .ascii "\377\000"
+ 627              	 .section .data.sSyncmanagertype,"aw",%progbits
+ 628              	 .align 1
+ 631              	sSyncmanagertype:
+ 632 0000 0400     	 .short 4
+ 633 0002 0102     	 .short 513
+ 634 0004 0304     	 .short 1027
+ 635              	 .section .data.acDevicename,"aw",%progbits
+ 638              	acDevicename:
+ 639 0000 584D435F 	 .ascii "XMC_ESC\000"
+ 639      45534300 
+ 640              	 .section .rodata.aName0x1008,"a",%progbits
+ 643              	aName0x1008:
+ 644 0000 44657669 	 .ascii "Device name\000"
+ 644      6365206E 
+ 644      616D6500 
+ 645              	 .section .data.sIdentity,"aw",%progbits
+ 646              	 .align 2
+ 649              	sIdentity:
+ 650 0000 0400     	 .short 4
+ 651 0002 0000     	 .space 2
+ 652 0004 63980000 	 .word 39011
+ 653 0008 00000000 	 .word 0
+ 654 000c 00000000 	 .word 0
+ 655 0010 00000000 	 .word 0
+ 656              	 .section .data.GenObjDic,"aw",%progbits
+ 657              	 .align 2
+ 658              	 .set .LANCHOR2,.+0
+ 661              	GenObjDic:
+ 662 0000 00000000 	 .word 0
+ 663 0004 00000000 	 .word 0
+ 664 0008 0010     	 .short 4096
+ 665 000a 0700     	 .short 7
+ 666 000c 0007     	 .short 1792
+ 667 000e 0000     	 .space 2
+ 668 0010 00000000 	 .word sEntryDesc0x1000
+ 669 0014 00000000 	 .word aName0x1000
+ 670 0018 00000000 	 .word u32Devicetype
+ 671 001c 00000000 	 .word 0
+ 672 0020 00000000 	 .word 0
+ 673 0024 0000     	 .short 0
+ 674 0026 0000     	 .space 2
+ 675 0028 00000000 	 .word 0
+ 676 002c 00000000 	 .word 0
+ 677 0030 0110     	 .short 4097
+ 678 0032 0500     	 .short 5
+ 679 0034 0007     	 .short 1792
+ 680 0036 0000     	 .space 2
+ 681 0038 00000000 	 .word sEntryDesc0x1001
+ 682 003c 00000000 	 .word aName0x1001
+ 683 0040 00000000 	 .word u16ErrorRegister
+ 684 0044 00000000 	 .word 0
+ 685 0048 00000000 	 .word 0
+ 686 004c 0000     	 .short 0
+ 687 004e 0000     	 .space 2
+ 688 0050 00000000 	 .word 0
+ 689 0054 00000000 	 .word 0
+ 690 0058 0810     	 .short 4104
+ 691 005a 0900     	 .short 9
+ 692 005c 0007     	 .short 1792
+ 693 005e 0000     	 .space 2
+ 694 0060 00000000 	 .word sEntryDesc0x1008
+ 695 0064 00000000 	 .word aName0x1008
+ 696 0068 00000000 	 .word acDevicename
+ 697 006c 00000000 	 .word 0
+ 698 0070 00000000 	 .word 0
+ 699 0074 0000     	 .short 0
+ 700 0076 0000     	 .space 2
+ 701 0078 00000000 	 .word 0
+ 702 007c 00000000 	 .word 0
+ 703 0080 0910     	 .short 4105
+ 704 0082 0900     	 .short 9
+ 705 0084 0007     	 .short 1792
+ 706 0086 0000     	 .space 2
+ 707 0088 00000000 	 .word sEntryDesc0x1009
+ 708 008c 00000000 	 .word aName0x1009
+ 709 0090 00000000 	 .word acHardwareversion
+ 710 0094 00000000 	 .word 0
+ 711 0098 00000000 	 .word 0
+ 712 009c 0000     	 .short 0
+ 713 009e 0000     	 .space 2
+ 714 00a0 00000000 	 .word 0
+ 715 00a4 00000000 	 .word 0
+ 716 00a8 0A10     	 .short 4106
+ 717 00aa 0900     	 .short 9
+ 718 00ac 0007     	 .short 1792
+ 719 00ae 0000     	 .space 2
+ 720 00b0 00000000 	 .word sEntryDesc0x100A
+ 721 00b4 00000000 	 .word aName0x100A
+ 722 00b8 00000000 	 .word acSoftwareversion
+ 723 00bc 00000000 	 .word 0
+ 724 00c0 00000000 	 .word 0
+ 725 00c4 0000     	 .short 0
+ 726 00c6 0000     	 .space 2
+ 727 00c8 00000000 	 .word 0
+ 728 00cc 00000000 	 .word 0
+ 729 00d0 1810     	 .short 4120
+ 730 00d2 2300     	 .short 35
+ 731 00d4 0409     	 .short 2308
+ 732 00d6 0000     	 .space 2
+ 733 00d8 00000000 	 .word asEntryDesc0x1018
+ 734 00dc 00000000 	 .word aName0x1018
+ 735 00e0 00000000 	 .word sIdentity
+ 736 00e4 00000000 	 .word 0
+ 737 00e8 00000000 	 .word 0
+ 738 00ec 0000     	 .short 0
+ 739 00ee 0000     	 .space 2
+ 740 00f0 00000000 	 .word 0
+ 741 00f4 00000000 	 .word 0
+ 742 00f8 F110     	 .short 4337
+ 743 00fa 2A00     	 .short 42
+ 744 00fc 0209     	 .short 2306
+ 745 00fe 0000     	 .space 2
+ 746 0100 00000000 	 .word asEntryDesc0x10F1
+ 747 0104 00000000 	 .word aName0x10F1
+ 748 0108 00000000 	 .word sErrorSettings
+ 749 010c 00000000 	 .word 0
+ 750 0110 00000000 	 .word 0
+ 751 0114 0000     	 .short 0
+ 752 0116 0000     	 .space 2
+ 753 0118 00000000 	 .word 0
+ 754 011c 00000000 	 .word 0
+ 755 0120 F810     	 .short 4344
+ 756 0122 1B00     	 .short 27
+ 757 0124 0007     	 .short 1792
+ 758 0126 0000     	 .space 2
+ 759 0128 00000000 	 .word sEntryDesc0x10F8
+ 760 012c 00000000 	 .word aName0x10F8
+ 761 0130 00000000 	 .word u64Timestamp
+ 762 0134 00000000 	 .word Read0x10F8
+ 763 0138 00000000 	 .word 0
+ 764 013c 0000     	 .short 0
+ 765 013e 0000     	 .space 2
+ 766 0140 00000000 	 .word 0
+ 767 0144 00000000 	 .word 0
+ 768 0148 001C     	 .short 7168
+ 769 014a 0500     	 .short 5
+ 770 014c 0408     	 .short 2052
+ 771 014e 0000     	 .space 2
+ 772 0150 00000000 	 .word asEntryDesc0x1C00
+ 773 0154 00000000 	 .word aName0x1C00
+ 774 0158 00000000 	 .word sSyncmanagertype
+ 775 015c 00000000 	 .word 0
+ 776 0160 00000000 	 .word 0
+ 777 0164 0000     	 .short 0
+ 778 0166 0000     	 .space 2
+ 779 0168 00000000 	 .word 0
+ 780 016c 00000000 	 .word 0
+ 781 0170 321C     	 .short 7218
+ 782 0172 2900     	 .short 41
+ 783 0174 2009     	 .short 2336
+ 784 0176 0000     	 .space 2
+ 785 0178 00000000 	 .word asEntryDesc0x1C3x
+ 786 017c 00000000 	 .word aName0x1C32
+ 787 0180 00000000 	 .word sSyncManOutPar
+ 788 0184 00000000 	 .word 0
+ 789 0188 00000000 	 .word 0
+ 790 018c 0000     	 .short 0
+ 791 018e 0000     	 .space 2
+ 792 0190 00000000 	 .word 0
+ 793 0194 00000000 	 .word 0
+ 794 0198 331C     	 .short 7219
+ 795 019a 2900     	 .short 41
+ 796 019c 2009     	 .short 2336
+ 797 019e 0000     	 .space 2
+ 798 01a0 00000000 	 .word asEntryDesc0x1C3x
+ 799 01a4 00000000 	 .word aName0x1C33
+ 800 01a8 00000000 	 .word sSyncManInPar
+ 801 01ac 00000000 	 .word 0
+ 802 01b0 00000000 	 .word 0
+ 803 01b4 0000     	 .short 0
+ 804 01b6 0000     	 .space 2
+ 805 01b8 00000000 	 .word 0
+ 806 01bc 00000000 	 .word 0
+ 807 01c0 FFFF     	 .short -1
+ 808 01c2 0000     	 .short 0
+ 809 01c4 0000     	 .short 0
+ 810 01c6 0000     	 .space 2
+ 811 01c8 00000000 	 .word 0
+ 812 01cc 00000000 	 .word 0
+ 813 01d0 00000000 	 .word 0
+ 814 01d4 00000000 	 .word 0
+ 815 01d8 00000000 	 .word 0
+ 816 01dc 0000     	 .short 0
+ 817 01de 0000     	 .space 2
+ 818              	 .section .rodata.asEntryDesc0x10F1,"a",%progbits
+ 819              	 .align 1
+ 822              	asEntryDesc0x10F1:
+ 823 0000 0500     	 .short 5
+ 824 0002 0800     	 .short 8
+ 825 0004 0700     	 .short 7
+ 826 0006 0700     	 .short 7
+ 827 0008 2000     	 .short 32
+ 828 000a 0700     	 .short 7
+ 829 000c 0600     	 .short 6
+ 830 000e 1000     	 .short 16
+ 831 0010 3F00     	 .short 63
+ 832              	 .section .rodata.aName0x1C00,"a",%progbits
+ 835              	aName0x1C00:
+ 836 0000 53796E63 	 .ascii "Sync manager type\000"
+ 836      206D616E 
+ 836      61676572 
+ 836      20747970 
+ 836      6500
+ 837              	 .section .rodata.aName0x1018,"a",%progbits
+ 840              	aName0x1018:
+ 841 0000 4964656E 	 .ascii "Identity Object\000Vendor ID\000Product Code\000Rev"
+ 841      74697479 
+ 841      204F626A 
+ 841      65637400 
+ 841      56656E64 
+ 842 002a 6973696F 	 .ascii "ision Number\000Serial Number\000\377\000"
+ 842      6E204E75 
+ 842      6D626572 
+ 842      00536572 
+ 842      69616C20 
+ 843              	 .section .rodata.asEntryDesc0x1018,"a",%progbits
+ 844              	 .align 1
+ 847              	asEntryDesc0x1018:
+ 848 0000 0500     	 .short 5
+ 849 0002 0800     	 .short 8
+ 850 0004 0700     	 .short 7
+ 851 0006 0700     	 .short 7
+ 852 0008 2000     	 .short 32
+ 853 000a 0700     	 .short 7
+ 854 000c 0700     	 .short 7
+ 855 000e 2000     	 .short 32
+ 856 0010 0700     	 .short 7
+ 857 0012 0700     	 .short 7
+ 858 0014 2000     	 .short 32
+ 859 0016 0700     	 .short 7
+ 860 0018 0700     	 .short 7
+ 861 001a 2000     	 .short 32
+ 862 001c 0700     	 .short 7
+ 863              	 .section .bss.u64Timestamp,"aw",%nobits
+ 864              	 .align 3
+ 865              	 .set .LANCHOR0,.+0
+ 868              	u64Timestamp:
+ 869 0000 00000000 	 .space 8
+ 869      00000000 
+ 870              	 .section .rodata.aName0x100A,"a",%progbits
+ 873              	aName0x100A:
+ 874 0000 4D616E75 	 .ascii "Manufacturer Software version\000"
+ 874      66616374 
+ 874      75726572 
+ 874      20536F66 
+ 874      74776172 
+ 875              	 .section .rodata.aName0x10F8,"a",%progbits
+ 878              	aName0x10F8:
+ 879 0000 54696D65 	 .ascii "Timestamp Object\000\377\000"
+ 879      7374616D 
+ 879      70204F62 
+ 879      6A656374 
+ 879      00FF00
+ 880              	 .section .data.acSoftwareversion,"aw",%progbits
+ 883              	acSoftwareversion:
+ 884 0000 352E3133 	 .ascii "5.13\000"
+ 884      00
+ 885              	 .section .bss.ObjDicList,"aw",%nobits
+ 886              	 .align 2
+ 887              	 .set .LANCHOR1,.+0
+ 890              	ObjDicList:
+ 891 0000 00000000 	 .space 4
+ 892              	 .section .rodata.aName0x1C13,"a",%progbits
+ 895              	aName0x1C13:
+ 896 0000 53796E63 	 .ascii "SyncManager 3 assignment\000\377\000"
+ 896      4D616E61 
+ 896      67657220 
+ 896      33206173 
+ 896      7369676E 
+ 897              	 .section .rodata.sEntryDesc0x1001,"a",%progbits
+ 898              	 .align 1
+ 901              	sEntryDesc0x1001:
+ 902 0000 0500     	 .short 5
+ 903 0002 0800     	 .short 8
+ 904 0004 0700     	 .short 7
+ 905              	 .section .rodata.asEntryDesc0x7000,"a",%progbits
+ 906              	 .align 1
+ 909              	asEntryDesc0x7000:
+ 910 0000 0500     	 .short 5
+ 911 0002 0800     	 .short 8
+ 912 0004 0700     	 .short 7
+ 913 0006 0600     	 .short 6
+ 914 0008 1000     	 .short 16
+ 915 000a 3F00     	 .short 63
+ 916              	 .section .rodata.sEntryDesc0x100A,"a",%progbits
+ 917              	 .align 1
+ 920              	sEntryDesc0x100A:
+ 921 0000 0900     	 .short 9
+ 922 0002 2000     	 .short 32
+ 923 0004 0700     	 .short 7
+ 924              	 .section .rodata.sEntryDesc0x10F8,"a",%progbits
+ 925              	 .align 1
+ 928              	sEntryDesc0x10F8:
+ 929 0000 1B00     	 .short 27
+ 930 0002 4000     	 .short 64
+ 931 0004 BF00     	 .short 191
+ 932              	 .section .rodata.aName0x1C12,"a",%progbits
+ 935              	aName0x1C12:
+ 936 0000 53796E63 	 .ascii "SyncManager 2 assignment\000\377\000"
+ 936      4D616E61 
+ 936      67657220 
+ 936      32206173 
+ 936      7369676E 
+ 937              	 .section .data.u32Devicetype,"aw",%progbits
+ 938              	 .align 2
+ 941              	u32Devicetype:
+ 942 0000 89130000 	 .word 5001
+ 943              	 .section .rodata.asEntryDesc0x1A00,"a",%progbits
+ 944              	 .align 1
+ 947              	asEntryDesc0x1A00:
+ 948 0000 0500     	 .short 5
+ 949 0002 0800     	 .short 8
+ 950 0004 0700     	 .short 7
+ 951 0006 0700     	 .short 7
+ 952 0008 2000     	 .short 32
+ 953 000a 0700     	 .short 7
+ 954              	 .section .rodata.aName0x7000,"a",%progbits
+ 957              	aName0x7000:
+ 958 0000 4F55545F 	 .ascii "OUT_GENERIC\000OUT_GEN_UINT1\000\377\000"
+ 958      47454E45 
+ 958      52494300 
+ 958      4F55545F 
+ 958      47454E5F 
+ 959              	 .section .rodata.asEntryDesc0x1600,"a",%progbits
+ 960              	 .align 1
+ 963              	asEntryDesc0x1600:
+ 964 0000 0500     	 .short 5
+ 965 0002 0800     	 .short 8
+ 966 0004 0700     	 .short 7
+ 967 0006 0700     	 .short 7
+ 968 0008 2000     	 .short 32
+ 969 000a 0700     	 .short 7
+ 970              	 .section .rodata.aName0x1C32,"a",%progbits
+ 973              	aName0x1C32:
+ 974 0000 534D206F 	 .ascii "SM output parameter\000Synchronization Type\000Cycl"
+ 974      75747075 
+ 974      74207061 
+ 974      72616D65 
+ 974      74657200 
+ 975 002d 65205469 	 .ascii "e Time\000\000Synchronization Types supported\000Mi"
+ 975      6D650000 
+ 975      53796E63 
+ 975      68726F6E 
+ 975      697A6174 
+ 976 0057 6E696D75 	 .ascii "nimum Cycle Time\000Calc and Copy Time\000\000Get C"
+ 976      6D204379 
+ 976      636C6520 
+ 976      54696D65 
+ 976      0043616C 
+ 977 0081 79636C65 	 .ascii "ycle Time\000Delay Time\000Sync0 Cycle Time\000SM-E"
+ 977      2054696D 
+ 977      65004465 
+ 977      6C617920 
+ 977      54696D65 
+ 978 00ab 76656E74 	 .ascii "vent Missed\000Cycle Time Too Small\000Shift Time T"
+ 978      204D6973 
+ 978      73656400 
+ 978      4379636C 
+ 978      65205469 
+ 979 00d8 6F6F2053 	 .ascii "oo Short Counter\000\000\000\000\000\000\000\000\000"
+ 979      686F7274 
+ 979      20436F75 
+ 979      6E746572 
+ 979      00000000 
+ 980 00f1 00000000 	 .ascii "\000\000\000\000\000\000\000\000\000\000Sync Error\000"
+ 980      00000000 
+ 980      00005379 
+ 980      6E632045 
+ 980      72726F72 
+ 981 0106 FF00     	 .ascii "\377\000"
+ 982              	 .section .rodata.aName0x1C33,"a",%progbits
+ 985              	aName0x1C33:
+ 986 0000 534D2069 	 .ascii "SM input parameter\000Synchronization Type\000Cycle"
+ 986      6E707574 
+ 986      20706172 
+ 986      616D6574 
+ 986      65720053 
+ 987 002d 2054696D 	 .ascii " Time\000\000Synchronization Types supported\000Min"
+ 987      65000053 
+ 987      796E6368 
+ 987      726F6E69 
+ 987      7A617469 
+ 988 0057 696D756D 	 .ascii "imum Cycle Time\000Calc and Copy Time\000\000Get Cy"
+ 988      20437963 
+ 988      6C652054 
+ 988      696D6500 
+ 988      43616C63 
+ 989 0081 636C6520 	 .ascii "cle Time\000Delay Time\000Sync0 Cycle Time\000SM-Ev"
+ 989      54696D65 
+ 989      0044656C 
+ 989      61792054 
+ 989      696D6500 
+ 990 00ab 656E7420 	 .ascii "ent Missed\000Cycle Time Too Small\000Shift Time To"
+ 990      4D697373 
+ 990      65640043 
+ 990      79636C65 
+ 990      2054696D 
+ 991 00d8 6F205368 	 .ascii "o Short Counter\000\000\000\000\000\000\000\000\000"
+ 991      6F727420 
+ 991      436F756E 
+ 991      74657200 
+ 991      00000000 
+ 992 00f0 00000000 	 .ascii "\000\000\000\000\000\000\000\000\000\000Sync Error\000"
+ 992      00000000 
+ 992      00005379 
+ 992      6E632045 
+ 992      72726F72 
+ 993 0105 FF00     	 .ascii "\377\000"
+ 994              	 .section .rodata.sEntryDesc0x1008,"a",%progbits
+ 995              	 .align 1
+ 998              	sEntryDesc0x1008:
+ 999 0000 0900     	 .short 9
+ 1000 0002 3800     	 .short 56
+ 1001 0004 0700     	 .short 7
+ 1002              	 .section .rodata.asEntryDesc0x1C12,"a",%progbits
+ 1003              	 .align 1
+ 1006              	asEntryDesc0x1C12:
+ 1007 0000 0500     	 .short 5
+ 1008 0002 0800     	 .short 8
+ 1009 0004 0700     	 .short 7
+ 1010 0006 0600     	 .short 6
+ 1011 0008 1000     	 .short 16
+ 1012 000a 0700     	 .short 7
+ 1013              	 .section .rodata.aName0x1600,"a",%progbits
+ 1016              	aName0x1600:
+ 1017 0000 4F55545F 	 .ascii "OUT_GENERIC process data mapping\000SubIndex 001\000"
+ 1017      47454E45 
+ 1017      52494320 
+ 1017      70726F63 
+ 1017      65737320 
+ 1018 002e FF00     	 .ascii "\377\000"
+ 1019              	 .section .rodata.aName0x10F1,"a",%progbits
+ 1022              	aName0x10F1:
+ 1023 0000 4572726F 	 .ascii "Error Settings\000Local Error Reaction\000Sync Erro"
+ 1023      72205365 
+ 1023      7474696E 
+ 1023      6773004C 
+ 1023      6F63616C 
+ 1024 002d 7220436F 	 .ascii "r Counter Limit\000\377\000"
+ 1024      756E7465 
+ 1024      72204C69 
+ 1024      6D697400 
+ 1024      FF00
+ 1025              	 .section .rodata.asEntryDesc0x1C3x,"a",%progbits
+ 1026              	 .align 1
+ 1029              	asEntryDesc0x1C3x:
+ 1030 0000 0500     	 .short 5
+ 1031 0002 0800     	 .short 8
+ 1032 0004 0700     	 .short 7
+ 1033 0006 0600     	 .short 6
+ 1034 0008 1000     	 .short 16
+ 1035 000a 0F00     	 .short 15
+ 1036 000c 0700     	 .short 7
+ 1037 000e 2000     	 .short 32
+ 1038 0010 0700     	 .short 7
+ 1039 0012 0000     	 .short 0
+ 1040 0014 2000     	 .short 32
+ 1041 0016 0000     	 .short 0
+ 1042 0018 0600     	 .short 6
+ 1043 001a 1000     	 .short 16
+ 1044 001c 0700     	 .short 7
+ 1045 001e 0700     	 .short 7
+ 1046 0020 2000     	 .short 32
+ 1047 0022 0700     	 .short 7
+ 1048 0024 0700     	 .short 7
+ 1049 0026 2000     	 .short 32
+ 1050 0028 0700     	 .short 7
+ 1051 002a 0000     	 .short 0
+ 1052 002c 2000     	 .short 32
+ 1053 002e 0000     	 .short 0
+ 1054 0030 0600     	 .short 6
+ 1055 0032 1000     	 .short 16
+ 1056 0034 3F00     	 .short 63
+ 1057 0036 0700     	 .short 7
+ 1058 0038 2000     	 .short 32
+ 1059 003a 0700     	 .short 7
+ 1060 003c 0700     	 .short 7
+ 1061 003e 2000     	 .short 32
+ 1062 0040 3F00     	 .short 63
+ 1063 0042 0600     	 .short 6
+ 1064 0044 1000     	 .short 16
+ 1065 0046 0700     	 .short 7
+ 1066 0048 0600     	 .short 6
+ 1067 004a 1000     	 .short 16
+ 1068 004c 0700     	 .short 7
+ 1069 004e 0600     	 .short 6
+ 1070 0050 1000     	 .short 16
+ 1071 0052 0700     	 .short 7
+ 1072 0054 0000     	 .short 0
+ 1073 0056 1000     	 .short 16
+ 1074 0058 0000     	 .short 0
+ 1075 005a 0000     	 .short 0
+ 1076 005c 2000     	 .short 32
+ 1077 005e 0000     	 .short 0
+ 1078 0060 0000     	 .short 0
+ 1079 0062 2000     	 .short 32
+ 1080 0064 0000     	 .short 0
+ 1081 0066 0000     	 .short 0
+ 1082 0068 2000     	 .short 32
+ 1083 006a 0000     	 .short 0
+ 1084 006c 0000     	 .short 0
+ 1085 006e 2000     	 .short 32
+ 1086 0070 0000     	 .short 0
+ 1087 0072 0000     	 .short 0
+ 1088 0074 0000     	 .short 0
+ 1089 0076 0000     	 .short 0
+ 1090 0078 0000     	 .short 0
+ 1091 007a 0000     	 .short 0
+ 1092 007c 0000     	 .short 0
+ 1093 007e 0000     	 .short 0
+ 1094 0080 0000     	 .short 0
+ 1095 0082 0000     	 .short 0
+ 1096 0084 0000     	 .short 0
+ 1097 0086 0000     	 .short 0
+ 1098 0088 0000     	 .short 0
+ 1099 008a 0000     	 .short 0
+ 1100 008c 0000     	 .short 0
+ 1101 008e 0000     	 .short 0
+ 1102 0090 0000     	 .short 0
+ 1103 0092 0000     	 .short 0
+ 1104 0094 0000     	 .short 0
+ 1105 0096 0000     	 .short 0
+ 1106 0098 0000     	 .short 0
+ 1107 009a 0000     	 .short 0
+ 1108 009c 0000     	 .short 0
+ 1109 009e 0000     	 .short 0
+ 1110 00a0 0000     	 .short 0
+ 1111 00a2 0000     	 .short 0
+ 1112 00a4 0000     	 .short 0
+ 1113 00a6 0000     	 .short 0
+ 1114 00a8 0000     	 .short 0
+ 1115 00aa 0000     	 .short 0
+ 1116 00ac 0000     	 .short 0
+ 1117 00ae 0000     	 .short 0
+ 1118 00b0 0000     	 .short 0
+ 1119 00b2 0000     	 .short 0
+ 1120 00b4 0000     	 .short 0
+ 1121 00b6 0000     	 .short 0
+ 1122 00b8 0000     	 .short 0
+ 1123 00ba 0000     	 .short 0
+ 1124 00bc 0000     	 .short 0
+ 1125 00be 0000     	 .short 0
+ 1126 00c0 0100     	 .short 1
+ 1127 00c2 0100     	 .short 1
+ 1128 00c4 0700     	 .short 7
+ 1129              	 .section .rodata.asEntryDesc0x6000,"a",%progbits
+ 1130              	 .align 1
+ 1133              	asEntryDesc0x6000:
+ 1134 0000 0500     	 .short 5
+ 1135 0002 0800     	 .short 8
+ 1136 0004 0700     	 .short 7
+ 1137 0006 0600     	 .short 6
+ 1138 0008 1000     	 .short 16
+ 1139 000a 0700     	 .short 7
+ 1140              	 .section .rodata.sEntryDesc0x1000,"a",%progbits
+ 1141              	 .align 1
+ 1144              	sEntryDesc0x1000:
+ 1145 0000 0700     	 .short 7
+ 1146 0002 2000     	 .short 32
+ 1147 0004 0700     	 .short 7
+ 1148              	 .section .rodata.asEntryDesc0x1C00,"a",%progbits
+ 1149              	 .align 1
+ 1152              	asEntryDesc0x1C00:
+ 1153 0000 0500     	 .short 5
+ 1154 0002 0800     	 .short 8
+ 1155 0004 0700     	 .short 7
+ 1156 0006 0500     	 .short 5
+ 1157 0008 0800     	 .short 8
+ 1158 000a 0700     	 .short 7
+ 1159              	 .section .bss.u16ErrorRegister,"aw",%nobits
+ 1160              	 .align 1
+ 1163              	u16ErrorRegister:
+ 1164 0000 0000     	 .space 2
+ 1165              	 .section .data.ApplicationObjDic,"aw",%progbits
+ 1166              	 .align 2
+ 1167              	 .set .LANCHOR3,.+0
+ 1170              	ApplicationObjDic:
+ 1171 0000 00000000 	 .word 0
+ 1172 0004 00000000 	 .word 0
+ 1173 0008 0016     	 .short 5632
+ 1174 000a 2100     	 .short 33
+ 1175 000c 0109     	 .short 2305
+ 1176 000e 0000     	 .space 2
+ 1177 0010 00000000 	 .word asEntryDesc0x1600
+ 1178 0014 00000000 	 .word aName0x1600
+ 1179 0018 00000000 	 .word OUT_GENERICProcessDataMapping0x1600
+ 1180 001c 00000000 	 .word 0
+ 1181 0020 00000000 	 .word 0
+ 1182 0024 0000     	 .short 0
+ 1183 0026 0000     	 .space 2
+ 1184 0028 00000000 	 .word 0
+ 1185 002c 00000000 	 .word 0
+ 1186 0030 001A     	 .short 6656
+ 1187 0032 2100     	 .short 33
+ 1188 0034 0109     	 .short 2305
+ 1189 0036 0000     	 .space 2
+ 1190 0038 00000000 	 .word asEntryDesc0x1A00
+ 1191 003c 00000000 	 .word aName0x1A00
+ 1192 0040 00000000 	 .word IN_GENERICProcessDataMapping0x1A00
+ 1193 0044 00000000 	 .word 0
+ 1194 0048 00000000 	 .word 0
+ 1195 004c 0000     	 .short 0
+ 1196 004e 0000     	 .space 2
+ 1197 0050 00000000 	 .word 0
+ 1198 0054 00000000 	 .word 0
+ 1199 0058 121C     	 .short 7186
+ 1200 005a 0600     	 .short 6
+ 1201 005c 0108     	 .short 2049
+ 1202 005e 0000     	 .space 2
+ 1203 0060 00000000 	 .word asEntryDesc0x1C12
+ 1204 0064 00000000 	 .word aName0x1C12
+ 1205 0068 00000000 	 .word sRxPDOassign
+ 1206 006c 00000000 	 .word 0
+ 1207 0070 00000000 	 .word 0
+ 1208 0074 0000     	 .short 0
+ 1209 0076 0000     	 .space 2
+ 1210 0078 00000000 	 .word 0
+ 1211 007c 00000000 	 .word 0
+ 1212 0080 131C     	 .short 7187
+ 1213 0082 0600     	 .short 6
+ 1214 0084 0108     	 .short 2049
+ 1215 0086 0000     	 .space 2
+ 1216 0088 00000000 	 .word asEntryDesc0x1C13
+ 1217 008c 00000000 	 .word aName0x1C13
+ 1218 0090 00000000 	 .word sTxPDOassign
+ 1219 0094 00000000 	 .word 0
+ 1220 0098 00000000 	 .word 0
+ 1221 009c 0000     	 .short 0
+ 1222 009e 0000     	 .space 2
+ 1223 00a0 00000000 	 .word 0
+ 1224 00a4 00000000 	 .word 0
+ 1225 00a8 0060     	 .short 24576
+ 1226 00aa 2A00     	 .short 42
+ 1227 00ac 0109     	 .short 2305
+ 1228 00ae 0000     	 .space 2
+ 1229 00b0 00000000 	 .word asEntryDesc0x6000
+ 1230 00b4 00000000 	 .word aName0x6000
+ 1231 00b8 00000000 	 .word IN_GENERIC0x6000
+ 1232 00bc 00000000 	 .word 0
+ 1233 00c0 00000000 	 .word 0
+ 1234 00c4 0000     	 .short 0
+ 1235 00c6 0000     	 .space 2
+ 1236 00c8 00000000 	 .word 0
+ 1237 00cc 00000000 	 .word 0
+ 1238 00d0 0070     	 .short 28672
+ 1239 00d2 2A00     	 .short 42
+ 1240 00d4 0109     	 .short 2305
+ 1241 00d6 0000     	 .space 2
+ 1242 00d8 00000000 	 .word asEntryDesc0x7000
+ 1243 00dc 00000000 	 .word aName0x7000
+ 1244 00e0 00000000 	 .word OUT_GENERIC0x7000
+ 1245 00e4 00000000 	 .word 0
+ 1246 00e8 00000000 	 .word 0
+ 1247 00ec 0000     	 .short 0
+ 1248 00ee 0000     	 .space 2
+ 1249 00f0 00000000 	 .word 0
+ 1250 00f4 00000000 	 .word 0
+ 1251 00f8 FFFF     	 .short -1
+ 1252 00fa 0000     	 .short 0
+ 1253 00fc 0000     	 .short 0
+ 1254 00fe 0000     	 .space 2
+ 1255 0100 00000000 	 .word 0
+ 1256 0104 00000000 	 .word 0
+ 1257 0108 00000000 	 .word 0
+ 1258 010c 00000000 	 .word 0
+ 1259 0110 00000000 	 .space 8
+ 1259      00000000 
+ 1260              	 .section .rodata.asEntryDesc0x1C13,"a",%progbits
+ 1261              	 .align 1
+ 1264              	asEntryDesc0x1C13:
+ 1265 0000 0500     	 .short 5
+ 1266 0002 0800     	 .short 8
+ 1267 0004 0700     	 .short 7
+ 1268 0006 0600     	 .short 6
+ 1269 0008 1000     	 .short 16
+ 1270 000a 0700     	 .short 7
+ 1271              	 .section .rodata.aName0x1009,"a",%progbits
+ 1274              	aName0x1009:
+ 1275 0000 4D616E75 	 .ascii "Manufacturer Hardware version\000"
+ 1275      66616374 
+ 1275      75726572 
+ 1275      20486172 
+ 1275      64776172 
+ 1276              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 coeappl.c
+    {standard input}:17     .text.COE_SyncTimeStamp:00000000 $t
+    {standard input}:22     .text.COE_SyncTimeStamp:00000000 COE_SyncTimeStamp
+    {standard input}:57     .text.COE_SyncTimeStamp:00000040 $d
+                            *COM*:00000004 u32LastDc32Value
+                            *COM*:00000004 u32CheckForDcOverrunCnt
+    {standard input}:64     .text.Read0x10F8:00000000 $t
+    {standard input}:69     .text.Read0x10F8:00000000 Read0x10F8
+    {standard input}:106    .text.Read0x10F8:00000040 $d
+    {standard input}:109    .text.COE_GetObjectDictionary:00000000 $t
+    {standard input}:114    .text.COE_GetObjectDictionary:00000000 COE_GetObjectDictionary
+    {standard input}:124    .text.COE_GetObjectDictionary:00000008 $d
+    {standard input}:127    .text.COE_UpdateSyncErrorStatus:00000000 $t
+    {standard input}:132    .text.COE_UpdateSyncErrorStatus:00000000 COE_UpdateSyncErrorStatus
+    {standard input}:171    .text.COE_UpdateSyncErrorStatus:00000040 $d
+    {standard input}:176    .text.COE_AddObjectToDic:00000000 $t
+    {standard input}:181    .text.COE_AddObjectToDic:00000000 COE_AddObjectToDic
+    {standard input}:234    .text.COE_AddObjectToDic:00000054 $d
+    {standard input}:237    .text.COE_RemoveDicEntry:00000000 $t
+    {standard input}:242    .text.COE_RemoveDicEntry:00000000 COE_RemoveDicEntry
+    {standard input}:278    .text.COE_RemoveDicEntry:00000034 $d
+    {standard input}:281    .text.COE_ClearObjDictionary:00000000 $t
+    {standard input}:286    .text.COE_ClearObjDictionary:00000000 COE_ClearObjDictionary
+    {standard input}:305    .text.COE_ClearObjDictionary:00000018 $d
+    {standard input}:308    .text.AddObjectsToObjDictionary:00000000 $t
+    {standard input}:313    .text.AddObjectsToObjDictionary:00000000 AddObjectsToObjDictionary
+    {standard input}:334    .text.COE_ObjDictionaryInit:00000000 $t
+    {standard input}:339    .text.COE_ObjDictionaryInit:00000000 COE_ObjDictionaryInit
+    {standard input}:357    .text.COE_ObjDictionaryInit:0000001c $d
+    {standard input}:362    .text.COE_ObjInit:00000000 $t
+    {standard input}:367    .text.COE_ObjInit:00000000 COE_ObjInit
+    {standard input}:442    .text.COE_ObjInit:00000098 $d
+    {standard input}:461    .text.COE_Main:00000000 $t
+    {standard input}:466    .text.COE_Main:00000000 COE_Main
+    {standard input}:498    .text.COE_Main:00000048 $d
+    {standard input}:502    .text.COE_Main:0000004c $t
+    {standard input}:538    .text.COE_Main:0000008c $d
+    {standard input}:661    .data.GenObjDic:00000000 GenObjDic
+    {standard input}:890    .bss.ObjDicList:00000000 ObjDicList
+    {standard input}:985    .rodata.aName0x1C33:00000000 aName0x1C33
+    {standard input}:973    .rodata.aName0x1C32:00000000 aName0x1C32
+    {standard input}:1029   .rodata.asEntryDesc0x1C3x:00000000 asEntryDesc0x1C3x
+    {standard input}:835    .rodata.aName0x1C00:00000000 aName0x1C00
+    {standard input}:1152   .rodata.asEntryDesc0x1C00:00000000 asEntryDesc0x1C00
+    {standard input}:631    .data.sSyncmanagertype:00000000 sSyncmanagertype
+    {standard input}:878    .rodata.aName0x10F8:00000000 aName0x10F8
+    {standard input}:928    .rodata.sEntryDesc0x10F8:00000000 sEntryDesc0x10F8
+    {standard input}:1022   .rodata.aName0x10F1:00000000 aName0x10F1
+    {standard input}:822    .rodata.asEntryDesc0x10F1:00000000 asEntryDesc0x10F1
+    {standard input}:840    .rodata.aName0x1018:00000000 aName0x1018
+    {standard input}:847    .rodata.asEntryDesc0x1018:00000000 asEntryDesc0x1018
+    {standard input}:649    .data.sIdentity:00000000 sIdentity
+    {standard input}:873    .rodata.aName0x100A:00000000 aName0x100A
+    {standard input}:920    .rodata.sEntryDesc0x100A:00000000 sEntryDesc0x100A
+    {standard input}:883    .data.acSoftwareversion:00000000 acSoftwareversion
+    {standard input}:1274   .rodata.aName0x1009:00000000 aName0x1009
+    {standard input}:602    .rodata.sEntryDesc0x1009:00000000 sEntryDesc0x1009
+    {standard input}:619    .data.acHardwareversion:00000000 acHardwareversion
+    {standard input}:643    .rodata.aName0x1008:00000000 aName0x1008
+    {standard input}:998    .rodata.sEntryDesc0x1008:00000000 sEntryDesc0x1008
+    {standard input}:638    .data.acDevicename:00000000 acDevicename
+    {standard input}:614    .rodata.aName0x1001:00000000 aName0x1001
+    {standard input}:901    .rodata.sEntryDesc0x1001:00000000 sEntryDesc0x1001
+    {standard input}:1163   .bss.u16ErrorRegister:00000000 u16ErrorRegister
+    {standard input}:609    .rodata.aName0x1000:00000000 aName0x1000
+    {standard input}:1144   .rodata.sEntryDesc0x1000:00000000 sEntryDesc0x1000
+    {standard input}:941    .data.u32Devicetype:00000000 u32Devicetype
+    {standard input}:1170   .data.ApplicationObjDic:00000000 ApplicationObjDic
+    {standard input}:957    .rodata.aName0x7000:00000000 aName0x7000
+    {standard input}:909    .rodata.asEntryDesc0x7000:00000000 asEntryDesc0x7000
+    {standard input}:596    .rodata.aName0x6000:00000000 aName0x6000
+    {standard input}:1133   .rodata.asEntryDesc0x6000:00000000 asEntryDesc0x6000
+    {standard input}:895    .rodata.aName0x1C13:00000000 aName0x1C13
+    {standard input}:1264   .rodata.asEntryDesc0x1C13:00000000 asEntryDesc0x1C13
+    {standard input}:935    .rodata.aName0x1C12:00000000 aName0x1C12
+    {standard input}:1006   .rodata.asEntryDesc0x1C12:00000000 asEntryDesc0x1C12
+    {standard input}:624    .rodata.aName0x1A00:00000000 aName0x1A00
+    {standard input}:947    .rodata.asEntryDesc0x1A00:00000000 asEntryDesc0x1A00
+    {standard input}:1016   .rodata.aName0x1600:00000000 aName0x1600
+    {standard input}:963    .rodata.asEntryDesc0x1600:00000000 asEntryDesc0x1600
+    {standard input}:868    .bss.u64Timestamp:00000000 u64Timestamp
+    {standard input}:599    .rodata.sEntryDesc0x1009:00000000 $d
+    {standard input}:628    .data.sSyncmanagertype:00000000 $d
+    {standard input}:646    .data.sIdentity:00000000 $d
+    {standard input}:657    .data.GenObjDic:00000000 $d
+    {standard input}:819    .rodata.asEntryDesc0x10F1:00000000 $d
+    {standard input}:844    .rodata.asEntryDesc0x1018:00000000 $d
+    {standard input}:864    .bss.u64Timestamp:00000000 $d
+    {standard input}:886    .bss.ObjDicList:00000000 $d
+    {standard input}:898    .rodata.sEntryDesc0x1001:00000000 $d
+    {standard input}:906    .rodata.asEntryDesc0x7000:00000000 $d
+    {standard input}:917    .rodata.sEntryDesc0x100A:00000000 $d
+    {standard input}:925    .rodata.sEntryDesc0x10F8:00000000 $d
+    {standard input}:938    .data.u32Devicetype:00000000 $d
+    {standard input}:944    .rodata.asEntryDesc0x1A00:00000000 $d
+    {standard input}:960    .rodata.asEntryDesc0x1600:00000000 $d
+    {standard input}:995    .rodata.sEntryDesc0x1008:00000000 $d
+    {standard input}:1003   .rodata.asEntryDesc0x1C12:00000000 $d
+    {standard input}:1026   .rodata.asEntryDesc0x1C3x:00000000 $d
+    {standard input}:1130   .rodata.asEntryDesc0x6000:00000000 $d
+    {standard input}:1141   .rodata.sEntryDesc0x1000:00000000 $d
+    {standard input}:1149   .rodata.asEntryDesc0x1C00:00000000 $d
+    {standard input}:1160   .bss.u16ErrorRegister:00000000 $d
+    {standard input}:1166   .data.ApplicationObjDic:00000000 $d
+    {standard input}:1261   .rodata.asEntryDesc0x1C13:00000000 $d
+
+UNDEFINED SYMBOLS
+b32BitDc
+memcpy
+sSyncManOutPar
+sErrorSettings
+sSyncManInPar
+bSyncSetByUser
+u8PendingSdo
+bStoreCompleteAccess
+u16StoreIndex
+u8StoreSubindex
+u32StoreDataSize
+pStoreData
+pSdoPendFunc
+pSdoSegData
+free
+SDOS_SdoRes
+OUT_GENERICProcessDataMapping0x1600
+IN_GENERICProcessDataMapping0x1A00
+sRxPDOassign
+sTxPDOassign
+IN_GENERIC0x6000
+OUT_GENERIC0x7000

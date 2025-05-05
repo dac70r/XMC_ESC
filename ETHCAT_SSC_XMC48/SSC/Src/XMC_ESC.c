@@ -269,13 +269,16 @@ UINT16 APPL_GenerateMapping(UINT16 *pInputSize,UINT16 *pOutputSize)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_InputMapping(UINT16* pData)
 {
-	memcpy(pData, &(((UINT16 *)&IN_GENERIC0x6000)[1]), SIZEOF(IN_GENERIC0x6000)-2);
-/*#if _WIN32
-   #pragma message ("Warning: Implement input (Slave->Master) mapping")
-#else
-    #warning "Implement input (Slave->Master) mapping"
-#endif
-*/
+	UINT8 *pTmpData = (UINT8 *)pData;
+	for (UINT8 j = 0; j < sTxPDOassign.u16SubIndex0; j++) {
+		switch (sTxPDOassign.aEntries[j]) {
+			case 0x1A00:
+				memcpy(pTmpData, &IN_GENERIC0x6000.IN_GEN_INT1,
+					   sizeof(IN_GENERIC0x6000.IN_GEN_INT1));
+				pTmpData += sizeof(IN_GENERIC0x6000.IN_GEN_INT1);
+				break;
+		}
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -287,14 +290,16 @@ void APPL_InputMapping(UINT16* pData)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_OutputMapping(UINT16* pData)
 {
-	memcpy(&(((UINT16 *)&OUT_GENERIC0x7000)[1]), pData, SIZEOF(OUT_GENERIC0x7000)-2);
-	/*
-#if _WIN32
-   #pragma message ("Warning: Implement output (Master->Slave) mapping")
-#else
-    #warning "Implement output (Master->Slave) mapping"
-#endif
-*/
+	UINT8 *pTmpData = (UINT8 *)pData;
+	for (UINT8 j = 0; j < sRxPDOassign.u16SubIndex0; j++) {
+		switch (sRxPDOassign.aEntries[j]) {
+			case 0x1600:
+                memcpy(&OUT_GENERIC0x7000.OUT_GEN_UINT1, pTmpData,
+                       sizeof(OUT_GENERIC0x7000.OUT_GEN_UINT1));
+                pTmpData += sizeof(OUT_GENERIC0x7000.OUT_GEN_UINT1);
+                break;
+		}
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -305,14 +310,8 @@ void APPL_OutputMapping(UINT16* pData)
 void process_app(TOBJ7000 *OUT_GENERIC, TOBJ6000 *IN_GENERIC);
 void APPL_Application(void)
 {
-	process_app(&OUT_GENERIC0x7000, &IN_GENERIC0x6000);
-	/*
-#if _WIN32
-   #pragma message ("Warning: Implement the slave application")
-#else
-    #warning "Implement the slave application"
-#endif
-*/
+	//TODO
+	IN_GENERIC0x6000.IN_GEN_INT1 = OUT_GENERIC0x7000.OUT_GEN_UINT1;
 }
 
 #if EXPLICIT_DEVICE_ID
@@ -324,11 +323,6 @@ void APPL_Application(void)
 *////////////////////////////////////////////////////////////////////////////////////////
 UINT16 APPL_GetDeviceID()
 {
-#if _WIN32
-   #pragma message ("Warning: Implement explicit Device ID latching")
-#else
-    #warning "Implement explicit Device ID latching"
-#endif
     /* Explicit Device 5 is expected by Explicit Device ID conformance tests*/
     return 0x5;
 }

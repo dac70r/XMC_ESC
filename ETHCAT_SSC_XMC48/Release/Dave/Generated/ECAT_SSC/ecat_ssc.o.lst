@@ -1,0 +1,147 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "ecat_ssc.c"
+  16              	 .section .text.ECAT_SSC_GetAppVersion,"ax",%progbits
+  17              	 .align 1
+  18              	 .global ECAT_SSC_GetAppVersion
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	ECAT_SSC_GetAppVersion:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 0023     	 movs r3,#0
+  27 0002 1846     	 mov r0,r3
+  28 0004 0422     	 movs r2,#4
+  29 0006 62F30700 	 bfi r0,r2,#0,#8
+  30 000a 63F30F20 	 bfi r0,r3,#8,#8
+  31 000e 1A23     	 movs r3,#26
+  32 0010 63F31740 	 bfi r0,r3,#16,#8
+  33 0014 82B0     	 sub sp,sp,#8
+  34 0016 02B0     	 add sp,sp,#8
+  35              	 
+  36 0018 7047     	 bx lr
+  38              	 .section .text.ECAT_SSC_Init,"ax",%progbits
+  39              	 .align 1
+  40              	 .global ECAT_SSC_Init
+  41              	 .thumb
+  42              	 .thumb_func
+  44              	ECAT_SSC_Init:
+  45              	 
+  46              	 
+  47 0000 38B5     	 push {r3,r4,r5,lr}
+  48 0002 0546     	 mov r5,r0
+  49 0004 0068     	 ldr r0,[r0]
+  50 0006 FFF7FEFF 	 bl E_EEPROM_XMC4_Init
+  51 000a 0446     	 mov r4,r0
+  52 000c 70BB     	 cbnz r0,.L3
+  53 000e FFF7FEFF 	 bl E_EEPROM_XMC4_IsFlashEmpty
+  54 0012 50B1     	 cbz r0,.L4
+  55 0014 2046     	 mov r0,r4
+  56 0016 1649     	 ldr r1,.L10
+  57 0018 4FF40062 	 mov r2,#2048
+  58 001c FFF7FEFF 	 bl E_EEPROM_XMC4_WriteArray
+  59 0020 FFF7FEFF 	 bl E_EEPROM_XMC4_UpdateFlashContents
+  60 0024 0446     	 mov r4,r0
+  61 0026 08BB     	 cbnz r0,.L3
+  62 0028 04E0     	 b .L5
+  63              	.L4:
+  64 002a 1149     	 ldr r1,.L10
+  65 002c 4FF40062 	 mov r2,#2048
+  66 0030 FFF7FEFF 	 bl E_EEPROM_XMC4_ReadArray
+  67              	.L5:
+  68 0034 6868     	 ldr r0,[r5,#4]
+  69 0036 FFF7FEFF 	 bl TIMER_Init
+  70 003a 0446     	 mov r4,r0
+  71 003c B0B9     	 cbnz r0,.L3
+  72 003e A868     	 ldr r0,[r5,#8]
+  73 0040 FFF7FEFF 	 bl INTERRUPT_Init
+  74 0044 0446     	 mov r4,r0
+  75 0046 88B9     	 cbnz r0,.L3
+  76 0048 FFF7FEFF 	 bl HW_Init
+  77 004c 0446     	 mov r4,r0
+  78 004e 68B9     	 cbnz r0,.L3
+  79 0050 FFF7FEFF 	 bl MainInit
+  80 0054 0446     	 mov r4,r0
+  81 0056 48B9     	 cbnz r0,.L3
+  82 0058 064B     	 ldr r3,.L10+4
+  83 005a 074A     	 ldr r2,.L10+8
+  84 005c 1A60     	 str r2,[r3]
+  85 005e 074B     	 ldr r3,.L10+12
+  86 0060 074A     	 ldr r2,.L10+16
+  87 0062 6868     	 ldr r0,[r5,#4]
+  88 0064 1A60     	 str r2,[r3]
+  89 0066 FFF7FEFF 	 bl TIMER_Start
+  90 006a 0446     	 mov r4,r0
+  91              	.L3:
+  92 006c E0B2     	 uxtb r0,r4
+  93 006e 38BD     	 pop {r3,r4,r5,pc}
+  94              	.L11:
+  95              	 .align 2
+  96              	.L10:
+  97 0070 00000000 	 .word aEepromData
+  98 0074 00000000 	 .word pAPPL_EEPROM_Reload
+  99 0078 00000000 	 .word HW_EepromReload
+ 100 007c 00000000 	 .word pAPPL_EEPROM_Write
+ 101 0080 00000000 	 .word HW_EepromWrite
+ 103              	 .section .text.ENABLE_ESC_INT_USER,"ax",%progbits
+ 104              	 .align 1
+ 105              	 .weak ENABLE_ESC_INT_USER
+ 106              	 .thumb
+ 107              	 .thumb_func
+ 109              	ENABLE_ESC_INT_USER:
+ 110              	 
+ 111              	 
+ 112              	 
+ 113 0000 7047     	 bx lr
+ 115              	 .section .text.DISABLE_ESC_INT_USER,"ax",%progbits
+ 116              	 .align 1
+ 117              	 .weak DISABLE_ESC_INT_USER
+ 118              	 .thumb
+ 119              	 .thumb_func
+ 121              	DISABLE_ESC_INT_USER:
+ 122              	 
+ 123              	 
+ 124              	 
+ 125 0000 7047     	 bx lr
+ 127              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ecat_ssc.c
+    {standard input}:17     .text.ECAT_SSC_GetAppVersion:00000000 $t
+    {standard input}:22     .text.ECAT_SSC_GetAppVersion:00000000 ECAT_SSC_GetAppVersion
+    {standard input}:39     .text.ECAT_SSC_Init:00000000 $t
+    {standard input}:44     .text.ECAT_SSC_Init:00000000 ECAT_SSC_Init
+    {standard input}:97     .text.ECAT_SSC_Init:00000070 $d
+    {standard input}:104    .text.ENABLE_ESC_INT_USER:00000000 $t
+    {standard input}:109    .text.ENABLE_ESC_INT_USER:00000000 ENABLE_ESC_INT_USER
+    {standard input}:116    .text.DISABLE_ESC_INT_USER:00000000 $t
+    {standard input}:121    .text.DISABLE_ESC_INT_USER:00000000 DISABLE_ESC_INT_USER
+
+UNDEFINED SYMBOLS
+E_EEPROM_XMC4_Init
+E_EEPROM_XMC4_IsFlashEmpty
+E_EEPROM_XMC4_WriteArray
+E_EEPROM_XMC4_UpdateFlashContents
+E_EEPROM_XMC4_ReadArray
+TIMER_Init
+INTERRUPT_Init
+HW_Init
+MainInit
+TIMER_Start
+aEepromData
+pAPPL_EEPROM_Reload
+HW_EepromReload
+pAPPL_EEPROM_Write
+HW_EepromWrite

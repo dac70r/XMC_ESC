@@ -1,0 +1,4660 @@
+/*
+* This source file is part of the EtherCAT Slave Stack Code licensed by Beckhoff Automation GmbH & Co KG, 33415 Verl, Germany.
+* The corresponding license agreement applies. This hint shall not be removed.
+*/
+
+/**
+* \addtogroup XMC_ESC XMC_ESC
+* @{
+*/
+
+/**
+\file XMC_ESCObjects
+\author ET9300Utilities.ApplicationHandler (Version 1.6.4.0) | EthercatSSC@beckhoff.com
+
+\brief XMC_ESC specific objects<br>
+\brief NOTE : This file will be overwritten if a new object dictionary is generated!<br>
+*/
+
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+#define PROTO
+#else
+#define PROTO extern
+#endif
+/******************************************************************************
+*                    Object 0x1600 : ML Control (Channel) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1600 0x1600 | ML Control (Channel) process data mapping
+* @{
+* \brief Object 0x1600 (ML Control (Channel) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x7000.1<br>
+* SubIndex 2 - Reference to 0x7000.2<br>
+* SubIndex 3 - Reference to 0x7000.3<br>
+* SubIndex 4 - Reference to 0x7000.4<br>
+* SubIndex 5 - Reference to 0x7000.5<br>
+* SubIndex 6 - Reference to 0x7000.6<br>
+* SubIndex 7 - Reference to 0x7000.7<br>
+* SubIndex 8 - Reference to 0x7000.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1600[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x7000.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x7000.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x7000.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x7000.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x7000.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x7000.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x7000.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x7000.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1600[] = "ML Control (Channel) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x7000.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x7000.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x7000.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x7000.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x7000.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x7000.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x7000.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x7000.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1600;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1600 MLControlChannelProcessDataMapping0x1600
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x70000108,0x70000208,0x70000308,0x70000408,0x70000508,0x70000608,0x70000708,0x70000808}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1601 : On/Off Continuous Mode (Group) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1601 0x1601 | On/Off Continuous Mode (Group) process data mapping
+* @{
+* \brief Object 0x1601 (On/Off Continuous Mode (Group) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x7008.1<br>
+* SubIndex 2 - Reference to 0x7008.2<br>
+* SubIndex 3 - Reference to 0x7008.3<br>
+* SubIndex 4 - Reference to 0x7008.4<br>
+* SubIndex 5 - Reference to 0x7008.5<br>
+* SubIndex 6 - Reference to 0x7008.6<br>
+* SubIndex 7 - Reference to 0x7008.7<br>
+* SubIndex 8 - Reference to 0x7008.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1601[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x7008.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x7008.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x7008.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x7008.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x7008.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x7008.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x7008.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x7008.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1601[] = "On/Off Continuous Mode (Group) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x7008.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x7008.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x7008.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x7008.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x7008.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x7008.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x7008.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x7008.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1601;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1601 OnOffContinuousModeGroupProcessDataMapping0x1601
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x70080101,0x70080201,0x70080301,0x70080401,0x70080501,0x70080601,0x70080701,0x70080801}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A00 : Device ID process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A00 0x1A00 | Device ID process data mapping
+* @{
+* \brief Object 0x1A00 (Device ID process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6000.1<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A00[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex1 - Reference to 0x6000.1 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A00[] = "Device ID process data mapping\000"
+"SubIndex 001\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6000.1 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A00;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A00 DeviceIDProcessDataMapping0x1A00
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0x60000110}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A01 : Current Channel 0 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A01 0x1A01 | Current Channel 0 (mA) process data mapping
+* @{
+* \brief Object 0x1A01 (Current Channel 0 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6008.1<br>
+* SubIndex 2 - Reference to 0x6008.2<br>
+* SubIndex 3 - Reference to 0x6008.3<br>
+* SubIndex 4 - Reference to 0x6008.4<br>
+* SubIndex 5 - Reference to 0x6008.5<br>
+* SubIndex 6 - Reference to 0x6008.6<br>
+* SubIndex 7 - Reference to 0x6008.7<br>
+* SubIndex 8 - Reference to 0x6008.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A01[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6008.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6008.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6008.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6008.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6008.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6008.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6008.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6008.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A01[] = "Current Channel 0 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6008.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6008.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6008.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6008.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6008.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6008.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6008.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6008.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A01;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A01 CurrentChannel0MAProcessDataMapping0x1A01
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60080120,0x60080220,0x60080320,0x60080420,0x60080520,0x60080620,0x60080720,0x60080820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A02 : Current Channel 1 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A02 0x1A02 | Current Channel 1 (mA) process data mapping
+* @{
+* \brief Object 0x1A02 (Current Channel 1 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6010.1<br>
+* SubIndex 2 - Reference to 0x6010.2<br>
+* SubIndex 3 - Reference to 0x6010.3<br>
+* SubIndex 4 - Reference to 0x6010.4<br>
+* SubIndex 5 - Reference to 0x6010.5<br>
+* SubIndex 6 - Reference to 0x6010.6<br>
+* SubIndex 7 - Reference to 0x6010.7<br>
+* SubIndex 8 - Reference to 0x6010.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A02[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6010.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6010.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6010.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6010.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6010.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6010.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6010.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6010.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A02[] = "Current Channel 1 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6010.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6010.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6010.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6010.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6010.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6010.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6010.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6010.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A02;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A02 CurrentChannel1MAProcessDataMapping0x1A02
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60100120,0x60100220,0x60100320,0x60100420,0x60100520,0x60100620,0x60100720,0x60100820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A03 : Current Channel 2 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A03 0x1A03 | Current Channel 2 (mA) process data mapping
+* @{
+* \brief Object 0x1A03 (Current Channel 2 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6018.1<br>
+* SubIndex 2 - Reference to 0x6018.2<br>
+* SubIndex 3 - Reference to 0x6018.3<br>
+* SubIndex 4 - Reference to 0x6018.4<br>
+* SubIndex 5 - Reference to 0x6018.5<br>
+* SubIndex 6 - Reference to 0x6018.6<br>
+* SubIndex 7 - Reference to 0x6018.7<br>
+* SubIndex 8 - Reference to 0x6018.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A03[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6018.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6018.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6018.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6018.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6018.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6018.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6018.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6018.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A03[] = "Current Channel 2 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6018.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6018.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6018.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6018.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6018.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6018.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6018.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6018.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A03;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A03 CurrentChannel2MAProcessDataMapping0x1A03
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60180120,0x60180220,0x60180320,0x60180420,0x60180520,0x60180620,0x60180720,0x60180820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A04 : Current Channel 3 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A04 0x1A04 | Current Channel 3 (mA) process data mapping
+* @{
+* \brief Object 0x1A04 (Current Channel 3 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6020.1<br>
+* SubIndex 2 - Reference to 0x6020.2<br>
+* SubIndex 3 - Reference to 0x6020.3<br>
+* SubIndex 4 - Reference to 0x6020.4<br>
+* SubIndex 5 - Reference to 0x6020.5<br>
+* SubIndex 6 - Reference to 0x6020.6<br>
+* SubIndex 7 - Reference to 0x6020.7<br>
+* SubIndex 8 - Reference to 0x6020.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A04[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6020.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6020.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6020.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6020.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6020.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6020.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6020.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6020.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A04[] = "Current Channel 3 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6020.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6020.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6020.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6020.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6020.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6020.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6020.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6020.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A04;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A04 CurrentChannel3MAProcessDataMapping0x1A04
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60200120,0x60200220,0x60200320,0x60200420,0x60200520,0x60200620,0x60200720,0x60200820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A05 : Current Channel 4 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A05 0x1A05 | Current Channel 4 (mA) process data mapping
+* @{
+* \brief Object 0x1A05 (Current Channel 4 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6028.1<br>
+* SubIndex 2 - Reference to 0x6028.2<br>
+* SubIndex 3 - Reference to 0x6028.3<br>
+* SubIndex 4 - Reference to 0x6028.4<br>
+* SubIndex 5 - Reference to 0x6028.5<br>
+* SubIndex 6 - Reference to 0x6028.6<br>
+* SubIndex 7 - Reference to 0x6028.7<br>
+* SubIndex 8 - Reference to 0x6028.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A05[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6028.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6028.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6028.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6028.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6028.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6028.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6028.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6028.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A05[] = "Current Channel 4 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6028.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6028.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6028.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6028.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6028.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6028.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6028.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6028.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A05;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A05 CurrentChannel4MAProcessDataMapping0x1A05
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60280120,0x60280220,0x60280320,0x60280420,0x60280520,0x60280620,0x60280720,0x60280820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A06 : Current Channel 5 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A06 0x1A06 | Current Channel 5 (mA) process data mapping
+* @{
+* \brief Object 0x1A06 (Current Channel 5 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6030.1<br>
+* SubIndex 2 - Reference to 0x6030.2<br>
+* SubIndex 3 - Reference to 0x6030.3<br>
+* SubIndex 4 - Reference to 0x6030.4<br>
+* SubIndex 5 - Reference to 0x6030.5<br>
+* SubIndex 6 - Reference to 0x6030.6<br>
+* SubIndex 7 - Reference to 0x6030.7<br>
+* SubIndex 8 - Reference to 0x6030.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A06[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6030.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6030.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6030.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6030.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6030.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6030.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6030.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6030.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A06[] = "Current Channel 5 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6030.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6030.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6030.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6030.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6030.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6030.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6030.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6030.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A06;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A06 CurrentChannel5MAProcessDataMapping0x1A06
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60300120,0x60300220,0x60300320,0x60300420,0x60300520,0x60300620,0x60300720,0x60300820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A07 : Current Channel 6 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A07 0x1A07 | Current Channel 6 (mA) process data mapping
+* @{
+* \brief Object 0x1A07 (Current Channel 6 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6038.1<br>
+* SubIndex 2 - Reference to 0x6038.2<br>
+* SubIndex 3 - Reference to 0x6038.3<br>
+* SubIndex 4 - Reference to 0x6038.4<br>
+* SubIndex 5 - Reference to 0x6038.5<br>
+* SubIndex 6 - Reference to 0x6038.6<br>
+* SubIndex 7 - Reference to 0x6038.7<br>
+* SubIndex 8 - Reference to 0x6038.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A07[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6038.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6038.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6038.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6038.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6038.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6038.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6038.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6038.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A07[] = "Current Channel 6 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6038.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6038.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6038.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6038.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6038.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6038.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6038.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6038.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A07;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A07 CurrentChannel6MAProcessDataMapping0x1A07
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60380120,0x60380220,0x60380320,0x60380420,0x60380520,0x60380620,0x60380720,0x60380820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A08 : Current Channel 7 (mA) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A08 0x1A08 | Current Channel 7 (mA) process data mapping
+* @{
+* \brief Object 0x1A08 (Current Channel 7 (mA) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6040.1<br>
+* SubIndex 2 - Reference to 0x6040.2<br>
+* SubIndex 3 - Reference to 0x6040.3<br>
+* SubIndex 4 - Reference to 0x6040.4<br>
+* SubIndex 5 - Reference to 0x6040.5<br>
+* SubIndex 6 - Reference to 0x6040.6<br>
+* SubIndex 7 - Reference to 0x6040.7<br>
+* SubIndex 8 - Reference to 0x6040.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A08[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6040.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6040.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6040.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6040.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6040.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6040.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6040.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6040.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A08[] = "Current Channel 7 (mA) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6040.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6040.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6040.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6040.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6040.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6040.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6040.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6040.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A08;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A08 CurrentChannel7MAProcessDataMapping0x1A08
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60400120,0x60400220,0x60400320,0x60400420,0x60400520,0x60400620,0x60400720,0x60400820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A09 : Voltage Channel 0 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A09 0x1A09 | Voltage Channel 0 (mV) process data mapping
+* @{
+* \brief Object 0x1A09 (Voltage Channel 0 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6048.1<br>
+* SubIndex 2 - Reference to 0x6048.2<br>
+* SubIndex 3 - Reference to 0x6048.3<br>
+* SubIndex 4 - Reference to 0x6048.4<br>
+* SubIndex 5 - Reference to 0x6048.5<br>
+* SubIndex 6 - Reference to 0x6048.6<br>
+* SubIndex 7 - Reference to 0x6048.7<br>
+* SubIndex 8 - Reference to 0x6048.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A09[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6048.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6048.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6048.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6048.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6048.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6048.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6048.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6048.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A09[] = "Voltage Channel 0 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6048.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6048.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6048.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6048.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6048.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6048.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6048.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6048.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A09;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A09 VoltageChannel0MVProcessDataMapping0x1A09
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60480120,0x60480220,0x60480320,0x60480420,0x60480520,0x60480620,0x60480720,0x60480820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A0A : Voltage Channel 1 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A0A 0x1A0A | Voltage Channel 1 (mV) process data mapping
+* @{
+* \brief Object 0x1A0A (Voltage Channel 1 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6050.1<br>
+* SubIndex 2 - Reference to 0x6050.2<br>
+* SubIndex 3 - Reference to 0x6050.3<br>
+* SubIndex 4 - Reference to 0x6050.4<br>
+* SubIndex 5 - Reference to 0x6050.5<br>
+* SubIndex 6 - Reference to 0x6050.6<br>
+* SubIndex 7 - Reference to 0x6050.7<br>
+* SubIndex 8 - Reference to 0x6050.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A0A[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6050.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6050.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6050.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6050.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6050.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6050.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6050.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6050.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A0A[] = "Voltage Channel 1 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6050.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6050.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6050.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6050.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6050.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6050.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6050.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6050.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A0A;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A0A VoltageChannel1MVProcessDataMapping0x1A0A
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60500120,0x60500220,0x60500320,0x60500420,0x60500520,0x60500620,0x60500720,0x60500820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A0B : Voltage Channel 2 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A0B 0x1A0B | Voltage Channel 2 (mV) process data mapping
+* @{
+* \brief Object 0x1A0B (Voltage Channel 2 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6058.1<br>
+* SubIndex 2 - Reference to 0x6058.2<br>
+* SubIndex 3 - Reference to 0x6058.3<br>
+* SubIndex 4 - Reference to 0x6058.4<br>
+* SubIndex 5 - Reference to 0x6058.5<br>
+* SubIndex 6 - Reference to 0x6058.6<br>
+* SubIndex 7 - Reference to 0x6058.7<br>
+* SubIndex 8 - Reference to 0x6058.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A0B[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6058.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6058.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6058.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6058.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6058.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6058.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6058.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6058.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A0B[] = "Voltage Channel 2 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6058.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6058.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6058.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6058.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6058.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6058.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6058.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6058.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A0B;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A0B VoltageChannel2MVProcessDataMapping0x1A0B
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60580120,0x60580220,0x60580320,0x60580420,0x60580520,0x60580620,0x60580720,0x60580820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A0C : Voltage Channel 3 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A0C 0x1A0C | Voltage Channel 3 (mV) process data mapping
+* @{
+* \brief Object 0x1A0C (Voltage Channel 3 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6060.1<br>
+* SubIndex 2 - Reference to 0x6060.2<br>
+* SubIndex 3 - Reference to 0x6060.3<br>
+* SubIndex 4 - Reference to 0x6060.4<br>
+* SubIndex 5 - Reference to 0x6060.5<br>
+* SubIndex 6 - Reference to 0x6060.6<br>
+* SubIndex 7 - Reference to 0x6060.7<br>
+* SubIndex 8 - Reference to 0x6060.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A0C[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6060.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6060.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6060.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6060.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6060.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6060.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6060.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6060.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A0C[] = "Voltage Channel 3 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6060.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6060.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6060.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6060.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6060.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6060.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6060.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6060.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A0C;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A0C VoltageChannel3MVProcessDataMapping0x1A0C
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60600120,0x60600220,0x60600320,0x60600420,0x60600520,0x60600620,0x60600720,0x60600820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A0D : Voltage Channel 4 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A0D 0x1A0D | Voltage Channel 4 (mV) process data mapping
+* @{
+* \brief Object 0x1A0D (Voltage Channel 4 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6068.1<br>
+* SubIndex 2 - Reference to 0x6068.2<br>
+* SubIndex 3 - Reference to 0x6068.3<br>
+* SubIndex 4 - Reference to 0x6068.4<br>
+* SubIndex 5 - Reference to 0x6068.5<br>
+* SubIndex 6 - Reference to 0x6068.6<br>
+* SubIndex 7 - Reference to 0x6068.7<br>
+* SubIndex 8 - Reference to 0x6068.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A0D[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6068.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6068.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6068.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6068.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6068.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6068.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6068.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6068.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A0D[] = "Voltage Channel 4 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6068.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6068.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6068.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6068.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6068.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6068.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6068.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6068.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A0D;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A0D VoltageChannel4MVProcessDataMapping0x1A0D
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60680120,0x60680220,0x60680320,0x60680420,0x60680520,0x60680620,0x60680720,0x60680820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A0E : Voltage Channel 5 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A0E 0x1A0E | Voltage Channel 5 (mV) process data mapping
+* @{
+* \brief Object 0x1A0E (Voltage Channel 5 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6070.1<br>
+* SubIndex 2 - Reference to 0x6070.2<br>
+* SubIndex 3 - Reference to 0x6070.3<br>
+* SubIndex 4 - Reference to 0x6070.4<br>
+* SubIndex 5 - Reference to 0x6070.5<br>
+* SubIndex 6 - Reference to 0x6070.6<br>
+* SubIndex 7 - Reference to 0x6070.7<br>
+* SubIndex 8 - Reference to 0x6070.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A0E[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6070.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6070.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6070.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6070.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6070.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6070.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6070.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6070.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A0E[] = "Voltage Channel 5 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6070.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6070.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6070.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6070.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6070.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6070.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6070.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6070.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A0E;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A0E VoltageChannel5MVProcessDataMapping0x1A0E
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60700120,0x60700220,0x60700320,0x60700420,0x60700520,0x60700620,0x60700720,0x60700820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A0F : Voltage Channel 6 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A0F 0x1A0F | Voltage Channel 6 (mV) process data mapping
+* @{
+* \brief Object 0x1A0F (Voltage Channel 6 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6078.1<br>
+* SubIndex 2 - Reference to 0x6078.2<br>
+* SubIndex 3 - Reference to 0x6078.3<br>
+* SubIndex 4 - Reference to 0x6078.4<br>
+* SubIndex 5 - Reference to 0x6078.5<br>
+* SubIndex 6 - Reference to 0x6078.6<br>
+* SubIndex 7 - Reference to 0x6078.7<br>
+* SubIndex 8 - Reference to 0x6078.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A0F[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6078.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6078.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6078.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6078.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6078.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6078.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6078.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6078.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A0F[] = "Voltage Channel 6 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6078.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6078.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6078.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6078.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6078.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6078.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6078.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6078.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A0F;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A0F VoltageChannel6MVProcessDataMapping0x1A0F
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60780120,0x60780220,0x60780320,0x60780420,0x60780520,0x60780620,0x60780720,0x60780820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A10 : Voltage Channel 7 (mV) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A10 0x1A10 | Voltage Channel 7 (mV) process data mapping
+* @{
+* \brief Object 0x1A10 (Voltage Channel 7 (mV) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6080.1<br>
+* SubIndex 2 - Reference to 0x6080.2<br>
+* SubIndex 3 - Reference to 0x6080.3<br>
+* SubIndex 4 - Reference to 0x6080.4<br>
+* SubIndex 5 - Reference to 0x6080.5<br>
+* SubIndex 6 - Reference to 0x6080.6<br>
+* SubIndex 7 - Reference to 0x6080.7<br>
+* SubIndex 8 - Reference to 0x6080.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A10[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6080.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6080.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6080.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6080.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6080.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6080.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6080.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6080.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A10[] = "Voltage Channel 7 (mV) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6080.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6080.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6080.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6080.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6080.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6080.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6080.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6080.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A10;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A10 VoltageChannel7MVProcessDataMapping0x1A10
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60800120,0x60800220,0x60800320,0x60800420,0x60800520,0x60800620,0x60800720,0x60800820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1A11 : ML Inference (Channel) process data mapping
+******************************************************************************/
+/**
+* \addtogroup 0x1A11 0x1A11 | ML Inference (Channel) process data mapping
+* @{
+* \brief Object 0x1A11 (ML Inference (Channel) process data mapping) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Reference to 0x6088.1<br>
+* SubIndex 2 - Reference to 0x6088.2<br>
+* SubIndex 3 - Reference to 0x6088.3<br>
+* SubIndex 4 - Reference to 0x6088.4<br>
+* SubIndex 5 - Reference to 0x6088.5<br>
+* SubIndex 6 - Reference to 0x6088.6<br>
+* SubIndex 7 - Reference to 0x6088.7<br>
+* SubIndex 8 - Reference to 0x6088.8<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A11[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6088.1 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6088.2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6088.3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6088.4 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x6088.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x6088.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex7 - Reference to 0x6088.7 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex8 - Reference to 0x6088.8 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x1A11[] = "ML Inference (Channel) process data mapping\000"
+"SubIndex 001\000"
+"SubIndex 002\000"
+"SubIndex 003\000"
+"SubIndex 004\000"
+"SubIndex 005\000"
+"SubIndex 006\000"
+"SubIndex 007\000"
+"SubIndex 008\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT32 SI1; /* Subindex1 - Reference to 0x6088.1 */
+UINT32 SI2; /* Subindex2 - Reference to 0x6088.2 */
+UINT32 SI3; /* Subindex3 - Reference to 0x6088.3 */
+UINT32 SI4; /* Subindex4 - Reference to 0x6088.4 */
+UINT32 SI5; /* Subindex5 - Reference to 0x6088.5 */
+UINT32 SI6; /* Subindex6 - Reference to 0x6088.6 */
+UINT32 SI7; /* Subindex7 - Reference to 0x6088.7 */
+UINT32 SI8; /* Subindex8 - Reference to 0x6088.8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1A11;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1A11 MLInferenceChannelProcessDataMapping0x1A11
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,0x60880120,0x60880220,0x60880320,0x60880420,0x60880520,0x60880620,0x60880720,0x60880820}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1C12 : SyncManager 2 assignment
+******************************************************************************/
+/**
+* \addtogroup 0x1C12 0x1C12 | SyncManager 2 assignment
+* @{
+* \brief Object 0x1C12 (SyncManager 2 assignment) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+* 
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1C12[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READ }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x1C12[] = "SyncManager 2 assignment\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[2];  /**< \brief Subindex 1 - 2 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1C12;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1C12 sRxPDOassign
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={2,{0x1600,0x1601}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x1C13 : SyncManager 3 assignment
+******************************************************************************/
+/**
+* \addtogroup 0x1C13 0x1C13 | SyncManager 3 assignment
+* @{
+* \brief Object 0x1C13 (SyncManager 3 assignment) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+* 
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1C13[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READ }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x1C13[] = "SyncManager 3 assignment\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[18];  /**< \brief Subindex 1 - 18 */
+} OBJ_STRUCT_PACKED_END
+TOBJ1C13;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ1C13 sTxPDOassign
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={18,{0x1A00,0x1A01,0x1A02,0x1A03,0x1A04,0x1A05,0x1A06,0x1A07,0x1A08,0x1A09,0x1A0A,0x1A0B,0x1A0C,0x1A0D,0x1A0E,0x1A0F,0x1A10,0x1A11}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6000 : Device ID
+******************************************************************************/
+/**
+* \addtogroup 0x6000 0x6000 | Device ID
+* @{
+* \brief Object 0x6000 (Device ID) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Device ID<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }}; /* Subindex1 - Device ID */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x6000[] = "Device ID\000"
+"Device ID\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT16 DeviceID; /* Subindex1 - Device ID */
+} OBJ_STRUCT_PACKED_END
+TOBJ6000;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6000 DeviceID0x6000
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6008 : Current Channel 0 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6008 0x6008 | Current Channel 0 (mA)
+* @{
+* \brief Object 0x6008 (Current Channel 0 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6008[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6008[] = "Current Channel 0 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6008;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6008 CurrentChannel0MA0x6008
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6010 : Current Channel 1 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6010 0x6010 | Current Channel 1 (mA)
+* @{
+* \brief Object 0x6010 (Current Channel 1 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6010[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6010[] = "Current Channel 1 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6010;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6010 CurrentChannel1MA0x6010
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6018 : Current Channel 2 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6018 0x6018 | Current Channel 2 (mA)
+* @{
+* \brief Object 0x6018 (Current Channel 2 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6018[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6018[] = "Current Channel 2 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6018;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6018 CurrentChannel2MA0x6018
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6020 : Current Channel 3 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6020 0x6020 | Current Channel 3 (mA)
+* @{
+* \brief Object 0x6020 (Current Channel 3 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6020[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6020[] = "Current Channel 3 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6020;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6020 CurrentChannel3MA0x6020
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6028 : Current Channel 4 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6028 0x6028 | Current Channel 4 (mA)
+* @{
+* \brief Object 0x6028 (Current Channel 4 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6028[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6028[] = "Current Channel 4 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6028;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6028 CurrentChannel4MA0x6028
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6030 : Current Channel 5 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6030 0x6030 | Current Channel 5 (mA)
+* @{
+* \brief Object 0x6030 (Current Channel 5 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6030[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6030[] = "Current Channel 5 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6030;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6030 CurrentChannel5MA0x6030
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6038 : Current Channel 6 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6038 0x6038 | Current Channel 6 (mA)
+* @{
+* \brief Object 0x6038 (Current Channel 6 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6038[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6038[] = "Current Channel 6 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6038;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6038 CurrentChannel6MA0x6038
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6040 : Current Channel 7 (mA)
+******************************************************************************/
+/**
+* \addtogroup 0x6040 0x6040 | Current Channel 7 (mA)
+* @{
+* \brief Object 0x6040 (Current Channel 7 (mA)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6040[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6040[] = "Current Channel 7 (mA)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6040;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6040 CurrentChannel7MA0x6040
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6048 : Voltage Channel 0 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6048 0x6048 | Voltage Channel 0 (mV)
+* @{
+* \brief Object 0x6048 (Voltage Channel 0 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6048[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6048[] = "Voltage Channel 0 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6048;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6048 VoltageChannel0MV0x6048
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6050 : Voltage Channel 1 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6050 0x6050 | Voltage Channel 1 (mV)
+* @{
+* \brief Object 0x6050 (Voltage Channel 1 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6050[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6050[] = "Voltage Channel 1 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6050;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6050 VoltageChannel1MV0x6050
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6058 : Voltage Channel 2 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6058 0x6058 | Voltage Channel 2 (mV)
+* @{
+* \brief Object 0x6058 (Voltage Channel 2 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6058[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6058[] = "Voltage Channel 2 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6058;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6058 VoltageChannel2MV0x6058
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6060 : Voltage Channel 3 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6060 0x6060 | Voltage Channel 3 (mV)
+* @{
+* \brief Object 0x6060 (Voltage Channel 3 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6060[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6060[] = "Voltage Channel 3 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6060;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6060 VoltageChannel3MV0x6060
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6068 : Voltage Channel 4 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6068 0x6068 | Voltage Channel 4 (mV)
+* @{
+* \brief Object 0x6068 (Voltage Channel 4 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6068[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6068[] = "Voltage Channel 4 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6068;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6068 VoltageChannel4MV0x6068
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6070 : Voltage Channel 5 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6070 0x6070 | Voltage Channel 5 (mV)
+* @{
+* \brief Object 0x6070 (Voltage Channel 5 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6070[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6070[] = "Voltage Channel 5 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6070;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6070 VoltageChannel5MV0x6070
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6078 : Voltage Channel 6 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6078 0x6078 | Voltage Channel 6 (mV)
+* @{
+* \brief Object 0x6078 (Voltage Channel 6 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6078[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6078[] = "Voltage Channel 6 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6078;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6078 VoltageChannel6MV0x6078
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6080 : Voltage Channel 7 (mV)
+******************************************************************************/
+/**
+* \addtogroup 0x6080 0x6080 | Voltage Channel 7 (mV)
+* @{
+* \brief Object 0x6080 (Voltage Channel 7 (mV)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6080[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6080[] = "Voltage Channel 7 (mV)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6080;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6080 VoltageChannel7MV0x6080
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x6088 : ML Inference (Channel)
+******************************************************************************/
+/**
+* \addtogroup 0x6088 0x6088 | ML Inference (Channel)
+* @{
+* \brief Object 0x6088 (ML Inference (Channel)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6088[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x6088[] = "ML Inference (Channel)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ6088;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ6088 MLInferenceChannel0x6088
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x7000 : ML Control (Channel)
+******************************************************************************/
+/**
+* \addtogroup 0x7000 0x7000 | ML Control (Channel)
+* @{
+* \brief Object 0x7000 (ML Control (Channel)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x7000[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x7000[] = "ML Control (Channel)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ7000;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ7000 MLControlChannel0x7000
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x7008 : On/Off Continuous Mode (Group)
+******************************************************************************/
+/**
+* \addtogroup 0x7008 0x7008 | On/Off Continuous Mode (Group)
+* @{
+* \brief Object 0x7008 (On/Off Continuous Mode (Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x7008[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x7008[] = "On/Off Continuous Mode (Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[1] /*Boolean arrays handled in 8Bit Blocks*/;  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ7008;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ7008 OnOffContinuousModeGroup0x7008
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8000 : ML Parameter Setting
+******************************************************************************/
+/**
+* \addtogroup 0x8000 0x8000 | ML Parameter Setting
+* @{
+* \brief Object 0x8000 (ML Parameter Setting) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - ML Setting 0<br>
+* SubIndex 2 - ML Setting 1<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8000[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }, /* Subindex1 - ML Setting 0 */
+{ DEFTYPE_UNSIGNED64 , 0x40 , ACCESS_READWRITE }}; /* Subindex2 - ML Setting 1 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8000[] = "ML Parameter Setting\000"
+"ML Setting 0\000"
+"ML Setting 1\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT16 MLSetting0; /* Subindex1 - ML Setting 0 */
+UINT64 MLSetting1; /* Subindex2 - ML Setting 1 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8000;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8000 MLParameterSetting0x8000
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={2,0,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8008 : ADC Parameter Setting
+******************************************************************************/
+/**
+* \addtogroup 0x8008 0x8008 | ADC Parameter Setting
+* @{
+* \brief Object 0x8008 (ADC Parameter Setting) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - ADC Sensor Setting 0<br>
+* SubIndex 2 - ADC Sensor Setting 1<br>
+* SubIndex 3 - ADC Sensor Setting 2<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8008[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }, /* Subindex1 - ADC Sensor Setting 0 */
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READWRITE }, /* Subindex2 - ADC Sensor Setting 1 */
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READWRITE }}; /* Subindex3 - ADC Sensor Setting 2 */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8008[] = "ADC Parameter Setting\000"
+"ADC Sensor Setting 0\000"
+"ADC Sensor Setting 1\000"
+"ADC Sensor Setting 2\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT16 ADCSensorSetting0; /* Subindex1 - ADC Sensor Setting 0 */
+REAL32 ADCSensorSetting1; /* Subindex2 - ADC Sensor Setting 1 */
+REAL32 ADCSensorSetting2; /* Subindex3 - ADC Sensor Setting 2 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8008;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8008 ADCParameterSetting0x8008
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={3,0,0,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8010 : Analog Output Channel Release Group
+******************************************************************************/
+/**
+* \addtogroup 0x8010 0x8010 | Analog Output Channel Release Group
+* @{
+* \brief Object 0x8010 (Analog Output Channel Release Group ) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Analog Output Channel Release Group <br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8010[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 ,  ACCESS_WRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 ,  ACCESS_WRITE }}; /* Subindex1 - Analog Output Channel Release Group  */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8010[] = "Analog Output Channel Release Group \000"
+"Analog Output Channel Release Group \000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT8 AnalogOutputChannelReleaseGroup; /* Subindex1 - Analog Output Channel Release Group  */
+} OBJ_STRUCT_PACKED_END
+TOBJ8010;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8010 AnalogOutputChannelReleaseGroup0x8010
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8018 : Analog Output Channel Save Group Setting
+******************************************************************************/
+/**
+* \addtogroup 0x8018 0x8018 | Analog Output Channel Save Group Setting
+* @{
+* \brief Object 0x8018 (Analog Output Channel Save Group Setting  ) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Analog Output Channel Save Group Setting  <br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8018[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 ,  ACCESS_WRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 ,  ACCESS_WRITE }}; /* Subindex1 - Analog Output Channel Save Group Setting   */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8018[] = "Analog Output Channel Save Group Setting  \000"
+"Analog Output Channel Save Group Setting  \000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT8 AnalogOutputChannelSaveGroupSetting; /* Subindex1 - Analog Output Channel Save Group Setting   */
+} OBJ_STRUCT_PACKED_END
+TOBJ8018;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8018 AnalogOutputChannelSaveGroupSetting0x8018
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8020 : Analog Output Group Mapping (Channel)
+******************************************************************************/
+/**
+* \addtogroup 0x8020 0x8020 | Analog Output Group Mapping (Channel)
+* @{
+* \brief Object 0x8020 (Analog Output Group Mapping (Channel)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8020[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8020[] = "Analog Output Group Mapping (Channel)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8020;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8020 AnalogOutputGroupMappingChannel0x8020
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8028 : Analog Output Light Mode (Group)
+******************************************************************************/
+/**
+* \addtogroup 0x8028 0x8028 | Analog Output Light Mode (Group)
+* @{
+* \brief Object 0x8028 (Analog Output Light Mode (Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8028[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8028[] = "Analog Output Light Mode (Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8028;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8028 AnalogOutputLightModeGroup0x8028
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8030 : Analog Output Active Flag (Group)
+******************************************************************************/
+/**
+* \addtogroup 0x8030 0x8030 | Analog Output Active Flag (Group)
+* @{
+* \brief Object 0x8030 (Analog Output Active Flag (Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8030[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8030[] = "Analog Output Active Flag (Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8030;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8030 AnalogOutputActiveFlagGroup0x8030
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8038 : Analog Output Minimum Trigger Pulse Width (Channel or Group)
+******************************************************************************/
+/**
+* \addtogroup 0x8038 0x8038 | Analog Output Minimum Trigger Pulse Width (Channel or Group)
+* @{
+* \brief Object 0x8038 (Analog Output Minimum Trigger Pulse Width (Channel or Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8038[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8038[] = "Analog Output Minimum Trigger Pulse Width (Channel or Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8038;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8038 AnalogOutputMinimumTriggerPulseWidthChannelOrGroup0x8038
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8040 : Analog Output Pulse Width Limit Clear Output Reset Event Counter
+******************************************************************************/
+/**
+* \addtogroup 0x8040 0x8040 | Analog Output Pulse Width Limit Clear Output Reset Event Counter
+* @{
+* \brief Object 0x8040 (Analog Output Pulse Width Limit Clear Output Reset Event Counter ) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Analog Output Pulse Width Limit Clear Output Reset Event Counter <br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8040[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 ,  ACCESS_WRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 ,  ACCESS_WRITE }}; /* Subindex1 - Analog Output Pulse Width Limit Clear Output Reset Event Counter  */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8040[] = "Analog Output Pulse Width Limit Clear Output Reset Event Counter \000"
+"Analog Output Pulse Width Limit Clear Output Reset Event Counter \000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT8 AnalogOutputPulseWidthLimitClearOutputResetEventCounter; /* Subindex1 - Analog Output Pulse Width Limit Clear Output Reset Event Counter  */
+} OBJ_STRUCT_PACKED_END
+TOBJ8040;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8040 AnalogOutputPulseWidthLimitClearOutputResetEventCounter0x8040
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8048 : Analog Output Pulse Width Limit (Channel or Group)
+******************************************************************************/
+/**
+* \addtogroup 0x8048 0x8048 | Analog Output Pulse Width Limit (Channel or Group)
+* @{
+* \brief Object 0x8048 (Analog Output Pulse Width Limit (Channel or Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8048[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8048[] = "Analog Output Pulse Width Limit (Channel or Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8048;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8048 AnalogOutputPulseWidthLimitChannelOrGroup0x8048
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8050 : Analog Output Retrieve Output Reset Event Counter (Group)
+******************************************************************************/
+/**
+* \addtogroup 0x8050 0x8050 | Analog Output Retrieve Output Reset Event Counter (Group)
+* @{
+* \brief Object 0x8050 (Analog Output Retrieve Output Reset Event Counter (Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8050[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8050[] = "Analog Output Retrieve Output Reset Event Counter (Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8050;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8050 AnalogOutputRetrieveOutputResetEventCounterGroup0x8050
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8058 : Analog Output Trigger Delay (Group)
+******************************************************************************/
+/**
+* \addtogroup 0x8058 0x8058 | Analog Output Trigger Delay (Group)
+* @{
+* \brief Object 0x8058 (Analog Output Trigger Delay (Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8058[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8058[] = "Analog Output Trigger Delay (Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT32 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8058;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8058 AnalogOutputTriggerDelayGroup0x8058
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8060 : Analog Output Channel Config Intensity Units
+******************************************************************************/
+/**
+* \addtogroup 0x8060 0x8060 | Analog Output Channel Config Intensity Units
+* @{
+* \brief Object 0x8060 (Analog Output Channel Config Intensity Units) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Analog Output Channel Config Intensity Units<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8060[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE }}; /* Subindex1 - Analog Output Channel Config Intensity Units */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8060[] = "Analog Output Channel Config Intensity Units\000"
+"Analog Output Channel Config Intensity Units\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+BOOLEAN(AnalogOutputChannelConfigIntensityUnits); /* Subindex1 - Analog Output Channel Config Intensity Units */
+} OBJ_STRUCT_PACKED_END
+TOBJ8060;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8060 AnalogOutputChannelConfigIntensityUnits0x8060
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8068 : Analog Output Channel Config Save Setting
+******************************************************************************/
+/**
+* \addtogroup 0x8068 0x8068 | Analog Output Channel Config Save Setting
+* @{
+* \brief Object 0x8068 (Analog Output Channel Config Save Setting) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Analog Output Channel Config Save Setting<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8068[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 ,  ACCESS_WRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 ,  ACCESS_WRITE }}; /* Subindex1 - Analog Output Channel Config Save Setting */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8068[] = "Analog Output Channel Config Save Setting\000"
+"Analog Output Channel Config Save Setting\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT8 AnalogOutputChannelConfigSaveSetting; /* Subindex1 - Analog Output Channel Config Save Setting */
+} OBJ_STRUCT_PACKED_END
+TOBJ8068;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8068 AnalogOutputChannelConfigSaveSetting0x8068
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8070 : Analog Output Channel Config Max Intensity (Channel)
+******************************************************************************/
+/**
+* \addtogroup 0x8070 0x8070 | Analog Output Channel Config Max Intensity (Channel)
+* @{
+* \brief Object 0x8070 (Analog Output Channel Config Max Intensity (Channel)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8070[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8070[] = "Analog Output Channel Config Max Intensity (Channel)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8070;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8070 AnalogOutputChannelConfigMaxIntensityChannel0x8070
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8078 : Analog Output Channel Config Operating Intensity Channel 1
+******************************************************************************/
+/**
+* \addtogroup 0x8078 0x8078 | Analog Output Channel Config Operating Intensity Channel 1
+* @{
+* \brief Object 0x8078 (Analog Output Channel Config Operating Intensity Channel 1) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8078[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8078[] = "Analog Output Channel Config Operating Intensity Channel 1\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8078;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8078 AnalogOutputChannelConfigOperatingIntensityChannel10x8078
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8080 : Analog Output Channel Config Operating Intensity Channel 2
+******************************************************************************/
+/**
+* \addtogroup 0x8080 0x8080 | Analog Output Channel Config Operating Intensity Channel 2
+* @{
+* \brief Object 0x8080 (Analog Output Channel Config Operating Intensity Channel 2) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8080[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8080[] = "Analog Output Channel Config Operating Intensity Channel 2\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8080;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8080 AnalogOutputChannelConfigOperatingIntensityChannel20x8080
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8088 : Analog Output Channel Config Operating Intensity Channel 3
+******************************************************************************/
+/**
+* \addtogroup 0x8088 0x8088 | Analog Output Channel Config Operating Intensity Channel 3
+* @{
+* \brief Object 0x8088 (Analog Output Channel Config Operating Intensity Channel 3) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8088[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8088[] = "Analog Output Channel Config Operating Intensity Channel 3\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8088;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8088 AnalogOutputChannelConfigOperatingIntensityChannel30x8088
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8090 : Analog Output Channel Config Operating Intensity Channel 4
+******************************************************************************/
+/**
+* \addtogroup 0x8090 0x8090 | Analog Output Channel Config Operating Intensity Channel 4
+* @{
+* \brief Object 0x8090 (Analog Output Channel Config Operating Intensity Channel 4) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8090[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8090[] = "Analog Output Channel Config Operating Intensity Channel 4\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8090;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8090 AnalogOutputChannelConfigOperatingIntensityChannel40x8090
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8098 : Analog Output Channel Config Operating Intensity Channel 5
+******************************************************************************/
+/**
+* \addtogroup 0x8098 0x8098 | Analog Output Channel Config Operating Intensity Channel 5
+* @{
+* \brief Object 0x8098 (Analog Output Channel Config Operating Intensity Channel 5) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8098[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8098[] = "Analog Output Channel Config Operating Intensity Channel 5\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8098;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8098 AnalogOutputChannelConfigOperatingIntensityChannel50x8098
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80A0 : Analog Output Channel Config Operating Intensity Channel 6
+******************************************************************************/
+/**
+* \addtogroup 0x80A0 0x80A0 | Analog Output Channel Config Operating Intensity Channel 6
+* @{
+* \brief Object 0x80A0 (Analog Output Channel Config Operating Intensity Channel 6) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80A0[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80A0[] = "Analog Output Channel Config Operating Intensity Channel 6\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80A0;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80A0 AnalogOutputChannelConfigOperatingIntensityChannel60x80A0
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80A8 : Analog Output Channel Config Operating Intensity Channel 7
+******************************************************************************/
+/**
+* \addtogroup 0x80A8 0x80A8 | Analog Output Channel Config Operating Intensity Channel 7
+* @{
+* \brief Object 0x80A8 (Analog Output Channel Config Operating Intensity Channel 7) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80A8[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80A8[] = "Analog Output Channel Config Operating Intensity Channel 7\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80A8;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80A8 AnalogOutputChannelConfigOperatingIntensityChannel70x80A8
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80B0 : Analog Output Channel Config Operating Intensity Channel 8
+******************************************************************************/
+/**
+* \addtogroup 0x80B0 0x80B0 | Analog Output Channel Config Operating Intensity Channel 8
+* @{
+* \brief Object 0x80B0 (Analog Output Channel Config Operating Intensity Channel 8) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80B0[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED16 , 0x10 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80B0[] = "Analog Output Channel Config Operating Intensity Channel 8\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT16 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80B0;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80B0 AnalogOutputChannelConfigOperatingIntensityChannel80x80B0
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80B8 : Analog Output Channel Config Light Mode (Channel)
+******************************************************************************/
+/**
+* \addtogroup 0x80B8 0x80B8 | Analog Output Channel Config Light Mode (Channel)
+* @{
+* \brief Object 0x80B8 (Analog Output Channel Config Light Mode (Channel)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80B8[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80B8[] = "Analog Output Channel Config Light Mode (Channel)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80B8;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80B8 AnalogOutputChannelConfigLightModeChannel0x80B8
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80C0 : Digital Input Grouping Status
+******************************************************************************/
+/**
+* \addtogroup 0x80C0 0x80C0 | Digital Input Grouping Status
+* @{
+* \brief Object 0x80C0 (Digital Input Grouping Status) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Digital Input Grouping Status<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80C0[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READ }}; /* Subindex1 - Digital Input Grouping Status */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x80C0[] = "Digital Input Grouping Status\000"
+"Digital Input Grouping Status\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+BOOLEAN(DigitalInputGroupingStatus); /* Subindex1 - Digital Input Grouping Status */
+} OBJ_STRUCT_PACKED_END
+TOBJ80C0;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80C0 DigitalInputGroupingStatus0x80C0
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80C8 : Digital Input Group Reset
+******************************************************************************/
+/**
+* \addtogroup 0x80C8 0x80C8 | Digital Input Group Reset
+* @{
+* \brief Object 0x80C8 (Digital Input Group Reset) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Digital Input Group Reset<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80C8[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 ,  ACCESS_WRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 ,  ACCESS_WRITE }}; /* Subindex1 - Digital Input Group Reset */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x80C8[] = "Digital Input Group Reset\000"
+"Digital Input Group Reset\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT8 DigitalInputGroupReset; /* Subindex1 - Digital Input Group Reset */
+} OBJ_STRUCT_PACKED_END
+TOBJ80C8;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80C8 DigitalInputGroupReset0x80C8
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80D0 : Digital Input Channel Group Mapping (Channel) [RST, TRG]
+******************************************************************************/
+/**
+* \addtogroup 0x80D0 0x80D0 | Digital Input Channel Group Mapping (Channel) [RST, TRG]
+* @{
+* \brief Object 0x80D0 (Digital Input Channel Group Mapping (Channel) [RST, TRG]) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80D0[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80D0[] = "Digital Input Channel Group Mapping (Channel) [RST, TRG]\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80D0;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80D0 DigitalInputChannelGroupMappingChannelRSTTRG0x80D0
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80D8 : Digital Input Group and Output Group Mapping (Output Group)
+******************************************************************************/
+/**
+* \addtogroup 0x80D8 0x80D8 | Digital Input Group and Output Group Mapping (Output Group)
+* @{
+* \brief Object 0x80D8 (Digital Input Group and Output Group Mapping (Output Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80D8[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80D8[] = "Digital Input Group and Output Group Mapping (Output Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80D8;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80D8 DigitalInputGroupAndOutputGroupMappingOutputGroup0x80D8
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80E0 : Reset Rising Edge Channel By Digital Input Group (Input Group)
+******************************************************************************/
+/**
+* \addtogroup 0x80E0 0x80E0 | Reset Rising Edge Channel By Digital Input Group (Input Group)
+* @{
+* \brief Object 0x80E0 (Reset Rising Edge Channel By Digital Input Group (Input Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80E0[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80E0[] = "Reset Rising Edge Channel By Digital Input Group (Input Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80E0;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80E0 ResetRisingEdgeChannelByDigitalInputGroupInputGroup0x80E0
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80E8 : Reset Falling Edge Channel By Digital Input Group (Input Group)
+******************************************************************************/
+/**
+* \addtogroup 0x80E8 0x80E8 | Reset Falling Edge Channel By Digital Input Group (Input Group)
+* @{
+* \brief Object 0x80E8 (Reset Falling Edge Channel By Digital Input Group (Input Group)) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80E8[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x80E8[] = "Reset Falling Edge Channel By Digital Input Group (Input Group)\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT8 aEntries[8];  /**< \brief Subindex 1 - 8 */
+} OBJ_STRUCT_PACKED_END
+TOBJ80E8;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80E8 ResetFallingEdgeChannelByDigitalInputGroupInputGroup0x80E8
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={8,{0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80F0 : Number of Connected Light Source
+******************************************************************************/
+/**
+* \addtogroup 0x80F0 0x80F0 | Number of Connected Light Source
+* @{
+* \brief Object 0x80F0 (Number of Connected Light Source) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Number of Connected Light Source<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80F0[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READ }}; /* Subindex1 - Number of Connected Light Source */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x80F0[] = "Number of Connected Light Source\000"
+"Number of Connected Light Source\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT8 NumberOfConnectedLightSource; /* Subindex1 - Number of Connected Light Source */
+} OBJ_STRUCT_PACKED_END
+TOBJ80F0;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80F0 NumberOfConnectedLightSource0x80F0
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x80F8 : Set Targeted Light Source Index
+******************************************************************************/
+/**
+* \addtogroup 0x80F8 0x80F8 | Set Targeted Light Source Index
+* @{
+* \brief Object 0x80F8 (Set Targeted Light Source Index) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Set Targeted Light Source Index<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x80F8[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED8 , 0x08 , ACCESS_READWRITE }}; /* Subindex1 - Set Targeted Light Source Index */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x80F8[] = "Set Targeted Light Source Index\000"
+"Set Targeted Light Source Index\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+UINT8 SetTargetedLightSourceIndex; /* Subindex1 - Set Targeted Light Source Index */
+} OBJ_STRUCT_PACKED_END
+TOBJ80F8;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ80F8 SetTargetedLightSourceIndex0x80F8
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8100 : Read Targeted Light Source Info
+******************************************************************************/
+/**
+* \addtogroup 0x8100 0x8100 | Read Targeted Light Source Info
+* @{
+* \brief Object 0x8100 (Read Targeted Light Source Info) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8100[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8100[] = "Read Targeted Light Source Info\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+UINT32 aEntries[32];  /**< \brief Subindex 1 - 32 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8100;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8100 ReadTargetedLightSourceInfo0x8100
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={32,{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8108 : Factory Reset
+******************************************************************************/
+/**
+* \addtogroup 0x8108 0x8108 | Factory Reset
+* @{
+* \brief Object 0x8108 (Factory Reset) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Factory Reset<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8108[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 ,  ACCESS_WRITE },
+{ DEFTYPE_BOOLEAN , 0x01 ,  ACCESS_WRITE }}; /* Subindex1 - Factory Reset */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8108[] = "Factory Reset\000"
+"Factory Reset\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+BOOLEAN(FactoryReset); /* Subindex1 - Factory Reset */
+} OBJ_STRUCT_PACKED_END
+TOBJ8108;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8108 FactoryReset0x8108
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8110 : Firmware Revision
+******************************************************************************/
+/**
+* \addtogroup 0x8110 0x8110 | Firmware Revision
+* @{
+* \brief Object 0x8110 (Firmware Revision) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Firmware Revision<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8110[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_VISIBLESTRING , 0x00 , ACCESS_READ }}; /* Subindex1 - Firmware Revision */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8110[] = "Firmware Revision\000"
+"Firmware Revision\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+/* Subindex 001 has no bitlength therefore no variable is created */
+} OBJ_STRUCT_PACKED_END
+TOBJ8110;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8110 FirmwareRevision0x8110
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8118 : Firmware Semantic Version
+******************************************************************************/
+/**
+* \addtogroup 0x8118 0x8118 | Firmware Semantic Version
+* @{
+* \brief Object 0x8118 (Firmware Semantic Version) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Firmware Semantic Version<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8118[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
+{ DEFTYPE_VISIBLESTRING , 0x00 , ACCESS_READ }}; /* Subindex1 - Firmware Semantic Version */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8118[] = "Firmware Semantic Version\000"
+"Firmware Semantic Version\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+/* Subindex 001 has no bitlength therefore no variable is created */
+} OBJ_STRUCT_PACKED_END
+TOBJ8118;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8118 FirmwareSemanticVersion0x8118
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8120 : Get Total Current Setting
+******************************************************************************/
+/**
+* \addtogroup 0x8120 0x8120 | Get Total Current Setting
+* @{
+* \brief Object 0x8120 (Get Total Current Setting) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Object entry descriptions<br>
+* <br>
+* SubIndex 0<br>
+* SubIndex 1 - Get Total Current Setting<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8120[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 ,  ACCESS_WRITE },
+{ DEFTYPE_BOOLEAN , 0x01 ,  ACCESS_WRITE }}; /* Subindex1 - Get Total Current Setting */
+
+/**
+* \brief Object/Entry names
+*/
+OBJCONST UCHAR OBJMEM aName0x8120[] = "Get Total Current Setting\000"
+"Get Total Current Setting\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16 u16SubIndex0;
+BOOLEAN(GetTotalCurrentSetting); /* Subindex1 - Get Total Current Setting */
+} OBJ_STRUCT_PACKED_END
+TOBJ8120;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8120 GetTotalCurrentSetting0x8120
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={1,0}
+#endif
+;
+/** @}*/
+
+
+
+/******************************************************************************
+*                    Object 0x8128 : Get Temperature Reading
+******************************************************************************/
+/**
+* \addtogroup 0x8128 0x8128 | Get Temperature Reading
+* @{
+* \brief Object 0x8128 (Get Temperature Reading) definition
+*/
+#ifdef _OBJD_
+/**
+* \brief Entry descriptions<br>
+*
+* Subindex 0<br>
+* Subindex 1 - n (the same entry description is used)<br>
+*/
+OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x8128[] = {
+{ DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READWRITE },
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READWRITE }};
+
+/**
+* \brief Object name definition<br>
+* For Subindex 1 to n the syntax 'Subindex XXX' is used
+*/
+OBJCONST UCHAR OBJMEM aName0x8128[] = "Get Temperature Reading\000\377";
+#endif //#ifdef _OBJD_
+
+#ifndef _XMC__ESC_OBJECTS_H_
+/**
+* \brief Object structure
+*/
+typedef struct OBJ_STRUCT_PACKED_START {
+UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
+REAL32 aEntries[2];  /**< \brief Subindex 1 - 2 */
+} OBJ_STRUCT_PACKED_END
+TOBJ8128;
+#endif //#ifndef _XMC__ESC_OBJECTS_H_
+
+/**
+* \brief Object variable
+*/
+PROTO TOBJ8128 GetTemperatureReading0x8128
+#if defined(_XMC__ESC_) && (_XMC__ESC_ == 1)
+={2,{0,0}}
+#endif
+;
+/** @}*/
+
+
+
+
+
+
+
+#ifdef _OBJD_
+TOBJECT    OBJMEM ApplicationObjDic[] = {
+/* Object 0x1600 */
+{NULL , NULL ,  0x1600 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1600 , aName0x1600 , &MLControlChannelProcessDataMapping0x1600 , NULL , NULL , 0x0000 },
+/* Object 0x1601 */
+{NULL , NULL ,  0x1601 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1601 , aName0x1601 , &OnOffContinuousModeGroupProcessDataMapping0x1601 , NULL , NULL , 0x0000 },
+/* Object 0x1A00 */
+{NULL , NULL ,  0x1A00 , {DEFTYPE_PDOMAPPING , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x1A00 , aName0x1A00 , &DeviceIDProcessDataMapping0x1A00 , NULL , NULL , 0x0000 },
+/* Object 0x1A01 */
+{NULL , NULL ,  0x1A01 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A01 , aName0x1A01 , &CurrentChannel0MAProcessDataMapping0x1A01 , NULL , NULL , 0x0000 },
+/* Object 0x1A02 */
+{NULL , NULL ,  0x1A02 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A02 , aName0x1A02 , &CurrentChannel1MAProcessDataMapping0x1A02 , NULL , NULL , 0x0000 },
+/* Object 0x1A03 */
+{NULL , NULL ,  0x1A03 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A03 , aName0x1A03 , &CurrentChannel2MAProcessDataMapping0x1A03 , NULL , NULL , 0x0000 },
+/* Object 0x1A04 */
+{NULL , NULL ,  0x1A04 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A04 , aName0x1A04 , &CurrentChannel3MAProcessDataMapping0x1A04 , NULL , NULL , 0x0000 },
+/* Object 0x1A05 */
+{NULL , NULL ,  0x1A05 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A05 , aName0x1A05 , &CurrentChannel4MAProcessDataMapping0x1A05 , NULL , NULL , 0x0000 },
+/* Object 0x1A06 */
+{NULL , NULL ,  0x1A06 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A06 , aName0x1A06 , &CurrentChannel5MAProcessDataMapping0x1A06 , NULL , NULL , 0x0000 },
+/* Object 0x1A07 */
+{NULL , NULL ,  0x1A07 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A07 , aName0x1A07 , &CurrentChannel6MAProcessDataMapping0x1A07 , NULL , NULL , 0x0000 },
+/* Object 0x1A08 */
+{NULL , NULL ,  0x1A08 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A08 , aName0x1A08 , &CurrentChannel7MAProcessDataMapping0x1A08 , NULL , NULL , 0x0000 },
+/* Object 0x1A09 */
+{NULL , NULL ,  0x1A09 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A09 , aName0x1A09 , &VoltageChannel0MVProcessDataMapping0x1A09 , NULL , NULL , 0x0000 },
+/* Object 0x1A0A */
+{NULL , NULL ,  0x1A0A , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A0A , aName0x1A0A , &VoltageChannel1MVProcessDataMapping0x1A0A , NULL , NULL , 0x0000 },
+/* Object 0x1A0B */
+{NULL , NULL ,  0x1A0B , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A0B , aName0x1A0B , &VoltageChannel2MVProcessDataMapping0x1A0B , NULL , NULL , 0x0000 },
+/* Object 0x1A0C */
+{NULL , NULL ,  0x1A0C , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A0C , aName0x1A0C , &VoltageChannel3MVProcessDataMapping0x1A0C , NULL , NULL , 0x0000 },
+/* Object 0x1A0D */
+{NULL , NULL ,  0x1A0D , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A0D , aName0x1A0D , &VoltageChannel4MVProcessDataMapping0x1A0D , NULL , NULL , 0x0000 },
+/* Object 0x1A0E */
+{NULL , NULL ,  0x1A0E , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A0E , aName0x1A0E , &VoltageChannel5MVProcessDataMapping0x1A0E , NULL , NULL , 0x0000 },
+/* Object 0x1A0F */
+{NULL , NULL ,  0x1A0F , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A0F , aName0x1A0F , &VoltageChannel6MVProcessDataMapping0x1A0F , NULL , NULL , 0x0000 },
+/* Object 0x1A10 */
+{NULL , NULL ,  0x1A10 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A10 , aName0x1A10 , &VoltageChannel7MVProcessDataMapping0x1A10 , NULL , NULL , 0x0000 },
+/* Object 0x1A11 */
+{NULL , NULL ,  0x1A11 , {DEFTYPE_PDOMAPPING , 8 | (OBJCODE_REC << 8)} , asEntryDesc0x1A11 , aName0x1A11 , &MLInferenceChannelProcessDataMapping0x1A11 , NULL , NULL , 0x0000 },
+/* Object 0x1C12 */
+{NULL , NULL ,  0x1C12 , {DEFTYPE_UNSIGNED16 , 2 | (OBJCODE_ARR << 8)} , asEntryDesc0x1C12 , aName0x1C12 , &sRxPDOassign , NULL , NULL , 0x0000 },
+/* Object 0x1C13 */
+{NULL , NULL ,  0x1C13 , {DEFTYPE_UNSIGNED16 , 18 | (OBJCODE_ARR << 8)} , asEntryDesc0x1C13 , aName0x1C13 , &sTxPDOassign , NULL , NULL , 0x0000 },
+/* Object 0x6000 */
+{NULL , NULL ,  0x6000 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x6000 , aName0x6000 , &DeviceID0x6000 , NULL , NULL , 0x0000 },
+/* Object 0x6008 */
+{NULL , NULL ,  0x6008 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6008 , aName0x6008 , &CurrentChannel0MA0x6008 , NULL , NULL , 0x0000 },
+/* Object 0x6010 */
+{NULL , NULL ,  0x6010 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6010 , aName0x6010 , &CurrentChannel1MA0x6010 , NULL , NULL , 0x0000 },
+/* Object 0x6018 */
+{NULL , NULL ,  0x6018 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6018 , aName0x6018 , &CurrentChannel2MA0x6018 , NULL , NULL , 0x0000 },
+/* Object 0x6020 */
+{NULL , NULL ,  0x6020 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6020 , aName0x6020 , &CurrentChannel3MA0x6020 , NULL , NULL , 0x0000 },
+/* Object 0x6028 */
+{NULL , NULL ,  0x6028 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6028 , aName0x6028 , &CurrentChannel4MA0x6028 , NULL , NULL , 0x0000 },
+/* Object 0x6030 */
+{NULL , NULL ,  0x6030 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6030 , aName0x6030 , &CurrentChannel5MA0x6030 , NULL , NULL , 0x0000 },
+/* Object 0x6038 */
+{NULL , NULL ,  0x6038 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6038 , aName0x6038 , &CurrentChannel6MA0x6038 , NULL , NULL , 0x0000 },
+/* Object 0x6040 */
+{NULL , NULL ,  0x6040 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6040 , aName0x6040 , &CurrentChannel7MA0x6040 , NULL , NULL , 0x0000 },
+/* Object 0x6048 */
+{NULL , NULL ,  0x6048 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6048 , aName0x6048 , &VoltageChannel0MV0x6048 , NULL , NULL , 0x0000 },
+/* Object 0x6050 */
+{NULL , NULL ,  0x6050 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6050 , aName0x6050 , &VoltageChannel1MV0x6050 , NULL , NULL , 0x0000 },
+/* Object 0x6058 */
+{NULL , NULL ,  0x6058 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6058 , aName0x6058 , &VoltageChannel2MV0x6058 , NULL , NULL , 0x0000 },
+/* Object 0x6060 */
+{NULL , NULL ,  0x6060 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6060 , aName0x6060 , &VoltageChannel3MV0x6060 , NULL , NULL , 0x0000 },
+/* Object 0x6068 */
+{NULL , NULL ,  0x6068 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6068 , aName0x6068 , &VoltageChannel4MV0x6068 , NULL , NULL , 0x0000 },
+/* Object 0x6070 */
+{NULL , NULL ,  0x6070 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6070 , aName0x6070 , &VoltageChannel5MV0x6070 , NULL , NULL , 0x0000 },
+/* Object 0x6078 */
+{NULL , NULL ,  0x6078 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6078 , aName0x6078 , &VoltageChannel6MV0x6078 , NULL , NULL , 0x0000 },
+/* Object 0x6080 */
+{NULL , NULL ,  0x6080 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6080 , aName0x6080 , &VoltageChannel7MV0x6080 , NULL , NULL , 0x0000 },
+/* Object 0x6088 */
+{NULL , NULL ,  0x6088 , {DEFTYPE_REAL32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x6088 , aName0x6088 , &MLInferenceChannel0x6088 , NULL , NULL , 0x0000 },
+/* Object 0x7000 */
+{NULL , NULL ,  0x7000 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x7000 , aName0x7000 , &MLControlChannel0x7000 , NULL , NULL , 0x0000 },
+/* Object 0x7008 */
+{NULL , NULL ,  0x7008 , {DEFTYPE_BOOLEAN , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x7008 , aName0x7008 , &OnOffContinuousModeGroup0x7008 , NULL , NULL , 0x0000 },
+/* Object 0x8000 */
+{NULL , NULL ,  0x8000 , {DEFTYPE_RECORD , 2 | (OBJCODE_REC << 8)} , asEntryDesc0x8000 , aName0x8000 , &MLParameterSetting0x8000 , NULL , NULL , 0x0000 },
+/* Object 0x8008 */
+{NULL , NULL ,  0x8008 , {DEFTYPE_RECORD , 3 | (OBJCODE_REC << 8)} , asEntryDesc0x8008 , aName0x8008 , &ADCParameterSetting0x8008 , NULL , NULL , 0x0000 },
+/* Object 0x8010 */
+{NULL , NULL ,  0x8010 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8010 , aName0x8010 , &AnalogOutputChannelReleaseGroup0x8010 , NULL , NULL , 0x0000 },
+/* Object 0x8018 */
+{NULL , NULL ,  0x8018 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8018 , aName0x8018 , &AnalogOutputChannelSaveGroupSetting0x8018 , NULL , NULL , 0x0000 },
+/* Object 0x8020 */
+{NULL , NULL ,  0x8020 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8020 , aName0x8020 , &AnalogOutputGroupMappingChannel0x8020 , NULL , NULL , 0x0000 },
+/* Object 0x8028 */
+{NULL , NULL ,  0x8028 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8028 , aName0x8028 , &AnalogOutputLightModeGroup0x8028 , NULL , NULL , 0x0000 },
+/* Object 0x8030 */
+{NULL , NULL ,  0x8030 , {DEFTYPE_UNSIGNED32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8030 , aName0x8030 , &AnalogOutputActiveFlagGroup0x8030 , NULL , NULL , 0x0000 },
+/* Object 0x8038 */
+{NULL , NULL ,  0x8038 , {DEFTYPE_UNSIGNED32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8038 , aName0x8038 , &AnalogOutputMinimumTriggerPulseWidthChannelOrGroup0x8038 , NULL , NULL , 0x0000 },
+/* Object 0x8040 */
+{NULL , NULL ,  0x8040 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8040 , aName0x8040 , &AnalogOutputPulseWidthLimitClearOutputResetEventCounter0x8040 , NULL , NULL , 0x0000 },
+/* Object 0x8048 */
+{NULL , NULL ,  0x8048 , {DEFTYPE_UNSIGNED32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8048 , aName0x8048 , &AnalogOutputPulseWidthLimitChannelOrGroup0x8048 , NULL , NULL , 0x0000 },
+/* Object 0x8050 */
+{NULL , NULL ,  0x8050 , {DEFTYPE_UNSIGNED32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8050 , aName0x8050 , &AnalogOutputRetrieveOutputResetEventCounterGroup0x8050 , NULL , NULL , 0x0000 },
+/* Object 0x8058 */
+{NULL , NULL ,  0x8058 , {DEFTYPE_UNSIGNED32 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8058 , aName0x8058 , &AnalogOutputTriggerDelayGroup0x8058 , NULL , NULL , 0x0000 },
+/* Object 0x8060 */
+{NULL , NULL ,  0x8060 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8060 , aName0x8060 , &AnalogOutputChannelConfigIntensityUnits0x8060 , NULL , NULL , 0x0000 },
+/* Object 0x8068 */
+{NULL , NULL ,  0x8068 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8068 , aName0x8068 , &AnalogOutputChannelConfigSaveSetting0x8068 , NULL , NULL , 0x0000 },
+/* Object 0x8070 */
+{NULL , NULL ,  0x8070 , {DEFTYPE_UNSIGNED16 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x8070 , aName0x8070 , &AnalogOutputChannelConfigMaxIntensityChannel0x8070 , NULL , NULL , 0x0000 },
+/* Object 0x8078 */
+{NULL , NULL ,  0x8078 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x8078 , aName0x8078 , &AnalogOutputChannelConfigOperatingIntensityChannel10x8078 , NULL , NULL , 0x0000 },
+/* Object 0x8080 */
+{NULL , NULL ,  0x8080 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x8080 , aName0x8080 , &AnalogOutputChannelConfigOperatingIntensityChannel20x8080 , NULL , NULL , 0x0000 },
+/* Object 0x8088 */
+{NULL , NULL ,  0x8088 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x8088 , aName0x8088 , &AnalogOutputChannelConfigOperatingIntensityChannel30x8088 , NULL , NULL , 0x0000 },
+/* Object 0x8090 */
+{NULL , NULL ,  0x8090 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x8090 , aName0x8090 , &AnalogOutputChannelConfigOperatingIntensityChannel40x8090 , NULL , NULL , 0x0000 },
+/* Object 0x8098 */
+{NULL , NULL ,  0x8098 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x8098 , aName0x8098 , &AnalogOutputChannelConfigOperatingIntensityChannel50x8098 , NULL , NULL , 0x0000 },
+/* Object 0x80A0 */
+{NULL , NULL ,  0x80A0 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x80A0 , aName0x80A0 , &AnalogOutputChannelConfigOperatingIntensityChannel60x80A0 , NULL , NULL , 0x0000 },
+/* Object 0x80A8 */
+{NULL , NULL ,  0x80A8 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x80A8 , aName0x80A8 , &AnalogOutputChannelConfigOperatingIntensityChannel70x80A8 , NULL , NULL , 0x0000 },
+/* Object 0x80B0 */
+{NULL , NULL ,  0x80B0 , {DEFTYPE_UNSIGNED16 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x80B0 , aName0x80B0 , &AnalogOutputChannelConfigOperatingIntensityChannel80x80B0 , NULL , NULL , 0x0000 },
+/* Object 0x80B8 */
+{NULL , NULL ,  0x80B8 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x80B8 , aName0x80B8 , &AnalogOutputChannelConfigLightModeChannel0x80B8 , NULL , NULL , 0x0000 },
+/* Object 0x80C0 */
+{NULL , NULL ,  0x80C0 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x80C0 , aName0x80C0 , &DigitalInputGroupingStatus0x80C0 , NULL , NULL , 0x0000 },
+/* Object 0x80C8 */
+{NULL , NULL ,  0x80C8 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x80C8 , aName0x80C8 , &DigitalInputGroupReset0x80C8 , NULL , NULL , 0x0000 },
+/* Object 0x80D0 */
+{NULL , NULL ,  0x80D0 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x80D0 , aName0x80D0 , &DigitalInputChannelGroupMappingChannelRSTTRG0x80D0 , NULL , NULL , 0x0000 },
+/* Object 0x80D8 */
+{NULL , NULL ,  0x80D8 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x80D8 , aName0x80D8 , &DigitalInputGroupAndOutputGroupMappingOutputGroup0x80D8 , NULL , NULL , 0x0000 },
+/* Object 0x80E0 */
+{NULL , NULL ,  0x80E0 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x80E0 , aName0x80E0 , &ResetRisingEdgeChannelByDigitalInputGroupInputGroup0x80E0 , NULL , NULL , 0x0000 },
+/* Object 0x80E8 */
+{NULL , NULL ,  0x80E8 , {DEFTYPE_UNSIGNED8 , 8 | (OBJCODE_ARR << 8)} , asEntryDesc0x80E8 , aName0x80E8 , &ResetFallingEdgeChannelByDigitalInputGroupInputGroup0x80E8 , NULL , NULL , 0x0000 },
+/* Object 0x80F0 */
+{NULL , NULL ,  0x80F0 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x80F0 , aName0x80F0 , &NumberOfConnectedLightSource0x80F0 , NULL , NULL , 0x0000 },
+/* Object 0x80F8 */
+{NULL , NULL ,  0x80F8 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x80F8 , aName0x80F8 , &SetTargetedLightSourceIndex0x80F8 , NULL , NULL , 0x0000 },
+/* Object 0x8100 */
+{NULL , NULL ,  0x8100 , {DEFTYPE_UNSIGNED32 , 32 | (OBJCODE_ARR << 8)} , asEntryDesc0x8100 , aName0x8100 , &ReadTargetedLightSourceInfo0x8100 , NULL , NULL , 0x0000 },
+/* Object 0x8108 */
+{NULL , NULL ,  0x8108 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8108 , aName0x8108 , &FactoryReset0x8108 , NULL , NULL , 0x0000 },
+/* Object 0x8110 */
+{NULL , NULL ,  0x8110 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8110 , aName0x8110 , &FirmwareRevision0x8110 , NULL , NULL , 0x0000 },
+/* Object 0x8118 */
+{NULL , NULL ,  0x8118 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8118 , aName0x8118 , &FirmwareSemanticVersion0x8118 , NULL , NULL , 0x0000 },
+/* Object 0x8120 */
+{NULL , NULL ,  0x8120 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x8120 , aName0x8120 , &GetTotalCurrentSetting0x8120 , NULL , NULL , 0x0000 },
+/* Object 0x8128 */
+{NULL , NULL ,  0x8128 , {DEFTYPE_REAL32 , 2 | (OBJCODE_ARR << 8)} , asEntryDesc0x8128 , aName0x8128 , &GetTemperatureReading0x8128 , NULL , NULL , 0x0000 },
+{NULL,NULL, 0xFFFF, {0, 0}, NULL, NULL, NULL, NULL}};
+#endif    //#ifdef _OBJD_
+
+#undef PROTO
+
+/** @}*/
+#define _XMC__ESC_OBJECTS_H_

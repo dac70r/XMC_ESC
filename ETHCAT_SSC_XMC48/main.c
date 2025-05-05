@@ -111,40 +111,43 @@ void process_app(TOBJ7000 *OUT_GENERIC, TOBJ6000 *IN_GENERIC)
   /* OUTPUT PROCESSING */
   //Check bitfield set by master OUT_GEN_Bit1..8 and set LEDs accordingly
   //XMC_GPIO_SetOutputLevel(P_LED1, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit1));
+/*
   XMC_GPIO_SetOutputLevel(P_LED2, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit2));
   XMC_GPIO_SetOutputLevel(P_LED3, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit3));
   XMC_GPIO_SetOutputLevel(P_LED4, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit4));
   XMC_GPIO_SetOutputLevel(P_LED5, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit5));
   XMC_GPIO_SetOutputLevel(P_LED6, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit6));
   XMC_GPIO_SetOutputLevel(P_LED7, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit7));
-  XMC_GPIO_SetOutputLevel(P_LED8, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit8));
+  XMC_GPIO_SetOutputLevel(P_LED8, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit8)); */
 
   /* Manipulate LED1 based on inputs received from EtherCAT Master (TwinCAT on PC) */
-  if(OUT_GENERIC->OUT_GEN_Bit1){
-	  DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
-  }
-  else
-	  DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
+  //if(OUT_GENERIC->OUT_GEN_Bit1){
+	//  DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
+  //}
+  //else
+	//  DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
 
   /* Check integer set by Master OUT_GEN_INT1 and set duty cycle of PWM driving LED 2 accordingly */
-  PWM_CCU8_SetDutyCycleSymmetric(&PWM_CCU8_0, XMC_CCU8_SLICE_COMPARE_CHANNEL_1,
-		  6000+((uint32_t)4000*(uint32_t)OUT_GENERIC->OUT_GEN_INT1)/65535);
+  //PWM_CCU8_SetDutyCycleSymmetric(&PWM_CCU8_0, XMC_CCU8_SLICE_COMPARE_CHANNEL_1,
+	//	  6000+((uint32_t)4000*(uint32_t)OUT_GENERIC->OUT_GEN_INT1)/65535);
 
   /* INPUT PROCESSING */
   /*Check Button 1 and set IN_GEN_Bit1 which is sent to master accordingly */
+	/*
   if (XMC_GPIO_GetInput(P15_13)){
     IN_GENERIC->IN_GEN_Bit1 = 1;
     OUT_GENERIC->OUT_GEN_Bit1 = 1;}
   else
-    IN_GENERIC->IN_GEN_Bit1 = 0;
+    IN_GENERIC->IN_GEN_Bit1 = 0;*/
 
   /*Check Button 2 and set IN_GEN_Bit2 which is sent to master accordingly */
+	/*
   if (XMC_GPIO_GetInput(P15_12)){
 	  IN_GENERIC->IN_GEN_Bit2 = 1;
 	  OUT_GENERIC->OUT_GEN_Bit2 = 1;
   	  }
   else
-    IN_GENERIC->IN_GEN_Bit2 = 0;
+    IN_GENERIC->IN_GEN_Bit2 = 0;*/
 }
 
 int main(void)
